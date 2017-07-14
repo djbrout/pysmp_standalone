@@ -1,0 +1,36 @@
+#$ -S /bin/bash
+
+#$ -V
+
+#$ -cwd
+
+#$ -j y
+
+#$ -N dilltest
+
+#$ -R y
+
+#$ -o output/
+
+#$ -pe ompi 1
+
+#$ -l h_rt=00:05:00
+
+source activate condasmp
+
+date
+
+myvar=$(expr $SGE_TASK_ID + 1)
+
+python mcmc_manager.py --index=$(expr $SGE_TASK_ID \* 8 - 8) &
+python mcmc_manager.py --index=$(expr $SGE_TASK_ID \* 8 - 7) &
+python mcmc_manager.py --index=$(expr $SGE_TASK_ID \* 8 - 6) &
+python mcmc_manager.py --index=$(expr $SGE_TASK_ID \* 8 - 5) &
+python mcmc_manager.py --index=$(expr $SGE_TASK_ID \* 8 - 4) &
+python mcmc_manager.py --index=$(expr $SGE_TASK_ID \* 8 - 3) &
+python mcmc_manager.py --index=$(expr $SGE_TASK_ID \* 8 - 2) &
+python mcmc_manager.py --index=$(expr $SGE_TASK_ID \* 8 - 1) &
+
+wait
+
+date
