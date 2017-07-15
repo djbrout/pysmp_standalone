@@ -95,7 +95,8 @@ if __name__ == "__main__":
         , nightlyoffx=inp['nightlyoffx']
         , nightlyoffy=inp['nightlyoffy']
         , sstime=inp['sstime']
-        , stdoutfile=stdoutfile
+        , stdoutfile = None
+        #, stdoutfile=stdoutfile
 
     )
 
