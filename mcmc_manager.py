@@ -29,5 +29,27 @@ if __name__ == "__main__":
 
     print 'index',index,
 
-    print os.listdir('npzfiles/')[int(index)]
+    npzfile = os.listdir('npzfiles/')[int(index)]
+    inputs = np.load(npzfile)
+
+    import mcmc
+
+    a = mcmc.metropolis_hastings(*inputs)
+
+    # modelvec, modelvec_uncertainty, galmodel_params, \
+    # galmodel_uncertainty, modelvec_nphistory, galmodel_nphistory, \
+    # sims, xhistory, yhistory, accepted_history, pix_stamp, \
+    # chisqhist, redchisqhist, stamps, chisqs, ndof, gewekediag, \
+    # covar, corr = a.get_params()
+
+
+
+
+
+
+
+
+
+
+
 
