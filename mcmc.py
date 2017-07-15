@@ -223,6 +223,7 @@ class metropolis_hastings():
         self.dosave = dosave
         self.lcout = lcout
         self.chainsnpz = chainsnpz
+        print 'maxiter',maxiter
         self.acceptance_vec = np.zeros(int(maxiter)+1,dtype='int')
         self.convolvegal = convolvegal
         self.useskyerr = useskyerr
