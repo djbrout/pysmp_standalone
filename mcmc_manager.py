@@ -30,7 +30,7 @@ if __name__ == "__main__":
     print 'index',index,
 
     npzfile = os.listdir('npzfiles/')[int(index)]
-    inputs = np.load(npzfile)
+    inputs = np.load('npzfiles/'+npzfile)
 
     import mcmc
 
