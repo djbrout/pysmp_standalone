@@ -67,7 +67,7 @@ import matplotlib.mlab as mlab
 import math
 import build_psfex
 import scipy.stats
-import pymc
+#import pymc
 #import rdpsf
 import sys
 from scipy.fftpack import fft, ifft, fft2, ifft2
