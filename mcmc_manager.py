@@ -27,9 +27,7 @@ if __name__ == "__main__":
     import numpy as np
     import time
 
-    r = np.random.random((64,64))
-    t1 = time.time()
-    for i in range(10000):
-        a = scipy.signal.fftconvolve(r,r*5.)
-    t2  = time.time()
-    print 'index',index,'time',t2-t1
+    print 'index',index,
+
+    print os.listdir('npzfiles/')[int(index)]
+
