@@ -35,7 +35,7 @@ if __name__ == "__main__":
     outpath = 'fitout/'
     lcout = outpath+'/'+npzfile.split('.')[0]
     chainsnpz = outpath+'/'+npzfile.split('.')[0] + '_chains.npz'
-
+    stdoutfile = outpath+'/'+npzfile.split('.')[0] + '.log'
     import mcmc
 
     a = mcmc.metropolis_hastings(
@@ -95,7 +95,7 @@ if __name__ == "__main__":
         , nightlyoffx=inp['nightlyoffx']
         , nightlyoffy=inp['nightlyoffy']
         , sstime=inp['sstime']
-        , stdoutfile=inp['stdoutfile']
+        , stdoutfile=stdoutfile
 
     )
 
