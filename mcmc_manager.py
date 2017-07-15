@@ -54,7 +54,7 @@ if __name__ == "__main__":
         , mjd=inp['mjd']
         , gewekenum=inp['gewekenum']
         , skyerr=inp['skyerr']
-        , useskyerr=inp['useksyerr']
+        , useskyerr=inp['useskyerr']
         , usesimerr=inp['usesimerr']
         , flags=inp['flags']
         , fitflags=inp['fitflags']
