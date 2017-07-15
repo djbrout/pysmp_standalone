@@ -2348,6 +2348,15 @@ class metropolis_hastings():
         print self.weightfilename.shape
         print self.imfilename.shape
         print self.psffile.shape
+        print len(self.peakmjd)
+
+        print '-'*100
+
+        i=1
+        print self.mjd[i], float(self.mjd[i]) - self.peakmjd, self.idobs[i], self.idcoadd[i], self.filt, self.fitzpt[i], self.rmsaddin[i],modelvec[i], modelvec_uncertainty[i], self.fakemag[i], self.fakezpt[i],self.diffim_flux[i], self.diffim_fluxerr[i],self.x[i], self.y[i], 0, 0,self.ra[i], self.dec[i],chisqs[i], -999, self.smpdictflag[i], self.mjdflag[i],self.descriptiveflag[i],self.sky[i], self.skyerr[i], 0,self.rmsaddin[i], 0,self.imfilename[i], self.psffile[i],self.weightfilename, self.zptfilename
+
+
+
         fout = open(self.smpfile, 'w')
         print >> fout, '# MJD DPMJD ID_OBS ID_COADD BAND ZPT ZPTERR FLUX FLUXERR FAKEMAG FAKEZPT DIFFIM_FLUX DIFFIM_FLUXERR ' \
                        'XPOS YPOS XOFF YOFF RA DEC CHI2 NDOF ' \
