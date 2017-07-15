@@ -10,7 +10,8 @@
 
 #$ -R y
 
-#$ -o output/
+#$ -o /home/dbrout/pysmp_standalone/output/
+#$ -e /home/dbrout/pysmp_standalone/output/
 
 #$ -pe ompi 1
 
