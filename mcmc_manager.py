@@ -91,6 +91,7 @@ if __name__ == "__main__":
         , sigmazpt=inp['sigmazpt']
         , fakemag=inp['fakemag']
         , fitzpt=inp['fitzpt']
+        #, fitzpterr=inp['fitzpterr']
         , fakezpt=inp['fakezpt']
         , datafilenames=inp['datafilenames']
         , nightlyoffx=inp['nightlyoffx']
@@ -113,6 +114,7 @@ if __name__ == "__main__":
         , imfilename=inp['imfilename']
         , weightfilename=inp['weightfilename']
         , zptfilename=inp['zptfilename']
+        #, filt = inp['filt']
 
     )
 
