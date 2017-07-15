@@ -74,7 +74,7 @@ if __name__ == "__main__":
         , chainsnpz=chainsnpz
         , mjdoff=inp['mjdoff']
         , dontsavegalaxy=True
-        , log=inp['log']
+        , log=None
         , isfermigrid=False
         , isworker=False
         , x=inp['x']
