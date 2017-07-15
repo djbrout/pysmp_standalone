@@ -2344,7 +2344,10 @@ class metropolis_hastings():
                                                                                              stamps[2], stamps[3], \
                                                                                              stamps[4], stamps[5]
 
-
+        print self.zptfilename.shape
+        print self.weightfilename.shape
+        print self.imfilename.shape
+        print self.psffile.shape
         fout = open(self.smpfile, 'w')
         print >> fout, '# MJD DPMJD ID_OBS ID_COADD BAND ZPT ZPTERR FLUX FLUXERR FAKEMAG FAKEZPT DIFFIM_FLUX DIFFIM_FLUXERR ' \
                        'XPOS YPOS XOFF YOFF RA DEC CHI2 NDOF ' \
@@ -2366,7 +2369,7 @@ class metropolis_hastings():
                                self.sky[i], self.skyerr[i], 0,
                                self.rmsaddin[i], 0,
                                self.imfilename[i], self.psffile[i],
-                               self.weightfilename, self.zptfilename, #NEED TO CORRECT THESE MISSING INDICES!
+                               self.weightfilename[i], self.zptfilename[i], #NEED TO CORRECT THESE MISSING INDICES!
                                galmodel_stampf[i],
                                image_stampf[i], psf_stampf[i], weight_stampf[i], sim_stampf[i], chisq_stampf[i])
         fout.close()
