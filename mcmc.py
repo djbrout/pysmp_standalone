@@ -62,13 +62,13 @@ import scipy.ndimage
 import dilltools as dt
 from matplotlib.backends.backend_pdf import PdfPages
 import gc
-import chkpsf_fast
+#import chkpsf_fast
 import matplotlib.mlab as mlab
 import math
 import build_psfex
 import scipy.stats
-import pymc
-import rdpsf
+#import pymc
+#import rdpsf
 import sys
 from scipy.fftpack import fft, ifft, fft2, ifft2
 import multiprocessing
@@ -78,6 +78,8 @@ import os
 from numpy import corrcoef, sum, log, arange
 from numpy.random import rand
 from pylab import pcolor, show, colorbar, xticks, yticks
+sys.exit()
+
 
 class metropolis_hastings():
 
