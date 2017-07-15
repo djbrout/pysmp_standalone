@@ -279,8 +279,8 @@ class metropolis_hastings():
         self.gewekediag = np.zeros_like(self.modelstd)+999.
 
 
-        if not stdoutfile is None:
-            sys.stdout = open(stdoutfile, 'w',buffering=1)
+        # if not stdoutfile is None:
+        #     sys.stdout = open(stdoutfile, 'w',buffering=1)
 
         print 'sigmazpt',self.sigmazpt.shape
 
