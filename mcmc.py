@@ -2348,7 +2348,7 @@ class metropolis_hastings():
         print self.weightfilename.shape
         print self.imfilename.shape
         print self.psffile.shape
-        print len(self.peakmjd)
+        print self.peakmjd
 
         print '-'*100
 
