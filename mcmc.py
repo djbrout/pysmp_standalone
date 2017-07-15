@@ -313,7 +313,7 @@ class metropolis_hastings():
             #raw_input()
             self.tmpwriter = dt.tmpwriter(tmp_subscript='snfit_', useifdh=True)
         else:
-            self.tmpwriter = dt.tmpwriter(tmp_subscript=self.chainsnpz.split('/')[-1].split('.')[0],tempdir='/global/cscratch1/sd/dbrout/tmp/')
+            self.tmpwriter = dt.tmpwriter(tmp_subscript=self.chainsnpz.split('/')[-1].split('.')[0],tempdir='tmp/')
 
         collected = gc.collect()
         print "Garbage collector: collected %d objects." % (collected)
