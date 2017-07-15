@@ -293,7 +293,8 @@ class metropolis_hastings():
         self.imfilename = imfilename
         self.weightfilename = weightfilename
         self.zptfilename = zptfilename
-
+        self.filt = filt
+        self.fitzpterr = fitzpterr
 
         self.nightlyoffx = nightlyoffx
         self.nightlyoffy = nightlyoffy
