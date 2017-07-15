@@ -68,7 +68,7 @@ if __name__ == "__main__":
         , outpath=outpath
         , compressionfactor=inp['compressionfactor']
         , fix_gal_model=inp['fix_gal_model']
-        , pixelate_model=inp['pixelate_model']
+        , pixelate_model=None
         , burnin=inp['burnin']
         , lcout=lcout
         , chainsnpz=chainsnpz
