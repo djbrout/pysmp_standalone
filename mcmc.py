@@ -433,6 +433,7 @@ class metropolis_hastings():
         self.skyerr = np.zeros([Nimage,substamp,substamp]) 
         self.mask = np.zeros([substamp,substamp]) 
         self.skyerr = self.skyerr + 99999999.
+        self.saveskyerr = np.zeros(Nimage)
         self.fitparamscounter = 0
         for i in np.arange(Nimage):
             for x in np.arange(substamp):
@@ -442,7 +443,7 @@ class metropolis_hastings():
                         #tempgalmodel[int(x),int(y)] = copy(self.galaxy_model[int(x),int(y)])
                         self.mask[int(x),int(y)] = 1.
                         self.fitparamscounter += 1
-
+                        self.saveskyerr[i] = skyerr[i]
         self.skyerr_ravel = self.skyerr[0].ravel()
         # else:
         #     self.skyerr = np.zeros([substamp,substamp]) 
@@ -2344,16 +2345,9 @@ class metropolis_hastings():
                                                                                              stamps[2], stamps[3], \
                                                                                              stamps[4], stamps[5]
 
-        print self.zptfilename.shape
-        print self.weightfilename.shape
-        print self.imfilename.shape
-        print self.psffile.shape
-        print self.peakmjd
 
-        print '-'*100
-
-        i=1
-        print self.mjd[i], float(self.mjd[i]) - self.peakmjd, self.idobs[i], self.idcoadd[i], self.filt, self.fitzpt[i], self.rmsaddin[i],modelvec[i], modelvec_uncertainty[i], self.fakemag[i], self.fakezpt[i],self.diffim_flux[i], self.diffim_fluxerr[i],self.x[i], self.y[i], 0, 0,self.ra[i], self.dec[i],chisqs[i], -999, self.smpdictflag[i], self.mjdflag[i],self.descriptiveflag[i],self.sky[i], self.skyerr[i], 0,self.rmsaddin[i], 0,self.imfilename[i], self.psffile[i],self.weightfilename, self.zptfilename
+        #i=1
+        #print self.mjd[i], float(self.mjd[i]) - self.peakmjd, self.idobs[i], self.idcoadd[i], self.filt, self.fitzpt[i], self.rmsaddin[i],modelvec[i], modelvec_uncertainty[i], self.fakemag[i], self.fakezpt[i],self.diffim_flux[i], self.diffim_fluxerr[i],self.x[i], self.y[i], 0, 0,self.ra[i], self.dec[i],chisqs[i], -999, self.smpdictflag[i], self.mjdflag[i],self.descriptiveflag[i],self.sky[i], self.skyerr[i], 0,self.rmsaddin[i], 0,self.imfilename[i], self.psffile[i],self.weightfilename, self.zptfilename
 
 
 
@@ -2375,7 +2369,7 @@ class metropolis_hastings():
                                self.ra[i], self.dec[i],
                                chisqs[i], -999, self.smpdictflag[i], self.mjdflag[i],
                                self.descriptiveflag[i],
-                               self.sky[i], self.skyerr[i], 0,
+                               self.sky[i], self.saveskyerr[i], 0,
                                self.rmsaddin[i], 0,
                                self.imfilename[i], self.psffile[i],
                                self.weightfilename, self.zptfilename, #NEED TO CORRECT THESE MISSING INDICES!
