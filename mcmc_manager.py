@@ -36,6 +36,7 @@ if __name__ == "__main__":
     lcout = outpath+'/'+npzfile.split('.')[0]
     chainsnpz = outpath+'/'+npzfile.split('.')[0] + '_chains.npz'
     stdoutfile = outpath+'/'+npzfile.split('.')[0] + '.log'
+    smpfile = outpath+'/'+npzfile.split('.')[0] + '.smp'
     import mcmc
 
     a = mcmc.metropolis_hastings(
@@ -96,7 +97,22 @@ if __name__ == "__main__":
         , nightlyoffy=inp['nightlyoffy']
         , sstime=inp['sstime']
         , stdoutfile = None
-        #, stdoutfile=stdoutfile
+        , smpfile = smpfile
+        , peakmjd=inp['peakmjd']
+        , idobs=inp['idobs']
+        , idcoadd=inp['idcoadd']
+        , diffim_flux=inp['diffim_flux']
+        , diffim_fluxerr=inp['diffim_fluxerr']
+        , ra=inp['ra']
+        , dec=inp['dec']
+        , smpdictflag=inp['smpdictflag']
+        , mjdflag=inp['mjdflag']
+        , descriptiveflag=inp['descriptiveflag']
+        , rmsaddin=inp['rmsaddin']
+        , gewekediag=inp['gewekediag']
+        , imfilename=inp['imfilename']
+        , weightfilename=inp['weightfilename']
+        , zptfilename=inp['zptfilename']
 
     )
 

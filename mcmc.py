@@ -123,7 +123,6 @@ class metropolis_hastings():
                 , dosave = True
                 , lcout = None
                 , chainsnpz = None
-                , mjdflag = None
                 , convolvegal = True
                 , platescale = .27
                 , mjdoff = None
@@ -159,6 +158,22 @@ class metropolis_hastings():
                  ,nightlyoffy = None
                  ,sstime = None
                  ,stdoutfile = None
+                 ,smpfile = None
+                 , peakmjd=None
+                 , idobs=None
+                 , idcoadd=None
+                 , diffim_flux=None
+                 , diffim_fluxerr=None
+                 , ra=None
+                 , dec=None
+                 , smpdictflag=None
+                 , mjdflag=None
+                 , descriptiveflag=None
+                 , rmsaddin=None
+                 , gewekediag=None
+                 , imfilename=None
+                 , weightfilename=None
+                 , zptfilename=None
                 ):
         '''
         if model is None:
@@ -258,7 +273,25 @@ class metropolis_hastings():
         self.fakezpt=fakezpt
         self.fitzpt=fitzpt
         self.datafilenames = datafilenames
+        self.smpfile = smpfile
         #self.immask = []
+
+        self.peakmjd = peakmjd
+        self.idobs = idobs
+        self.idcoadd = idcoadd
+        self.diffim_flux = diffim_flux
+        self.diffim_fluxerr = diffim_fluxerr
+        self.ra = ra
+        self.dec = dec
+        self.smpdictflag = smpdictflag
+        self.mjdflag = mjdflag
+        self.descriptiveflag = descriptiveflag
+        self.rmsaddin = rmsaddin
+        self.gewekediag = gewekediag
+        self.imfilename = imfilename
+        self.weightfilename = weightfilename
+        self.zptfilename = zptfilename
+
 
         self.nightlyoffx = nightlyoffx
         self.nightlyoffy = nightlyoffy
@@ -506,6 +539,7 @@ class metropolis_hastings():
             self.fpsfs.append(np.fft.fft2(self.centered_psfs[i, :, :]))
 
         self.run_d_mc()
+        self.makesmp()
 
 
     def run_d_mc( self ):
@@ -2324,6 +2358,44 @@ class CustomFFTConvolution(object):
 
         return self.ifft_obj(fft_padded_A * fft_padded_B)
 
+    def makesmp(self):
+
+        modelvec, modelvec_uncertainty, galmodel_params, \
+        galmodel_uncertainty, modelvec_nphistory, galmodel_nphistory, \
+        sims, xhistory, yhistory, accepted_history, pix_stamp, \
+        chisqhist, redchisqhist, stamps, chisqs, ndof, gewekediag, \
+        covar, corr = self.get_params()
+
+        image_stampf, sim_stampf, galmodel_stampf, weight_stampf, psf_stampf, chisq_stampf = stamps[0], stamps[1], \
+                                                                                             stamps[2], stamps[3], \
+                                                                                             stamps[4], stamps[5]
+
+
+        fout = open(self.smpfile, 'w')
+        print >> fout, '# MJD DPMJD ID_OBS ID_COADD BAND ZPT ZPTERR FLUX FLUXERR FAKEMAG FAKEZPT DIFFIM_FLUX DIFFIM_FLUXERR ' \
+                       'XPOS YPOS XOFF YOFF RA DEC CHI2 NDOF ' \
+                       'SMP_FLAG MJD_FLAG DESCRIPTIVE_FLAG SKY SKYERR SKYERRINFLATION RMSADDIN GEWKEDIAG ' \
+                       'IMAGE_FILE PSF_FILE WEIGHT_FILE ZPTFILE FITGALMODEL_STAMP ' \
+                       'IMAGE_STAMP PSF_STAMP WEIGHT_STAMP SIM_STAMP CHISQ_STAMP'
+        for i in range(len(modelvec)):
+            print >> fout, '%.5f %.5f %i %i %s %.5f %.5f %.5f %.5f %.5f %.5f %.5f %.5f %.5f %.5f %.5f %.5f %.5f %.5f %.5f %.5f %s %i %i %.5f ' \
+                           '%.5f %.5f %.5f %.5f %s %s %s %s %s %s %s %s %s %s' % (
+                               self.mjd[i], float(self.mjd[i]) - self.peakmjd, self.idobs[i],
+                               self.idcoadd[i], self.filt,
+                               self.zpt[i], self.zpterr[i],
+                               modelvec[i], modelvec_uncertainty[i], self.fakemag[i], self.fakezpt[i],
+                               self.diffim_flux[i], self.diffim_fluxerr[i],
+                               self.x[i], self.y[i], self.xoff, self.yoff,
+                               self.ra[i], self.dec[i],
+                               chisqs[i], -999, self.flag[i], self.mjdflag[i],
+                               self.descriptiveflag[i],
+                               self.sky[i], self.skyerr[i], 0,
+                               self.rmsaddin[i], 0,
+                               self.imfilename[i], self.psf_filename[i],
+                               self.weightfilename, self.zpt_file, #NEED TO CORRECT THESE MISSING INDICES!
+                               galmodel_stampf[i],
+                               image_stampf[i], psf_stampf[i], weight_stampf[i], sim_stampf[i], chisq_stampf[i])
+        fout.close()
 
 def save_fits_image(image,filename):
     hdu = pf.PrimaryHDU(image)
