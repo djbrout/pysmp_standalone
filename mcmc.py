@@ -78,7 +78,7 @@ import os
 from numpy import corrcoef, sum, log, arange
 from numpy.random import rand
 from pylab import pcolor, show, colorbar, xticks, yticks
-import pymc
+#import pymc
 
 
 class metropolis_hastings():
