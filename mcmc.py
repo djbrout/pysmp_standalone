@@ -607,10 +607,10 @@ class metropolis_hastings():
                 print 'redchi',self.redchisq[-1]
                 print 'Chisq For Each Epoch: ',chsqs
                 tps = (time.time()-self.t1)/self.counter
-                self.tps = tps
+                #self.tps = tps
                 print 'Time per step:',tps
                 print 'PSF Position:',self.current_x_offset,self.current_y_offset
-
+                open('output/log.log','a').write('TPS: '+str(tps)+'\n')
                 #print 'mjdoff: ',self.mjdoff
                 #sys.exit()
                 if (self.counter % 1000) == 0:
@@ -1649,6 +1649,10 @@ class metropolis_hastings():
         #modelvec, modelvec_uncertainty, galmodel_params, galmodel_uncertainty, modelvec_nphistory, galmodel_nphistory, sims, xhistory,yhistory,accepted_history,pix_stamp,chisqhist,redchisqhist  = self.get_params()
         #print self.chainsnpz
         #print self.xhistory
+        # try:
+        #     a = self.tps
+        # except:
+        #     self.tps = -9.
         if len(self.xhistory) > 0:
             raoff = np.median(self.xhistory[int(3*len(self.xhistory)/4.):])
             decoff = np.median(self.yhistory[int(3*len(self.yhistory)/4.):])
@@ -1662,7 +1666,7 @@ class metropolis_hastings():
                  sims=self.sims,data=self.data,accepted_history=self.accepted_history,chisqhist=self.chisq,
                  redchisqhist=self.redchisq,xhistory=np.array(self.xhistory),yhistory=np.array(self.yhistory),
                  chisqvec=self.csv,raoff=raoff,decoff=decoff,mjd=self.mjd,fakemag=self.fakemag,fitzpt=self.fitzpt,
-                 fakezpt=self.fakezpt,datafilenames=self.datafilenames,sky=self.sky,skyerr=self.skyerr,tps=self.tps,
+                 fakezpt=self.fakezpt,datafilenames=self.datafilenames,sky=self.sky,skyerr=self.skyerr,
                              x=self.x,y=self.y,xoff=self.nightlyoffx,yoff=self.nightlyoffy)
 
     def savefig(self, fname):
