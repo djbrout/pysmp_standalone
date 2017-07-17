@@ -40,6 +40,9 @@ if __name__ == "__main__":
     chainsnpz = outpath+'/'+npzfile.split('.')[0] + '_chains.npz'
     stdoutfile = outpath+'/'+npzfile.split('.')[0] + '.log'
     smpfile = outpath+'/'+npzfile.split('.')[0] + '.smp'
+    if os.path.exists(outpath+'/'+npzfile.split('.')[0] + '.smp'):
+        print 'already ran'
+        sys.exit()
     import mcmc
 
     a = mcmc.metropolis_hastings(
