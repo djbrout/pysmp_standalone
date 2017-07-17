@@ -42,87 +42,87 @@ if __name__ == "__main__":
     smpfile = outpath+'/'+npzfile.split('.')[0] + '.smp'
     if os.path.exists(outpath+'/'+npzfile.split('.')[0] + '.smp'):
         print 'already ran'
-        sys.exit()
-    import mcmc
+    else:
+        import mcmc
 
-    a = mcmc.metropolis_hastings(
-        galmodel=inp['galmodel']
-        , modelvec=inp['modelvec']
-        , galstd=inp['galstd']
-        , modelstd=inp['modelstd']
-        , data=inp['data']
-        , psfs=inp['psfs']
-        , weights=inp['weights']
-        , substamp=inp['substamp']
-        , Nimage=inp['Nimage']
-        , maxiter = 2000000 #, maxiter=inp['maxiter']
-        , mask=inp['mask']
-        , sky=inp['sky']
-        , mjd=inp['mjd']
-        , gewekenum= 5000 #, gewekenum=inp['gewekenum']
-        , skyerr=inp['skyerr']
-        , useskyerr=inp['useskyerr']
-        , usesimerr=inp['usesimerr']
-        , flags=inp['flags']
-        , fitflags=inp['fitflags']
-        , psf_shift_std=inp['psf_shift_std']
-        , xoff=0.
-        , yoff=0.  # .06
-        , shiftpsf=inp['shiftpsf']
-        , fileappend=inp['fileappend']
-        , stop=False
-        , skyerr_radius=inp['skyerr_radius']
-        , outpath=outpath
-        , compressionfactor=inp['compressionfactor']
-        , fix_gal_model=inp['fix_gal_model']
-        , pixelate_model=None
-        , burnin=inp['burnin']
-        , lcout=lcout
-        , chainsnpz=chainsnpz
-        , mjdoff=inp['mjdoff']
-        , dontsavegalaxy=True
-        , log=None
-        , isfermigrid=False
-        , isworker=False
-        , x=inp['x']
-        , y=inp['y']
-        , psffile=inp['psffile']
-        , psfcenter=inp['psfcenter']
-        , model_errors=True
-        , survey=inp['survey']
-        , fileroots=inp['fileroots']
-        , scalefactor=inp['scalefactor']
-        , gain=inp['gain']
-        , dobkg=False
-        , sigmazpt=inp['sigmazpt']
-        , fakemag=inp['fakemag']
-        , fitzpt=inp['fitzpt']
-        , fitzpterr=inp['fitzpterr']
-        , fakezpt=inp['fakezpt']
-        , datafilenames=inp['datafilenames']
-        , nightlyoffx=inp['nightlyoffx']
-        , nightlyoffy=inp['nightlyoffy']
-        , sstime=inp['sstime']
-        , stdoutfile = None
-        , smpfile = smpfile
-        , peakmjd=inp['peakmjd']
-        , idobs=inp['idobs']
-        , idcoadd=inp['idcoadd']
-        , diffim_flux=inp['diffim_flux']
-        , diffim_fluxerr=inp['diffim_fluxerr']
-        , ra=inp['ra']
-        , dec=inp['dec']
-        , smpdictflag=inp['smpdictflag']
-        , mjdflag=inp['mjdflag']
-        , descriptiveflag=inp['descriptiveflag']
-        , rmsaddin=inp['rmsaddin']
-        , gewekediag=inp['gewekediag']
-        , imfilename=inp['imfilename']
-        , weightfilename=inp['weightfilename']
-        , zptfilename=inp['zptfilename']
-        , filt = inp['filt']
+        a = mcmc.metropolis_hastings(
+            galmodel=inp['galmodel']
+            , modelvec=inp['modelvec']
+            , galstd=inp['galstd']
+            , modelstd=inp['modelstd']
+            , data=inp['data']
+            , psfs=inp['psfs']
+            , weights=inp['weights']
+            , substamp=inp['substamp']
+            , Nimage=inp['Nimage']
+            , maxiter = 2000000 #, maxiter=inp['maxiter']
+            , mask=inp['mask']
+            , sky=inp['sky']
+            , mjd=inp['mjd']
+            , gewekenum= 5000 #, gewekenum=inp['gewekenum']
+            , skyerr=inp['skyerr']
+            , useskyerr=inp['useskyerr']
+            , usesimerr=inp['usesimerr']
+            , flags=inp['flags']
+            , fitflags=inp['fitflags']
+            , psf_shift_std=inp['psf_shift_std']
+            , xoff=0.
+            , yoff=0.  # .06
+            , shiftpsf=inp['shiftpsf']
+            , fileappend=inp['fileappend']
+            , stop=False
+            , skyerr_radius=inp['skyerr_radius']
+            , outpath=outpath
+            , compressionfactor=inp['compressionfactor']
+            , fix_gal_model=inp['fix_gal_model']
+            , pixelate_model=None
+            , burnin=inp['burnin']
+            , lcout=lcout
+            , chainsnpz=chainsnpz
+            , mjdoff=inp['mjdoff']
+            , dontsavegalaxy=True
+            , log=None
+            , isfermigrid=False
+            , isworker=False
+            , x=inp['x']
+            , y=inp['y']
+            , psffile=inp['psffile']
+            , psfcenter=inp['psfcenter']
+            , model_errors=True
+            , survey=inp['survey']
+            , fileroots=inp['fileroots']
+            , scalefactor=inp['scalefactor']
+            , gain=inp['gain']
+            , dobkg=False
+            , sigmazpt=inp['sigmazpt']
+            , fakemag=inp['fakemag']
+            , fitzpt=inp['fitzpt']
+            , fitzpterr=inp['fitzpterr']
+            , fakezpt=inp['fakezpt']
+            , datafilenames=inp['datafilenames']
+            , nightlyoffx=inp['nightlyoffx']
+            , nightlyoffy=inp['nightlyoffy']
+            , sstime=inp['sstime']
+            , stdoutfile = None
+            , smpfile = smpfile
+            , peakmjd=inp['peakmjd']
+            , idobs=inp['idobs']
+            , idcoadd=inp['idcoadd']
+            , diffim_flux=inp['diffim_flux']
+            , diffim_fluxerr=inp['diffim_fluxerr']
+            , ra=inp['ra']
+            , dec=inp['dec']
+            , smpdictflag=inp['smpdictflag']
+            , mjdflag=inp['mjdflag']
+            , descriptiveflag=inp['descriptiveflag']
+            , rmsaddin=inp['rmsaddin']
+            , gewekediag=inp['gewekediag']
+            , imfilename=inp['imfilename']
+            , weightfilename=inp['weightfilename']
+            , zptfilename=inp['zptfilename']
+            , filt = inp['filt']
 
-    )
+        )
 
     # modelvec, modelvec_uncertainty, galmodel_params, \
     # galmodel_uncertainty, modelvec_nphistory, galmodel_nphistory, \
