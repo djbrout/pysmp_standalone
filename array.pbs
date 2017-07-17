@@ -23,9 +23,6 @@ date
 
 myvar=$(expr $SGE_TASK_ID + 1)
 
-python mcmc_manager.py --index=10 >> /home/dbrout/pysmp_standalone/output/log.log &
-python mcmc_manager.py --index=9 >> /home/dbrout/pysmp_standalone/output/log.log &
-
 python mcmc_manager.py --index=$(expr $SGE_TASK_ID \* 8 - 8) >> /home/dbrout/pysmp_standalone/output/log.log &
 python mcmc_manager.py --index=$(expr $SGE_TASK_ID \* 8 - 7) >> /home/dbrout/pysmp_standalone/output/log.log &
 python mcmc_manager.py --index=$(expr $SGE_TASK_ID \* 8 - 6) >> /home/dbrout/pysmp_standalone/output/log.log &
