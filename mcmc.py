@@ -78,7 +78,7 @@ import os
 from numpy import corrcoef, sum, log, arange
 from numpy.random import rand
 from pylab import pcolor, show, colorbar, xticks, yticks
-#import pymc
+import pymc3
 
 
 class metropolis_hastings():
@@ -1152,7 +1152,7 @@ class metropolis_hastings():
                 self.gewekediag[param] = -999.
                 continue
             #print param, self.modelvec_nphistory[:,param]
-            gw = pymc.geweke(self.modelvec_nphistory[:,param],intervals=2,first=.1,last=.5)
+            gw = pymc3.geweke(self.modelvec_nphistory[:,param],intervals=2,first=.1,last=.5)
             geweke = np.array(gw)
             print geweke.shape
             print np.abs(geweke[:, 1])
