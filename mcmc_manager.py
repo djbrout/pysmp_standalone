@@ -4,11 +4,13 @@ import sys, getopt
 
 if __name__ == "__main__":
     index = 0
+    npzfolder='/home/dbrout/pysmp_standalone/npzfiles'
+    outpath = '/home/dbrout/pysmp_standalone/fitout'
     try:
         args = sys.argv[1:]
         opt, arg = getopt.getopt(
             args, "i",
-            longopts=["index="])
+            longopts=["index=",'npzfolder=','outpath='])
 
     except getopt.GetoptError as err:
         print "No command line arguments"
@@ -19,9 +21,10 @@ if __name__ == "__main__":
             sys.exit(0)
         elif o in ["-i","--index"]:
             index = a
-
-    
-
+        elif o in ["--npzfolder"]:
+            npzfolder = a
+        elif o in ["--outpath"]:
+            outpath = a
 
     import scipy.signal
     import numpy as np
@@ -29,10 +32,10 @@ if __name__ == "__main__":
 
     print 'index',index,
 
-    npzfile = os.listdir('npzfiles/')[int(index)]
-    inp = np.load('npzfiles/'+npzfile)
+    npzfile = os.listdir(npzfolder)[int(index)]
+    inp = np.load(npzfolder+'/'+npzfile)
 
-    outpath = 'fitout/'
+    #outpath = 'fitout/'
     lcout = outpath+'/'+npzfile.split('.')[0]
     chainsnpz = outpath+'/'+npzfile.split('.')[0] + '_chains.npz'
     stdoutfile = outpath+'/'+npzfile.split('.')[0] + '.log'

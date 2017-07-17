@@ -15,22 +15,24 @@
 
 #$ -pe ompi 1
 
-#$ -l h_rt=00:55:00
+### $ -l h_rt=00:30:00
 
 source activate condasmp
 
 date
 
-myvar=$(expr $SGE_TASK_ID + 1)
+myvar='/home/dbrout/pysmp_standalone/npzfiles'
 
-python mcmc_manager.py --index=$(expr $SGE_TASK_ID \* 8 - 8) >> /home/dbrout/pysmp_standalone/output/log.log &
-python mcmc_manager.py --index=$(expr $SGE_TASK_ID \* 8 - 7) >> /home/dbrout/pysmp_standalone/output/log.log &
-python mcmc_manager.py --index=$(expr $SGE_TASK_ID \* 8 - 6) >> /home/dbrout/pysmp_standalone/output/log.log &
-python mcmc_manager.py --index=$(expr $SGE_TASK_ID \* 8 - 5) >> /home/dbrout/pysmp_standalone/output/log.log &
-python mcmc_manager.py --index=$(expr $SGE_TASK_ID \* 8 - 4) >> /home/dbrout/pysmp_standalone/output/log.log &
-python mcmc_manager.py --index=$(expr $SGE_TASK_ID \* 8 - 3) >> /home/dbrout/pysmp_standalone/output/log.log &
-python mcmc_manager.py --index=$(expr $SGE_TASK_ID \* 8 - 2) >> /home/dbrout/pysmp_standalone/output/log.log &
-python mcmc_manager.py --index=$(expr $SGE_TASK_ID \* 8 - 1) >> /home/dbrout/pysmp_standalone/output/log.log &
+outpath = '/home/dbrout/pysmp_standalone/fitout'
+
+python mcmc_manager.py --index=$(expr $SGE_TASK_ID \* 8 - 8) --npzfolder=$myvar --outpath=$outpath >> /home/dbrout/pysmp_standalone/output/log.log &
+python mcmc_manager.py --index=$(expr $SGE_TASK_ID \* 8 - 7) --npzfolder=$myvar --outpath=$outpath >> /home/dbrout/pysmp_standalone/output/log.log &
+python mcmc_manager.py --index=$(expr $SGE_TASK_ID \* 8 - 6) --npzfolder=$myvar --outpath=$outpath >> /home/dbrout/pysmp_standalone/output/log.log &
+python mcmc_manager.py --index=$(expr $SGE_TASK_ID \* 8 - 5) --npzfolder=$myvar --outpath=$outpath >> /home/dbrout/pysmp_standalone/output/log.log &
+python mcmc_manager.py --index=$(expr $SGE_TASK_ID \* 8 - 4) --npzfolder=$myvar --outpath=$outpath >> /home/dbrout/pysmp_standalone/output/log.log &
+python mcmc_manager.py --index=$(expr $SGE_TASK_ID \* 8 - 3) --npzfolder=$myvar --outpath=$outpath >> /home/dbrout/pysmp_standalone/output/log.log &
+python mcmc_manager.py --index=$(expr $SGE_TASK_ID \* 8 - 2) --npzfolder=$myvar --outpath=$outpath >> /home/dbrout/pysmp_standalone/output/log.log &
+python mcmc_manager.py --index=$(expr $SGE_TASK_ID \* 8 - 1) --npzfolder=$myvar --outpath=$outpath >> /home/dbrout/pysmp_standalone/output/log.log &
 
 wait
 
