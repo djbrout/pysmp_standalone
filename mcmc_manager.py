@@ -56,7 +56,7 @@ if __name__ == "__main__":
         , mask=inp['mask']
         , sky=inp['sky']
         , mjd=inp['mjd']
-        , gewekenum= 999999999 #, gewekenum=inp['gewekenum']
+        , gewekenum= 1000 #, gewekenum=inp['gewekenum']
         , skyerr=inp['skyerr']
         , useskyerr=inp['useskyerr']
         , usesimerr=inp['usesimerr']
