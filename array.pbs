@@ -10,9 +10,13 @@
 
 #$ -R y
 
+#$ -l des
+
 #$ -o /home/dbrout/pysmp_standalone/output/
 
 #$ -pe ompi 1
+
+#$ -tc 200
 
 source activate condasmp2
 
