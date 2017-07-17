@@ -611,7 +611,7 @@ class metropolis_hastings():
                 print 'Time per step:',tps
                 print 'PSF Position:',self.current_x_offset,self.current_y_offset
                 print self.filt
-                open('output/log.log','a').write(str(self.filt)+' TPS: '+str(tps)+'\n')
+                open('output/log.log','a').write(str(self.filt)+ ' ' + str(self.counter) + ' TPS: '+str(tps)+'\n')
                 #print 'mjdoff: ',self.mjdoff
                 #sys.exit()
                 if (self.counter % 1000) == 0:
