@@ -25,6 +25,6 @@ myvar='/home/dbrout/pysmp_standalone/npzfiles'
 
 outpath='/home/dbrout/pysmp_standalone/fitout'
 
-python mcmc_manager.py --index=$SGE_TASK_ID --npzfolder=$myvar --outpath=$outpath >> /home/dbrout/pysmp_standalone/output/log.log &
+python mcmc_manager.py --index=$SGE_TASK_ID --npzfolder=$myvar --outpath=$outpath >> /home/dbrout/pysmp_standalone/output/log.log
 
 date
