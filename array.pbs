@@ -17,7 +17,7 @@
 
 ### $ -l h_rt=00:30:00
 
-source activate condasmp
+source activate condasmp2
 
 date
 
