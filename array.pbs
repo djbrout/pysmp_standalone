@@ -16,6 +16,8 @@
 
 source activate condasmp2
 
+cd /home/dbrout/pysmp_standalone
+
 date
 
 myvar="/home/dbrout/pysmp_standalone/npzfiles"
