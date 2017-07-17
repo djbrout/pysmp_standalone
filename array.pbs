@@ -6,7 +6,7 @@
 
 #$ -j y
 
-#$ -N dilltest
+#$ -N zband_dilltest
 
 #$ -R y
 
@@ -21,7 +21,7 @@ source activate condasmp
 
 date
 
-myvar='/home/dbrout/pysmp_standalone/npzfiles'
+myvar='/home/dbrout/pysmp_standalone/z_npzfiles'
 
 outpath='/home/dbrout/pysmp_standalone/fitout'
 
