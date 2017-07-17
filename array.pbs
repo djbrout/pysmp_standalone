@@ -12,19 +12,19 @@
 
 #$ -o /home/dbrout/pysmp_standalone/output/
 
-
 #$ -pe ompi 1
-
-### $ -l h_rt=00:30:00
 
 source activate condasmp2
 
 date
 
-myvar='/home/dbrout/pysmp_standalone/npzfiles'
+myvar="/home/dbrout/pysmp_standalone/npzfiles"
 
-outpath='/home/dbrout/pysmp_standalone/fitout'
+outpath="/home/dbrout/pysmp_standalone/fitout"
 
 python mcmc_manager.py --index=$SGE_TASK_ID --npzfolder=$myvar --outpath=$outpath >> /home/dbrout/pysmp_standalone/output/log.log
 
 date
+
+
+
