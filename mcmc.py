@@ -309,7 +309,7 @@ class metropolis_hastings():
         try:
             self.walltime = float(os.environ['WALLTIME'])
         except:
-            self.walltime = 20.
+            self.walltime = 48.
         self.maxtime = 3600.*(self.walltime-2.)
         self.sstime = time.time()
         self.gewekediag = np.zeros_like(self.modelstd)+999.
