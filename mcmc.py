@@ -1154,6 +1154,7 @@ class metropolis_hastings():
             #print param, self.modelvec_nphistory[:,param]
             gw = pymc.geweke(self.modelvec_nphistory[:,param],intervals=2,first=.1,last=.5)
             geweke = np.array(gw)
+            print geweke.shape
             print np.abs(geweke[:, 1])
             self.gewekediag[param] = np.mean(np.abs(geweke[:, 1]))
 
