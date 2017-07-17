@@ -610,6 +610,7 @@ class metropolis_hastings():
                 #self.tps = tps
                 print 'Time per step:',tps
                 print 'PSF Position:',self.current_x_offset,self.current_y_offset
+                print self.filt
                 open('output/log.log','a').write('Filt: '+self.filt+'TPS: '+str(tps)+'\n')
                 #print 'mjdoff: ',self.mjdoff
                 #sys.exit()
