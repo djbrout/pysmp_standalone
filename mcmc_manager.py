@@ -45,7 +45,7 @@ if __name__ == "__main__":
     else:
         import mcmc
 
-        print inp['smpdictflag']
+        print inp['mjdflag']
         raw_input()
 
         a = mcmc.metropolis_hastings(
