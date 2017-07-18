@@ -4,8 +4,8 @@ import sys, getopt
 
 if __name__ == "__main__":
     index = 0
-    npzfolder='/home/dbrout/pysmp_standalone/npzfiles'
-    outpath = '/home/dbrout/pysmp_standalone/fitout'
+    npzfolder='/home/dbrout/pysmp_standalone/specnpzfiles'
+    outpath = '/home/dbrout/pysmp_standalone/specfitout'
     try:
         args = sys.argv[1:]
         opt, arg = getopt.getopt(
