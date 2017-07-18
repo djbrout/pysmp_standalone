@@ -303,6 +303,23 @@ def readcol(filename,headline=1,startline=2,delim=' '):
         return_cols[k] = np.array(return_cols[k])
     return return_cols
 
+def geweke(chain,firstpart=.1,lastpart=.5,burnin=.2):
+    first = int(round(len(chain)*firstpart))
+    last = int(round(len(chain)*lastpart))
+    burn = int(round(len(chain)*burnin))
+
+    firstn = len(chain[burn:first+burn])
+    lastn = len(chain[-1 * last:-1])
+
+    firststd = np.stdev(chain[burn:first+burn])/np.sqrt(firstn)
+    firstmean = np.mean(chain[burn:first+burn])
+
+    laststd = np.stdev(chain[-1*last:-1])/np.sqrt(lastn)
+    lastmean = np.mean(chain[-1 * last:-1])
+
+    gewekediag = (firstmean-lastmean)/np.sqrt(firststd**2 + laststd**2)
+
+    return gewekediag
 
 def pixelate(matrix, pixelation_factor):
     zmatrix = nd.interpolation.zoom(matrix, 1. / float(pixelation_factor))
