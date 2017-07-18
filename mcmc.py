@@ -554,7 +554,7 @@ class metropolis_hastings():
         self.chisq.append(self.lastchisq/len(self.mask[self.mask>0.].ravel())/len(self.modelvec[self.flags==0]))
         self.redchisq = []
 
-        print self.sims
+        print np.sum(self.sims)
         raw_input('sims')
         # if np.isnan(np.sum(self.sims)):
         #     self.sims = np.zeros((self.Nimage,self.substamp,self.substamp)) + 1.
