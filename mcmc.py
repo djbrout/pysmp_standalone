@@ -554,8 +554,8 @@ class metropolis_hastings():
         self.chisq.append(self.lastchisq/len(self.mask[self.mask>0.].ravel())/len(self.modelvec[self.flags==0]))
         self.redchisq = []
 
-        print np.sum(self.sims)
-        raw_input('sims')
+        #print np.sum(self.sims)
+        #raw_input('sims')
         # if np.isnan(np.sum(self.sims)):
         #     self.sims = np.zeros((self.Nimage,self.substamp,self.substamp)) + 1.
 
@@ -791,9 +791,12 @@ class metropolis_hastings():
         self.fgal = np.fft.fft2(self.kicked_galaxy_model)
 
         # if self.survey == 'PS1':
+        print np.sum(self.sims)
         self.sims = map(self.mapkernel, self.kicked_modelvec, self.kicked_psfs, self.centered_psfs, self.sky,
                         self.flags, self.fitflags, self.sims, self.gal_conv, self.fpsfs,
                         self.xgal_pix_offset,self.ygal_pix_offset)
+        print np.sum(self.sims)
+        raw_input('stop')
         # else:
         #     q = multiprocessing.Queue()
         #     jobs = []
