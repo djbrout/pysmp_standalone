@@ -304,7 +304,8 @@ class metropolis_hastings():
         self.immask = mask
 
         #self.shiftgalstd = shiftgalstd
-
+        print diffim_flux
+        raw_input()
 
         try:
             self.walltime = float(os.environ['WALLTIME'])
@@ -917,8 +918,8 @@ class metropolis_hastings():
 
         self.kicked_galmodel = self.galaxy_model + self.galdeltas
         self.kicked_modelvec = self.modelvec + self.modeldeltas
-        print self.modelvec
-        raw_input('kicked')
+        #print self.modelvec
+        #raw_input('kicked')
         #print self.modeldeltas
         #raw_input()
         #self.kicked_model = self.model + self.deltas
