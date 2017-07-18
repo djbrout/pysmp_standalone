@@ -206,9 +206,9 @@ class metropolis_hastings():
         self.galstd = galstd
         self.modelstd = modelstd
         self.modelvec[self.modelstd == 0] = 0.
-        for i in range(Nimage):
-            print self.modelstd[i],self.modelvec[i]
-        raw_input()
+        #for i in range(Nimage):
+        #    print self.modelstd[i],self.modelvec[i]
+        #raw_input()
         #self.modelstd = np.sqrt(self.modelvec)
         #print self.modelvec
         #print self.modelstd
@@ -312,7 +312,6 @@ class metropolis_hastings():
         self.immask = mask
 
         #self.shiftgalstd = shiftgalstd
-        self.modelvec = 10**(.4*(31.-27.5)) * diffim_flux
 
 
         try:
