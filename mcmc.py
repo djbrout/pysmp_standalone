@@ -1209,6 +1209,7 @@ class metropolis_hastings():
 
                     #v = np.real(v)
                     print 'chi', np.sum(v[(v > 0.) & (v < 99999999.)])
+                    print 'skyerr',skyerr
                     chisq = np.sum(v[(v > 0.) & (v < 99999999.)])
                     #print 'csq',chisq, np.mean(skyerr[skyerr < 1000].ravel())
                     #print np.max(sims),np.max(data),np.mean(sims-data),np.max(weights),np.max(self.mask)
