@@ -385,7 +385,7 @@ class metropolis_hastings():
         
         self.kicked_psfs = copy(self.psfs)
         self.centered_psfs = copy(self.psfs)
-
+        self.kicked_modelvec = copy(self.modelvec)
         #if fix == None:
         #    self.fix = (np.zeros(len(self.model)+1)+1.)
         #else:
@@ -791,12 +791,12 @@ class metropolis_hastings():
         self.fgal = np.fft.fft2(self.kicked_galaxy_model)
 
         # if self.survey == 'PS1':
-        print np.sum(self.sims)
+        #print np.sum(self.sims)
         self.sims = map(self.mapkernel, self.kicked_modelvec, self.kicked_psfs, self.centered_psfs, self.sky,
                         self.flags, self.fitflags, self.sims, self.gal_conv, self.fpsfs,
                         self.xgal_pix_offset,self.ygal_pix_offset)
-        print np.sum(self.sims)
-        raw_input('stop')
+        #print np.sum(self.sims)
+        #raw_input('stop')
         # else:
         #     q = multiprocessing.Queue()
         #     jobs = []
@@ -1031,13 +1031,13 @@ class metropolis_hastings():
                 galaxy_conv = np.fft.ifft2(fpsf*self.fgal).real
                 #print 'galconv',np.sum(galaxy_conv)
                 star_conv = kicked_modelvec * kicked_psfs/np.sum(kicked_psfs)
-                print 'modelvec',kicked_modelvec
-                print 'psf',np.sum(kicked_psfs/np.sum(kicked_psfs))
-                print 'starconv',np.sum(star_conv)
+                # print 'modelvec',kicked_modelvec
+                # print 'psf',np.sum(kicked_psfs/np.sum(kicked_psfs))
+                # print 'starconv',np.sum(star_conv)
                 sims = (star_conv + galaxy_conv + sky) * self.mask
-                print 'sky', sky
-                print 'mask',np.sum(self.mask)
-                print 'sims',np.sum(sims)
+                # print 'sky', sky
+                # print 'mask',np.sum(self.mask)
+                # print 'sims',np.sum(sims)
                     # if galoffx > 1.:
                     #     sims+=np.inf
                     # if galoffy > 1.:
