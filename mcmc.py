@@ -430,7 +430,7 @@ class metropolis_hastings():
             self.psfsplines.append(interpol.RectBivariateSpline(lp, lp, self.psfs[sss]))
 
         #if Nimage > 1:
-        self.skyerr = skyerr
+        self.skyerr = np.zeros([Nimage,substamp,substamp])
         self.mask = np.zeros([substamp,substamp]) 
         self.skyerr = self.skyerr + 99999999.
         self.saveskyerr = np.zeros(Nimage)
@@ -439,7 +439,7 @@ class metropolis_hastings():
             for x in np.arange(substamp):
                 for y in np.arange(substamp):
                     if np.sqrt((substamp/2. - x)**2 + (substamp/2. - y)**2) < skyerr_radius:
-                        #self.skyerr[i,int(x),int(y)] = skyerr[i]
+                        self.skyerr[i,int(x),int(y)] = skyerr[i]
                         #tempgalmodel[int(x),int(y)] = copy(self.galaxy_model[int(x),int(y)])
                         self.mask[int(x),int(y)] = 1.
                         self.fitparamscounter += 1
@@ -552,6 +552,8 @@ class metropolis_hastings():
         self.chisq.append(self.lastchisq/len(self.mask[self.mask>0.].ravel())/len(self.modelvec[self.flags==0]))
         self.redchisq = []
 
+        if np.isnan(np.sum(self.sims)):
+            self.sims = np.zeros((self.Nimage,self.substamp,self.substamp)) + 1.
 
         #self.gal_conv =copy(self.kicked_modelvec)
 
@@ -1208,8 +1210,7 @@ class metropolis_hastings():
 
 
                     #v = np.real(v)
-                    print 'chi', np.sum((data))
-                    #print 'skyerr',skyerr
+                    print 'chi', np.sum(v[(v > 0.) & (v < 99999999.)])
                     chisq = np.sum(v[(v > 0.) & (v < 99999999.)])
                     #print 'csq',chisq, np.mean(skyerr[skyerr < 1000].ravel())
                     #print np.max(sims),np.max(data),np.mean(sims-data),np.max(weights),np.max(self.mask)
