@@ -917,6 +917,8 @@ class metropolis_hastings():
 
         self.kicked_galmodel = self.galaxy_model + self.galdeltas
         self.kicked_modelvec = self.modelvec + self.modeldeltas
+        print self.kicked_modelvec
+        raw_input('kicked')
         #print self.modeldeltas
         #raw_input()
         #self.kicked_model = self.model + self.deltas
@@ -1223,7 +1225,7 @@ class metropolis_hastings():
 
 
                     #v = np.real(v)
-                    print 'chi', np.sum(v[(v > 0.) & (v < 99999999.)])
+                    #print 'chi', np.sum(v[(v > 0.) & (v < 99999999.)])
                     chisq = np.sum(v[(v > 0.) & (v < 99999999.)])
                     #print 'csq',chisq, np.mean(skyerr[skyerr < 1000].ravel())
                     #print np.max(sims),np.max(data),np.mean(sims-data),np.max(weights),np.max(self.mask)
