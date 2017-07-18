@@ -311,10 +311,15 @@ def geweke(chain,firstpart=.1,lastpart=.5,burnin=.2):
     firstn = len(chain[burn:first+burn])
     lastn = len(chain[-1 * last:-1])
 
-    firststd = np.stdev(chain[burn:first+burn])/np.sqrt(firstn)
+    if firstn == 0:
+        return 99
+    if lastn == 0:
+        return 99
+
+    firststd = np.std(chain[burn:first+burn])/np.sqrt(firstn)
     firstmean = np.mean(chain[burn:first+burn])
 
-    laststd = np.stdev(chain[-1*last:-1])/np.sqrt(lastn)
+    laststd = np.std(chain[-1*last:-1])/np.sqrt(lastn)
     lastmean = np.mean(chain[-1 * last:-1])
 
     gewekediag = (firstmean-lastmean)/np.sqrt(firststd**2 + laststd**2)
