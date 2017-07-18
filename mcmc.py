@@ -314,11 +314,11 @@ class metropolis_hastings():
         #self.shiftgalstd = shiftgalstd
 
 
-        try:
-            self.walltime = float(os.environ['WALLTIME'])
-        except:
-            self.walltime = 48.
-        self.maxtime = 3600.*(self.walltime-2.)
+        #try:
+        #    self.walltime = float(os.environ['WALLTIME'])
+        #except:
+        self.walltime = 48.
+        self.maxtime = 3600.*(self.walltime)
         self.sstime = time.time()
         self.gewekediag = np.zeros_like(self.modelstd)+999.
 
