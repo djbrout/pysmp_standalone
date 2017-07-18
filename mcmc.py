@@ -204,8 +204,10 @@ class metropolis_hastings():
         #self.modelvec = modelvec
         self.modelvec = 10**(.4*(31.-27.5)) * diffim_flux
         self.galstd = galstd
-        #self.modelstd = modelstd
-        self.modelstd = np.sqrt(self.modelvec)
+        self.modelstd = modelstd
+        #self.modelstd = np.sqrt(self.modelvec)
+        print self.modelvec
+        print self.modelstd
         self.galdeltas = copy(self.galstd)
         self.modeldeltas = copy(self.modelstd)
 
