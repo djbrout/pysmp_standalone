@@ -78,7 +78,7 @@ import os
 from numpy import corrcoef, sum, log, arange
 from numpy.random import rand
 from pylab import pcolor, show, colorbar, xticks, yticks
-import pymc
+#import pymc
 
 
 class metropolis_hastings():
@@ -589,7 +589,7 @@ class metropolis_hastings():
                 print 'REACHED MAX TIME'*100
 
             if self.counter % self.gewekenum == 0:
-                if self.counter > 99900:
+                if self.counter > 9900:
                     self.z_scores_say_keep_going = self.check_geweke()
 
             if (self.counter % 1000) == 0:
@@ -1151,14 +1151,19 @@ class metropolis_hastings():
             if len(np.unique(self.modelvec_nphistory[:,param])) == 1:
                 self.gewekediag[param] = -999.
                 continue
-            #print param, self.modelvec_nphistory[:,param]
-            gw = pymc3.geweke(self.modelvec_nphistory[:,param],intervals=2,first=.1,last=.5)
-            geweke = np.array(gw)
-            #print geweke.shape
-            #print np.abs(geweke[:, :])
-            self.gewekediag[param] = np.mean(np.abs(geweke[:, 1]))
 
-            if len(geweke[:, 1][np.abs(geweke[:, 1]) > 2.]) > 0.:
+            #gw = pymc3.geweke(self.modelvec_nphistory[:,param],intervals=2,first=.1,last=.5)
+            #geweke = np.array(gw)
+
+            gew = dt.geweke(self.modelvec_nphistory[:,param])
+
+            self.gewekediag[param] = gew
+
+            #self.gewekediag[param] = np.mean(np.abs(geweke[:, 1]))
+
+            print param, gew
+
+            if np.abs(gew) > 2.:
                 msg = "Epoch %s has not properly converged" % param
                 # if assert_:
                 #     raise AssertionError(msg)
