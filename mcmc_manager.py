@@ -45,8 +45,8 @@ if __name__ == "__main__":
     else:
         import mcmc
 
-        print inp['mjdflag']
-        raw_input()
+        #print inp['mjdflag']
+        #raw_input()
 
         a = mcmc.metropolis_hastings(
             galmodel=inp['galmodel']
