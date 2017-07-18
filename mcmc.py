@@ -202,7 +202,7 @@ class metropolis_hastings():
         #useskyerr = True
         self.galmodel = galmodel
         #self.modelvec = modelvec
-        self.modelvec = 10**(.4*(31.-27.5)) * diffim_flux
+        self.modelvec = np.asarray(10**(.4*(31.-27.5)) * diffim_flux)
         self.galstd = galstd
         self.modelstd = modelstd
         self.modelvec[self.modelstd == 0] = 0.
