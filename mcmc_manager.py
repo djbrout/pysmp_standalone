@@ -45,6 +45,9 @@ if __name__ == "__main__":
     else:
         import mcmc
 
+        print inp['smpdictflag']
+        raw_input()
+
         a = mcmc.metropolis_hastings(
             galmodel=inp['galmodel']
             , modelvec=inp['modelvec']
