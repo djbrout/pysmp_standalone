@@ -392,8 +392,8 @@ class metropolis_hastings():
         #    self.fix = fix
 
         self.galaxy_model = self.galmodel
-        print np.sum(self.galaxy_model)
-        raw_input()
+        #print np.sum(self.galaxy_model)
+        #raw_input()
         #self.galaxy_model = copy(self.model[ 0 : self.substamp**2.]).reshape(self.substamp,self.substamp)
         #self.gal_stds = copy(self.stdev[ 0 : self.substamp**2.]).reshape(self.substamp,self.substamp)
 
@@ -554,6 +554,8 @@ class metropolis_hastings():
         self.chisq.append(self.lastchisq/len(self.mask[self.mask>0.].ravel())/len(self.modelvec[self.flags==0]))
         self.redchisq = []
 
+        print self.sims
+        raw_input('sims')
         # if np.isnan(np.sum(self.sims)):
         #     self.sims = np.zeros((self.Nimage,self.substamp,self.substamp)) + 1.
 
