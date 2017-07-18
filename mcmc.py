@@ -917,7 +917,7 @@ class metropolis_hastings():
 
         self.kicked_galmodel = self.galaxy_model + self.galdeltas
         self.kicked_modelvec = self.modelvec + self.modeldeltas
-        print self.kicked_modelvec
+        print self.modelvec
         raw_input('kicked')
         #print self.modeldeltas
         #raw_input()
