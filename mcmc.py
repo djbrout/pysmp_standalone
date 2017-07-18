@@ -1032,7 +1032,7 @@ class metropolis_hastings():
                 #print 'galconv',np.sum(galaxy_conv)
                 star_conv = kicked_modelvec * kicked_psfs/np.sum(kicked_psfs)
                 print 'modelvec',kicked_modelvec
-                print 'psf',np.sum(kicked_psfs)
+                print 'psf',np.sum(kicked_psfs/np.sum(kicked_psfs))
                 print 'starconv',np.sum(star_conv)
                 sims = (star_conv + galaxy_conv + sky) * self.mask
                 print 'sky', sky
