@@ -201,9 +201,11 @@ class metropolis_hastings():
         '''
         #useskyerr = True
         self.galmodel = galmodel
-        self.modelvec = modelvec
+        #self.modelvec = modelvec
+        self.modelvec = 10**(.4*(31.-27.5)) * diffim_flux
         self.galstd = galstd
-        self.modelstd = modelstd
+        #self.modelstd = modelstd
+        self.modelstd = np.sqrt(self.modelvec)
         self.galdeltas = copy(self.galstd)
         self.modeldeltas = copy(self.modelstd)
 
@@ -304,8 +306,8 @@ class metropolis_hastings():
         self.immask = mask
 
         #self.shiftgalstd = shiftgalstd
-        print diffim_flux
-        raw_input()
+        self.modelvec = 10**(.4*(31.-27.5)) * diffim_flux
+
 
         try:
             self.walltime = float(os.environ['WALLTIME'])
