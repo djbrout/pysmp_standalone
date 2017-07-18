@@ -483,6 +483,7 @@ class metropolis_hastings():
                 self.flags[i] = 1
                 self.modelstd[i] = 0.
 
+
         if not self.pixelate_model is None:
             if not self.pixelate_model == 1.:
                 self.galaxy_model = self.pixelate(self.galaxy_model,self.pixelate_model)
@@ -640,7 +641,7 @@ class metropolis_hastings():
 
 
 
-                if (self.counter % 100000) == 0:
+                if (self.counter % 1000) == 0:
                     self.plotchains()
                     self.savechains()
                     self.plotstamps()
