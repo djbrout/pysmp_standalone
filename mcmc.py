@@ -1030,7 +1030,7 @@ class metropolis_hastings():
                 #print 'fpsf',np.sum(fpsf),galoffx,galoffy
                 galaxy_conv = np.fft.ifft2(fpsf*self.fgal).real
                 #print 'galconv',np.sum(galaxy_conv)
-                star_conv = kicked_modelvec * kicked_psfs
+                star_conv = kicked_modelvec * kicked_psfs/np.sum(kicked_psfs)
                 print 'modelvec',kicked_modelvec
                 print 'psf',np.sum(kicked_psfs)
                 print 'starconv',np.sum(star_conv)
