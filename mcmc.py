@@ -206,8 +206,8 @@ class metropolis_hastings():
         self.galstd = galstd
         self.modelstd = modelstd
         #self.modelstd = np.sqrt(self.modelvec)
-        print self.modelvec
-        print self.modelstd
+        #print self.modelvec
+        #print self.modelstd
         self.galdeltas = copy(self.galstd)
         self.modeldeltas = copy(self.modelstd)
 
