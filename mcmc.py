@@ -206,6 +206,9 @@ class metropolis_hastings():
         self.galstd = galstd
         self.modelstd = modelstd
         self.modelvec[self.modelstd == 0] = 0.
+        for i in range(Nimage):
+            print self.modelstd[i],self.modelvec[i]
+        raw_input()
         #self.modelstd = np.sqrt(self.modelvec)
         #print self.modelvec
         #print self.modelstd
