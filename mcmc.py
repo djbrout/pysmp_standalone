@@ -1031,6 +1031,8 @@ class metropolis_hastings():
                 galaxy_conv = np.fft.ifft2(fpsf*self.fgal).real
                 #print 'galconv',np.sum(galaxy_conv)
                 star_conv = kicked_modelvec * kicked_psfs
+                print 'modelvec',kicked_modelvec
+                print 'psf',np.sum(kicked_psfs)
                 print 'starconv',np.sum(star_conv)
                 sims = (star_conv + galaxy_conv + sky) * self.mask
                 print 'sky', sky
