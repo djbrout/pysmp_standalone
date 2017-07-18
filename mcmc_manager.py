@@ -40,7 +40,7 @@ if __name__ == "__main__":
     chainsnpz = outpath+'/'+npzfile.split('.')[0] + '_chains.npz'
     stdoutfile = outpath+'/'+npzfile.split('.')[0] + '.log'
     smpfile = outpath+'/'+npzfile.split('.')[0] + '.smp'
-    corioutpath = '/home/dbrout/pysmp_standalone/corspec/'
+    corioutpath = '/home/dbrout/pysmp_standalone/corispec/'
     if os.path.exists(corioutpath+'/'+npzfile.split('.')[0] + '.smp'):
         print 'already ran'
     else:
