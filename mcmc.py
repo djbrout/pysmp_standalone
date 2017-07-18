@@ -1176,7 +1176,7 @@ class metropolis_hastings():
         return hasnotconv
 
     def mapchis( self, sims, data, immask, flags, fitflags, skyerr,simnosn,simnosnnosky,sky,weights,gain,wmask,sigmazpt):
-        chisq  = 0
+        chisq  = 0.
 
         if flags == 0:
             if fitflags == 0:

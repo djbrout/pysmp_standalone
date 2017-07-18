@@ -67,7 +67,7 @@ if __name__ == "__main__":
             , useskyerr=inp['useskyerr']
             , usesimerr=inp['usesimerr']
             , flags=inp['smpdictflag']
-            , fitflags=inp['fitflags']
+            , fitflags=inp['fitflags']*0.
             , psf_shift_std=inp['psf_shift_std']
             , xoff=0.
             , yoff=0.  # .06
