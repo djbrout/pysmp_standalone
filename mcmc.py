@@ -1027,9 +1027,9 @@ class metropolis_hastings():
         if flags == 0:
             if fitflags == 0.:
                 # if self.shiftgalstd>0.:
-
+                print 'fpsf',np.sum(fpsf),galoffx,galoffy
                 galaxy_conv = np.fft.ifft2(fpsf*self.fouriershift(galoffx,galoffy,self.fgal)).real
-
+                print 'galconv',np.sum(galaxy_conv)
                 star_conv = kicked_modelvec * kicked_psfs
                 sims = (star_conv + galaxy_conv + sky) * self.mask
                     # if galoffx > 1.:
