@@ -1192,6 +1192,7 @@ class metropolis_hastings():
 
                     ##########v = ((sims - data) ** 2  * self.mask * immask * wmask / (skyerr**2 + np.sqrt((sims-sky)**2)/gain  + self.readnoise/gain)).ravel()#hardcoded gain, hardcoded readnoise
 
+                    print 'hereee'
                     v = ((sims - data) ** 2 * self.mask * immask * wmask / (skyerr ** 2 + self.readnoise / gain)).ravel()  # hardcoded gain, hardcoded readnoise
 
                     # sms = sims-sky
