@@ -335,7 +335,7 @@ class metropolis_hastings():
         self.fwhms = np.asarray(fwhms)
 
         numfluxepochs = len(self.modelvec[self.modelstd == 0])
-        self.flags[np.argsort(self.fwhms)[self.modelstd == 0][:numfluxepochs]] = 1
+        #self.flags[np.argsort(self.fwhms)[self.modelstd == 0][:numfluxepochs]] = 1
         print len(self.modelvec[self.modelstd == 0]), len(self.modelvec[self.modelstd > 0.])
         for i, p in enumerate(psfs):
             try:
