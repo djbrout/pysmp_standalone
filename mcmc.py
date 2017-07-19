@@ -354,8 +354,8 @@ class metropolis_hastings():
                 if self.modelstd[arg] == 0:
                     cntr += 1
                     if cntr > numfluxepochs:
-                        pass
-                        # self.flags[arg] = 1
+                        #pass
+                        self.flags[arg] = 1
 
                         # self.flags[argsrt][fixedepochs] = 1
 
