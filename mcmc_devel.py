@@ -345,23 +345,24 @@ class metropolis_hastings():
         numfluxepochs = len(self.modelvec[self.modelstd > 0])
         if len(self.flags[self.modelstd == 0]) > len(self.flags[self.modelstd > 0]):
             argsrt = np.argsort(self.fwhms)
-            print argsrt
+            #print argsrt
             fixedepochs = self.modelstd[argsrt] == 0
-            print self.flags[argsrt][fixedepochs]
+            #print self.flags[argsrt][fixedepochs]
             #raw_input()
 
-            print self.flags[argsrt][fixedepochs][numfluxepochs:]
+            #print self.flags[argsrt][fixedepochs][numfluxepochs:]
             cntr = 0
             for jj,arg in enumerate(argsrt):
                 if self.modelstd[arg] == 0:
                     cntr += 1
                     if cntr > numfluxepochs:
-                        self.flags[arg] = 1
+                        pass
+                        #self.flags[arg] = 1
 
             #self.flags[argsrt][fixedepochs] = 1
 
-            print self.flags[argsrt][fixedepochs][numfluxepochs:]
-            raw_input()
+            #print self.flags[argsrt][fixedepochs][numfluxepochs:]
+            #raw_input()
 
             #self.descriptiveflag[argsrt][fixedepochs][:numfluxepochs] = 2048
         #print len(self.modelvec[self.modelstd == 0]), len(self.modelvec[self.modelstd > 0.])
@@ -372,7 +373,7 @@ class metropolis_hastings():
             except:
                 #fwhms.append(999)
                 print 'nan'
-        raw_input()
+        #raw_input()
 
         # if not stdoutfile is None:
         #     sys.stdout = open(stdoutfile, 'w',buffering=1)
