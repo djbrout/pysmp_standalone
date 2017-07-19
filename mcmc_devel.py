@@ -351,7 +351,14 @@ class metropolis_hastings():
             #raw_input()
 
             print self.flags[argsrt][fixedepochs][numfluxepochs:]
-            self.flags[argsrt][fixedepochs][numfluxepochs:-1] = 1
+            cntr = 0
+            for jj,arg in enumerate(argsrt):
+                if fixedepochs[arg] == 1:
+                    cntr += 1
+                    if cntr > numfluxepochs:
+                        self.flags[arg] = 1
+
+            #self.flags[argsrt][fixedepochs] = 1
 
             print self.flags[argsrt][fixedepochs][numfluxepochs:]
             raw_input()
