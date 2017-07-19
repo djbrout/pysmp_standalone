@@ -206,13 +206,7 @@ class metropolis_hastings():
         self.galstd = galstd
         self.modelstd = modelstd
         self.modelvec[self.modelstd == 0] = 0.
-        print len(self.modelvec[self.modelstd == 0]),len(self.modelvec[self.modelstd > 0.] )
-        for i,p in enumerate(psfs):
-            try:
-                print self.modelstd[i],dt.fwhm(p)
-            except:
-                print 'nan'
-        raw_input()
+
         #for i in range(Nimage):
         #    print self.modelstd[i],self.modelvec[i]
         #raw_input()
@@ -329,6 +323,13 @@ class metropolis_hastings():
         self.sstime = time.time()
         self.gewekediag = np.zeros_like(self.modelstd)+999.
 
+        print len(self.modelvec[self.modelstd == 0]), len(self.modelvec[self.modelstd > 0.])
+        for i, p in enumerate(psfs):
+            try:
+                print self.modelstd[i], self.flags[i], dt.fwhm(p)
+            except:
+                print 'nan'
+        raw_input()
 
         # if not stdoutfile is None:
         #     sys.stdout = open(stdoutfile, 'w',buffering=1)
