@@ -44,7 +44,7 @@ if __name__ == "__main__":
     if os.path.exists(corioutpath+'/'+npzfile.split('.')[0] + '.smp'):
         print 'already ran'
     else:
-        import mcmc_devel
+        import mcmc_devel as mcmc
 
         #print inp['mjdflag']
         #raw_input()
