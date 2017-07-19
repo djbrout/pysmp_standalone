@@ -16,7 +16,7 @@
 
 #$ -pe ompi 1
 
-#$ -tc 200
+#$ -tc 20
 
 source activate condasmp2
 
