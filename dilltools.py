@@ -4,6 +4,8 @@ import os
 import scipy.signal
 import scipy.ndimage as nd
 import scipy.stats
+from scipy.interpolate import UnivariateSpline
+
 import sys
 
 #hello from fermilab2
@@ -302,6 +304,18 @@ def readcol(filename,headline=1,startline=2,delim=' '):
     for k in return_cols.keys():
         return_cols[k] = np.array(return_cols[k])
     return return_cols
+
+def fwhm(arr):
+    oned_psf = np.sum(arr, axis=0)
+    oned_psft = np.sum(arr, axis=1)
+
+    x = np.arange(len(oned_psf)) * .27
+    spline = UnivariateSpline(x, oned_psf - np.max(oned_psf) / 2, s=0)
+    r1, r2 = spline.roots()
+
+    fwhm = r2 - r1
+
+    return fwhm
 
 def geweke(chain,firstpart=.25,lastpart=.5,burnin=.2):
     first = int(round(len(chain)*firstpart))
