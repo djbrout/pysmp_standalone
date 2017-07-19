@@ -335,16 +335,18 @@ class metropolis_hastings():
         self.fwhms = np.asarray(fwhms)
 
         numfluxepochs = len(self.modelvec[self.modelstd == 0])
-        #self.flags[np.argsort(self.fwhms)[self.modelstd == 0][:numfluxepochs]] = 1
-        print len(self.modelvec[self.modelstd == 0]), len(self.modelvec[self.modelstd > 0.])
-        for i, p in enumerate(psfs):
-            try:
-                print self.modelstd[i], self.flags[i], dt.fwhm(p)
-                fwhms.append(dt.fwhm(p))
-            except:
-                fwhms.append(999)
-                print 'nan'
-        raw_input()
+        if len(self.flags[self.modelstd == 0]) > numfluxepochs:
+            self.flags[np.argsort(self.fwhms)[self.modelstd == 0][:numfluxepochs]] = 1
+
+        #print len(self.modelvec[self.modelstd == 0]), len(self.modelvec[self.modelstd > 0.])
+        # for i, p in enumerate(psfs):
+        #     try:
+        #         #print self.modelstd[i], self.flags[i], dt.fwhm(p)
+        #         fwhms.append(dt.fwhm(p))
+        #     except:
+        #         fwhms.append(999)
+        #         #print 'nan'
+        # #raw_input()
 
         # if not stdoutfile is None:
         #     sys.stdout = open(stdoutfile, 'w',buffering=1)
