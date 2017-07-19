@@ -207,6 +207,8 @@ class metropolis_hastings():
         self.modelstd = modelstd
         self.modelvec[self.modelstd == 0] = 0.
         print len(self.modelvec[self.modelstd == 0]),len(self.modelvec[self.modelstd > 0.] )
+        for i,p in enumerate(psfs):
+            print self.modelstd[i],dt.fwhm(p)
         raw_input()
         #for i in range(Nimage):
         #    print self.modelstd[i],self.modelvec[i]
