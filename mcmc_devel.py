@@ -346,10 +346,12 @@ class metropolis_hastings():
         if len(self.flags[self.modelstd == 0]) > len(self.flags[self.modelstd > 0]):
             argsrt = np.argsort(self.fwhms)
             print argsrt
+            fixedepochs = self.modelstd[argsrt] == 0
+            print self.flags[argsrt][fixedepochs]
             raw_input()
-            fixedepochargs = self.modelstd[argsrt] == 0
-            self.flags[argsrt][fixedepochargs][numfluxepochs:] = 1
-            self.descriptiveflag[argsrt][fixedepochargs][:numfluxepochs] = 2048
+
+            #self.flags[argsrt][fixedepochs][numfluxepochs:] = 1
+            #self.descriptiveflag[argsrt][fixedepochs][:numfluxepochs] = 2048
         #print len(self.modelvec[self.modelstd == 0]), len(self.modelvec[self.modelstd > 0.])
         for i, p in enumerate(psfs):
             try:
