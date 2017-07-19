@@ -204,13 +204,13 @@ class metropolis_hastings():
         #self.modelvec = modelvec
         self.modelvec = np.asarray(10**(.4*(31.-27.5)) * diffim_flux)
 
-        print 'before',self.modelvec
+        #print 'before',self.modelvec
         if os.path.exists(chainsnpz):
             #raw_input()
             self.modelvec = np.load(chainsnpz)['modelvec']
-            print 'after',self.modelvec
+            #print 'after',self.modelvec
 
-        raw_input()
+        #raw_input()
         self.galstd = galstd
         self.modelstd = modelstd
         self.modelvec[self.modelstd == 0] = 0.
