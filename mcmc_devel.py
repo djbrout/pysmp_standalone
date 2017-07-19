@@ -323,11 +323,26 @@ class metropolis_hastings():
         self.sstime = time.time()
         self.gewekediag = np.zeros_like(self.modelstd)+999.
 
+        fwhms = []
+        #print len(self.modelvec[self.modelstd == 0]), len(self.modelvec[self.modelstd > 0.])
+        for i, p in enumerate(psfs):
+            try:
+                a = dt.fwhm(p)
+                fwhms.append(a)
+            except:
+                fwhms.append(999)
+                #print 'nan'
+        self.fwhms = np.asarray(fwhms)
+
+        numfluxepochs = len(self.modelvec[self.modelstd == 0])
+        self.flags[np.argsort(self.fwhms)[self.modelstd == 0][:numfluxepochs]] = 1
         print len(self.modelvec[self.modelstd == 0]), len(self.modelvec[self.modelstd > 0.])
         for i, p in enumerate(psfs):
             try:
                 print self.modelstd[i], self.flags[i], dt.fwhm(p)
+                fwhms.append(dt.fwhm(p))
             except:
+                fwhms.append(999)
                 print 'nan'
         raw_input()
 
