@@ -28,12 +28,14 @@ myvar="/home/dbrout/pysmp_standalone/specnpzfiles"
 
 outpath="/home/dbrout/pysmp_standalone/specfitout"
 
-python mcmc_manager.py --index=$($SGE_TASK_ID*2-2) --npzfolder=$myvar --outpath=$outpath >> /home/dbrout/pysmp_standalone/output/log.log &
-python mcmc_manager.py --index=$($SGE_TASK_ID*2-1) --npzfolder=$myvar --outpath=$outpath >> /home/dbrout/pysmp_standalone/output/log.log &
+python mcmc_manager.py --index=$($SGE_TASK_ID\*2-2) --npzfolder=$myvar --outpath=$outpath >> /home/dbrout/pysmp_standalone/output/log.log &
+python mcmc_manager.py --index=$($SGE_TASK_ID\*2-1) --npzfolder=$myvar --outpath=$outpath >> /home/dbrout/pysmp_standalone/output/log.log &
 
 wait
 
 date
+
+
 
 
 
