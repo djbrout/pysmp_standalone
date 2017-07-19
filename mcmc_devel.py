@@ -333,11 +333,12 @@ class metropolis_hastings():
                 fwhms.append(999)
                 #print 'nan'
         self.fwhms = np.asarray(fwhms)
+        self.descriptiveflag
 
         numfluxepochs = len(self.modelvec[self.modelstd == 0])
         if len(self.flags[self.modelstd == 0]) > numfluxepochs:
             self.flags[np.argsort(self.fwhms)[self.modelstd == 0][:numfluxepochs]] = 1
-
+            self.descriptiveflag[np.argsort(self.fwhms)[self.modelstd == 0][:numfluxepochs]] = 2048
         #print len(self.modelvec[self.modelstd == 0]), len(self.modelvec[self.modelstd > 0.])
         # for i, p in enumerate(psfs):
         #     try:
