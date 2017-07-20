@@ -46,7 +46,6 @@ if __name__ == "__main__":
 
     npzlist = npzlist[np.argsort(numepochs)]
     npzfile = npzlist[int(index)]
-    print 'numepochs',numepochs[int(index)]
     #npzfile = os.listdir(npzfolder)[int(index)]
     inp = np.load(npzfolder+'/'+npzfile)
 
@@ -63,7 +62,7 @@ if __name__ == "__main__":
 
         #print inp['mjdflag']
         #raw_input()
-
+        print 'numepochs',inp['Nimage']
         a = mcmc.metropolis_hastings(
             galmodel=inp['galmodel']
             , modelvec=inp['modelvec']
