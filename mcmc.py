@@ -690,7 +690,7 @@ class metropolis_hastings():
                 if (self.counter % 100000) == 0:
                     self.plotchains()
                     self.savechains()
-                    self.plotstamps()
+                    #self.plotstamps()
                 # sys.exit()
                 # self.plotstamps()
                 import gc
@@ -728,13 +728,13 @@ class metropolis_hastings():
                 # plt.show()
                 # print 'fit galaxy registration', self.xgal_pix_offset[10:20]
         # sys.exit()
-        self.summarize_run()
+        self.summarize_run(doplot=True)
         # sys.exit()
         self.model_params()
 
         self.t2 = time.time()
 
-    def summarize_run(self):
+    def summarize_run(self,doplot=False):
         self.t2 = time.time()
         print 'Total Time: ' + str(self.t2 - self.t1)
         print 'Num Iterations: ' + str(self.counter)
@@ -749,8 +749,8 @@ class metropolis_hastings():
         self.plotcovar()
         self.savechains()
         print 'plotting stamps... this may take a minute...'
-        self.dontplotstamps = False
-        if not self.dontplotstamps:
+        self.dontplotstamps = doplot
+        if doplot:
             self.plotstamps()
             # np.savez(self.results_npz, pixel_history = self.pixel_history
             #                        , simulated_stamps = self.simulated_images
