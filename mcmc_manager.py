@@ -48,6 +48,7 @@ if __name__ == "__main__":
     npzfile = npzlist[int(index)]
     #npzfile = os.listdir(npzfolder)[int(index)]
     inp = np.load(npzfolder+'/'+npzfile)
+    print inp.keys()
     print 'numepochs', inp['Nimage']
 
     #outpath = 'fitout/'
