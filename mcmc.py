@@ -207,7 +207,7 @@ class metropolis_hastings():
             self.modelvec = np.load(chainsnpz)['modelvec']
             self.galmodel = np.load(chainsnpz)['galmodel_params']
             # print 'after',self.modelvec
-
+        self.modelvec[self.modelvec>900000] = 10000
         # raw_input()
         self.galstd = galstd
         self.modelstd = modelstd
