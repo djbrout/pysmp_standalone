@@ -7,6 +7,8 @@ if __name__ == "__main__":
     filter = 'g'
     npzfolder='/home/dbrout/pysmp_standalone/specnpzfiles'
     outpath = '/home/dbrout/pysmp_standalone/specfitout'
+    corioutpath = '/home/dbrout/pysmp_standalone/corispec/'
+
     try:
         args = sys.argv[1:]
         opt, arg = getopt.getopt(
@@ -36,13 +38,17 @@ if __name__ == "__main__":
     print 'index',index,
 
     npzlist = np.asarray(os.listdir(npzfolder),dtype='str')
+    newnpzlist = []
     numepochs = []
     for n in npzlist:
         try:
-            numepochs.append(np.load(npzfolder+'/'+n)['Nimage'])
+            if not os.path.exists(corioutpath + '/' + n.split('.')[0] + '.smp'):
+                numepochs.append(np.load(npzfolder+'/'+n)['Nimage'])
+                newnpzlist.append(n)
         except:
-            numepochs.append(99999)
+            pass
     numepochs = np.asarray(numepochs)
+    npzlist = np.asarray(newnpzlist,dtype='str')
 
     npzlist = npzlist[np.argsort(numepochs)]
     npzfile = npzlist[int(index)]
@@ -56,7 +62,6 @@ if __name__ == "__main__":
     chainsnpz = outpath+'/'+npzfile.split('.')[0] + '_chains.npz'
     stdoutfile = outpath+'/'+npzfile.split('.')[0] + '.log'
     smpfile = outpath+'/'+npzfile.split('.')[0] + '.smp'
-    corioutpath = '/home/dbrout/pysmp_standalone/corispec/'
     if os.path.exists(corioutpath+'/'+npzfile.split('.')[0] + '.smp'):
         print 'already ran'
     else:
