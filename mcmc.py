@@ -339,7 +339,7 @@ class metropolis_hastings():
                 # print 'nan'
         self.fwhms = np.asarray(fwhms)
 
-        numfluxepochs = max([len(self.modelvec[self.modelstd > 0]),100])
+        numfluxepochs = max([len(self.modelvec[self.modelstd > 0]),50])
         if len(self.flags[self.modelstd == 0]) > len(self.flags[self.modelstd > 0]):
 
             argsrt = np.argsort(self.fwhms)
