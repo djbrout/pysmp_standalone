@@ -38,7 +38,7 @@ if __name__ == "__main__":
     npzlist = np.asarray(os.listdir(npzfolder),dtype='str')
     numepochs = []
     for n in npzlist:
-        numepochs.append(np.load(n)['Nimage'])
+        numepochs.append(np.load(npzfolder+'/'+n)['Nimage'])
     numepochs = np.asarray(numepochs)
 
     npzlist = npzlist[np.argsort(numepochs)]
