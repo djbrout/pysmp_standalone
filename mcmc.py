@@ -1766,7 +1766,7 @@ class metropolis_hastings():
                              galmodel_params=self.galmodel_params, galmodel_uncertainty=self.galmodel_uncertainty,
                              modelvec_nphistory=self.modelvec_nphistory, galmodel_nphistory=self.galmodel_nphistory,
                              sims=self.sims, data=self.data, accepted_history=self.accepted_history,
-                             chisqhist=self.chisq,
+                             chisqhist=self.chisq,counter=self.counter,
                              redchisqhist=self.redchisq, xhistory=np.array(self.xhistory),
                              yhistory=np.array(self.yhistory),
                              chisqvec=self.csv, raoff=raoff, decoff=decoff, mjd=self.mjd, fakemag=self.fakemag,
