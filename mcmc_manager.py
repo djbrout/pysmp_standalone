@@ -49,7 +49,7 @@ if __name__ == "__main__":
     #npzfile = os.listdir(npzfolder)[int(index)]
     inp = np.load(npzfolder+'/'+npzfile)
     print inp.keys()
-    #print 'numepochs', inp['Nimage']
+    print 'numepochs', inp['Nimage']
 
     #outpath = 'fitout/'
     lcout = outpath+'/'+npzfile.split('.')[0]
