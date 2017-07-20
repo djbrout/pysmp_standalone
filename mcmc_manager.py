@@ -43,6 +43,7 @@ if __name__ == "__main__":
 
     npzlist = npzlist[np.argsort(numepochs)]
     npzfile = npzlist[int(index)]
+    print 'numepochs',numepochs[int(index)]
     #npzfile = os.listdir(npzfolder)[int(index)]
     inp = np.load(npzfolder+'/'+npzfile)
 
