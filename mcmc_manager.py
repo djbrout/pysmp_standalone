@@ -4,13 +4,14 @@ import sys, getopt
 
 if __name__ == "__main__":
     index = 0
+    filter = 'g'
     npzfolder='/home/dbrout/pysmp_standalone/specnpzfiles'
     outpath = '/home/dbrout/pysmp_standalone/specfitout'
     try:
         args = sys.argv[1:]
         opt, arg = getopt.getopt(
             args, "i",
-            longopts=["index=",'npzfolder=','outpath='])
+            longopts=["index=",'npzfolder=','outpath=','filter='])
 
     except getopt.GetoptError as err:
         print "No command line arguments"
@@ -25,6 +26,8 @@ if __name__ == "__main__":
             npzfolder = a
         elif o in ["--outpath"]:
             outpath = a
+        elif o in ["--filter"]:
+            filter = a
 
     import scipy.signal
     import numpy as np
@@ -32,7 +35,15 @@ if __name__ == "__main__":
 
     print 'index',index,
 
-    npzfile = os.listdir(npzfolder)[int(index)]
+    npzlist = np.asarray(os.listdir(npzfolder),dtype='str')
+    numepochs = []
+    for n in npzlist:
+        numepochs.append(np.load(n)['Nimage'])
+    numepochs = np.asarray(numepochs)
+
+    npzlist = npzlist[np.argsort(numepochs)]
+    npzfile = npzlist[int(index)]
+    #npzfile = os.listdir(npzfolder)[int(index)]
     inp = np.load(npzfolder+'/'+npzfile)
 
     #outpath = 'fitout/'
