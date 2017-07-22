@@ -42,7 +42,8 @@ if __name__ == "__main__":
     smpfile = outpath+'/'+npzfile.split('.')[0] + '.smp'
     corioutpath = '/home/dbrout/pysmp_standalone/corispec/'
     print len(inp.keys())
-
+    if len(inp.keys()) < 73:
+        open('badinputs.txt','a').write(npzfile.split('.')[0] + '.smp')
     sys.exit()
     if os.path.exists(corioutpath+'/'+npzfile.split('.')[0] + '.smp'):
         print 'already ran'
