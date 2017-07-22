@@ -41,10 +41,13 @@ if __name__ == "__main__":
     stdoutfile = outpath+'/'+npzfile.split('.')[0] + '.log'
     smpfile = outpath+'/'+npzfile.split('.')[0] + '.smp'
     corioutpath = '/home/dbrout/pysmp_standalone/corispec/'
+    print len(inp.keys())
+    sys.exit()
     if os.path.exists(corioutpath+'/'+npzfile.split('.')[0] + '.smp'):
         print 'already ran'
     else:
         import mcmc_devel as mcmc
+
 
         #print inp['mjdflag']
         #raw_input()
