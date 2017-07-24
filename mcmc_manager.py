@@ -111,7 +111,7 @@ if __name__ == "__main__":
             , x=inp['x']
             , y=inp['y']
             , psffile=inp['psffile']
-            , psfcenter=inp['psfcenter']
+            #, psfcenter=inp['psfcenter']
             , model_errors=True
             , survey=inp['survey']
             , fileroots=inp['fileroots']
