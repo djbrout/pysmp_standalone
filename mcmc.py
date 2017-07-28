@@ -1785,9 +1785,11 @@ class metropolis_hastings():
         galshot = copy(self.modelvec_uncertainty)
         for i in range(self.Nimage):
             galaxy_conv = np.fft.ifft2(self.fpsfs[i] * self.fgal).real
-            print self.modelvec[i],self.modelvec_uncertainty[i],self.origskyerr[i],np.sqrt(np.sum(np.dot(galaxy_conv,self.kicked_psfs[i])))
+            if self.modelvec[i] != 0.:
+
+                print self.modelvec_uncertainty[i],np.sqrt(np.sum(np.dot(galaxy_conv,self.kicked_psfs[i]))),np.sqrt(self.modelvec_uncertainty[i]**2+np.sum(np.dot(galaxy_conv,self.kicked_psfs[i])))
             #galshot[i] = np.sum(gala)
-            raw_input('galshot')
+        raw_input('galshot')
 
     def savefig(self, fname):
         if self.isfermigrid and self.isworker:
