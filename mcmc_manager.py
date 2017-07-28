@@ -36,7 +36,7 @@ if __name__ == "__main__":
 
     print 'index',index,
 
-    time.sleep(float(index%100+1))
+    time.sleep(float(index)%100+1)
 
     npzlist = np.asarray(os.listdir(npzfolder),dtype='str')
     newnpzlist = []
