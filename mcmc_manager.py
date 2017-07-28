@@ -72,9 +72,9 @@ if __name__ == "__main__":
     else:
         import mcmc
 
-        print inp.keys()
+        #print inp.keys()
 
-        raw_input('asdf')
+        #raw_input('asdf')
         a = mcmc.metropolis_hastings(
             galmodel=inp['galmodel']
             , modelvec=inp['modelvec']
@@ -90,7 +90,7 @@ if __name__ == "__main__":
             , sky=inp['sky']
             , mjd=inp['mjd']
             , gewekenum= 5000 #, gewekenum=inp['gewekenum']
-            , skyerr=inp['aper_skyerr']
+            , skyerr=inp['aperskyerr']
             , useskyerr=inp['useskyerr']
             , usesimerr=inp['usesimerr']
             , flags=inp['smpdictflag']
