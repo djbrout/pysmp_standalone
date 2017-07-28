@@ -494,6 +494,7 @@ class metropolis_hastings():
         self.mask = np.zeros([substamp, substamp])
         self.skyerr = self.skyerr + 99999999.
         self.saveskyerr = np.zeros(Nimage)
+        self.origskyerr = skyerr
         self.fitparamscounter = 0
         for i in np.arange(Nimage):
             for x in np.arange(substamp):
@@ -1784,7 +1785,7 @@ class metropolis_hastings():
         galshot = copy(self.modelvec_uncertainty)
         for i in range(self.Nimage):
             galaxy_conv = np.fft.ifft2(self.fpsfs[i] * self.fgal).real
-            print self.modelvec[i],self.modelvec_uncertainty[i],self.skyerr[i],np.sqrt(np.sum(np.dot(galaxy_conv,self.kicked_psfs[i])))
+            print self.modelvec[i],self.modelvec_uncertainty[i],self.origskyerr[i],np.sqrt(np.sum(np.dot(galaxy_conv,self.kicked_psfs[i])))
             #galshot[i] = np.sum(gala)
             raw_input('galshot')
 
