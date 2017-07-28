@@ -8,7 +8,6 @@ if __name__ == "__main__":
     npzfolder='/home/dbrout/pysmp_standalone/specnpzfiles'
     outpath = '/home/dbrout/pysmp_standalone/specfitout'
     corioutpath = '/home/dbrout/pysmp_standalone/corispec/'
-    time.sleep(index%100)
     try:
         args = sys.argv[1:]
         opt, arg = getopt.getopt(
@@ -36,6 +35,9 @@ if __name__ == "__main__":
     import time
 
     print 'index',index,
+    print corioutpath + '/' + n.split('.')[0] + '.running'
+    raw_input()
+    time.sleep(index%100+1)
 
     npzlist = np.asarray(os.listdir(npzfolder),dtype='str')
     newnpzlist = []
