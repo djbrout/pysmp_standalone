@@ -104,7 +104,7 @@ if __name__ == "__main__":
             , burnin=inp['burnin']
             , lcout=lcout
             , chainsnpz=chainsnpz
-            , mjdoff=inp['mjdoff']
+            #, mjdoff=inp['mjdoff']
             , dontsavegalaxy=True
             , log=None
             , isfermigrid=False
