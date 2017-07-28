@@ -54,18 +54,19 @@ if __name__ == "__main__":
     npzlist = npzlist[np.argsort(numepochs)]
     #npzfile = npzlist[int(index)]
     npzfile = npzlist[0]
+
+    smprunningfile = outpath+'/'+npzfile.split('.')[0] + '.running'
+    os.system('touch '+smprunningfile)
+
     #npzfile = os.listdir(npzfolder)[int(index)]
     inp = np.load(npzfolder+'/'+npzfile)
-    print inp.keys()
-    print 'numepochs', inp['Nimage']
 
     #outpath = 'fitout/'
     lcout = outpath+'/'+npzfile.split('.')[0]
     chainsnpz = outpath+'/'+npzfile.split('.')[0] + '_chains.npz'
     stdoutfile = outpath+'/'+npzfile.split('.')[0] + '.log'
     smpfile = outpath+'/'+npzfile.split('.')[0] + '.smp'
-    smprunningfile = outpath+'/'+npzfile.split('.')[0] + '.running'
-    os.system('touch '+smprunningfile)
+
     if os.path.exists(corioutpath+'/'+npzfile.split('.')[0] + '.smp'):
         print 'already ran'
     else:
