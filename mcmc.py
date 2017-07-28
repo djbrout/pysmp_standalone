@@ -1466,6 +1466,7 @@ class metropolis_hastings():
         if self.shiftpsf:
             self.x_pix_offset = np.mean(self.xhistory[burn_in:])
             self.y_pix_offset = np.mean(self.yhistory[burn_in:])
+            self.float_sn_pos()
         # if self.shiftgalstd >0.:
         #     for i in np.arange(self.Nimage):
         #         self.xgal_pix_offset[i] = np.mean(self.xgalnphistory[burn_in:,i])
@@ -1772,11 +1773,19 @@ class metropolis_hastings():
                              sims=self.sims, data=self.data, accepted_history=self.accepted_history,
                              chisqhist=self.chisq,counter=self.counter,
                              redchisqhist=self.redchisq, xhistory=np.array(self.xhistory),
-                             yhistory=np.array(self.yhistory),
+                             yhistory=np.array(self.yhistory),moved_psfs=self.kicked_psfs,
                              chisqvec=self.csv, raoff=raoff, decoff=decoff, mjd=self.mjd, fakemag=self.fakemag,
                              fitzpt=self.fitzpt,
                              fakezpt=self.fakezpt, datafilenames=self.datafilenames, sky=self.sky, skyerr=self.skyerr,
                              x=self.x, y=self.y, xoff=self.nightlyoffx, yoff=self.nightlyoffy)
+
+    def get_galshot(self):
+        galshot = copy(self.modelvec_uncertainty)
+        for i in range(self.Nimage):
+            galaxy_conv = np.fft.ifft2(self.fpsfs[i] * self.fgal).real
+            print np.sqrt(np.sum(np.dot(galaxy_conv,self.kicked_psfs[i])))
+            #galshot[i] = np.sum(gala)
+            raw_input('galshot')
 
     def savefig(self, fname):
         if self.isfermigrid and self.isworker:
