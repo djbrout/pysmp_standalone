@@ -73,7 +73,8 @@ if __name__ == "__main__":
         import mcmc
 
         print inp.keys()
-        #raw_input()
+
+        raw_input('asdf')
         a = mcmc.metropolis_hastings(
             galmodel=inp['galmodel']
             , modelvec=inp['modelvec']
