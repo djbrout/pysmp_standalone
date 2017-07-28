@@ -35,14 +35,15 @@ if __name__ == "__main__":
     import time
 
     print 'index',index,
-    print corioutpath + '/' + n.split('.')[0] + '.running'
-    raw_input()
+
     time.sleep(index%100+1)
 
     npzlist = np.asarray(os.listdir(npzfolder),dtype='str')
     newnpzlist = []
     numepochs = []
     for n in npzlist:
+        print corioutpath + '/' + n.split('.')[0] + '.running'
+        raw_input()
         try:
             if not os.path.exists(corioutpath + '/' + n.split('.')[0] + '.smp'):
                 if not os.path.exists(corioutpath + '/' + n.split('.')[0] + '.running'):
