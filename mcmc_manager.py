@@ -42,11 +42,9 @@ if __name__ == "__main__":
     newnpzlist = []
     numepochs = []
     for n in npzlist:
-        print corioutpath + '/' + n.split('.')[0] + '.running'
-        raw_input()
         try:
-            if not os.path.exists(corioutpath + '/' + n.split('.')[0] + '.smp'):
-                if not os.path.exists(corioutpath + '/' + n.split('.')[0] + '.running'):
+            if not os.path.exists(outpath + '/' + n.split('.')[0] + '.smp'):
+                if not os.path.exists(outpath + '/' + n.split('.')[0] + '.running'):
                     numepochs.append(np.load(npzfolder+'/'+n)['Nimage'])
                     newnpzlist.append(n)
         except:
