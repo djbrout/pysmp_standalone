@@ -1453,12 +1453,12 @@ class metropolis_hastings():
         # self.model_params = copy( self.model )
         # self.model_uncertainty = copy( self.model )
         for i in np.arange(len(self.modelvec)):
-            self.modelvec_params[i] = np.median(self.modelvec_nphistory[burn_in:, i])
+            self.modelvec_params[i] = np.mean(self.modelvec_nphistory[burn_in:, i])
             self.modelvec_uncertainty[i] = np.std(self.modelvec_nphistory[burn_in:, i])
         if not self.dontsavegalaxy:
             for i in np.arange(self.galaxy_model.shape[0]):
                 for j in np.arange(self.galaxy_model.shape[1]):
-                    self.galmodel_params[i, j] = np.median(self.galmodel_nphistory[burn_in:, i, j])
+                    self.galmodel_params[i, j] = np.mean(self.galmodel_nphistory[burn_in:, i, j])
                     self.galmodel_uncertainty[i, j] = np.std(self.galmodel_nphistory[burn_in:, i, j])
         else:
             self.galmodel_params = self.kicked_galmodel
