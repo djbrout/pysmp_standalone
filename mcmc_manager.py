@@ -68,7 +68,7 @@ if __name__ == "__main__":
     stdoutfile = outpath+'/'+npzfile.split('.')[0] + '.log'
     smpfile = outpath+'/'+npzfile.split('.')[0] + '.smp'
 
-    if os.path.exists(corioutpath+'/'+npzfile.split('.')[0] + '.smp'):
+    if os.path.exists(outpath+'/'+npzfile.split('.')[0] + '.smp'):
         print 'already ran'
     else:
         import mcmc
