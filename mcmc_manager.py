@@ -43,9 +43,9 @@ if __name__ == "__main__":
     for n in npzlist:
         try:
             if not os.path.exists(corioutpath + '/' + n.split('.')[0] + '.smp'):
-                if not os.path.exists(corioutpath + '/' + n.split('.')[0] + '.mcmcout'):
-                    numepochs.append(np.load(npzfolder+'/'+n)['Nimage'])
-                    newnpzlist.append(n)
+                #if not os.path.exists(corioutpath + '/' + n.split('.')[0] + '.mcmcout'):
+                numepochs.append(np.load(npzfolder+'/'+n)['Nimage'])
+                newnpzlist.append(n)
         except:
             pass
     numepochs = np.asarray(numepochs)
