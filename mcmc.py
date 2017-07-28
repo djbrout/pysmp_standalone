@@ -1755,6 +1755,7 @@ class metropolis_hastings():
         self.get_params(dontreturn=True, dosave=False)
         # modelvec, modelvec_uncertainty, galmodel_params, galmodel_uncertainty, modelvec_nphistory, galmodel_nphistory, sims, xhistory,yhistory,accepted_history,pix_stamp,chisqhist,redchisqhist  = self.get_params()
         # print self.chainsnpz
+        self.get_galshot()
         # print self.xhistory
         # try:
         #     a = self.tps
