@@ -43,8 +43,9 @@ if __name__ == "__main__":
     for n in npzlist:
         try:
             if not os.path.exists(corioutpath + '/' + n.split('.')[0] + '.smp'):
-                numepochs.append(np.load(npzfolder+'/'+n)['Nimage'])
-                newnpzlist.append(n)
+                if not os.path.exists(corioutpath + '/' + n.split('.')[0] + '.mcmcout'):
+                    numepochs.append(np.load(npzfolder+'/'+n)['Nimage'])
+                    newnpzlist.append(n)
         except:
             pass
     numepochs = np.asarray(numepochs)
@@ -79,12 +80,12 @@ if __name__ == "__main__":
             , weights=inp['weights']
             , substamp=inp['substamp']
             , Nimage=inp['Nimage']
-            , maxiter = 2000000 #, maxiter=inp['maxiter']
+            , maxiter = 1500000 #, maxiter=inp['maxiter']
             , mask=inp['mask']
             , sky=inp['sky']
             , mjd=inp['mjd']
             , gewekenum= 5000 #, gewekenum=inp['gewekenum']
-            , skyerr=inp['skyerr']
+            , skyerr=inp['aper_skyerr']
             , useskyerr=inp['useskyerr']
             , usesimerr=inp['usesimerr']
             , flags=inp['smpdictflag']
