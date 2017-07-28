@@ -1,6 +1,6 @@
 import os
 import sys, getopt
-
+import time
 
 if __name__ == "__main__":
     index = 0
@@ -8,7 +8,7 @@ if __name__ == "__main__":
     npzfolder='/home/dbrout/pysmp_standalone/specnpzfiles'
     outpath = '/home/dbrout/pysmp_standalone/specfitout'
     corioutpath = '/home/dbrout/pysmp_standalone/corispec/'
-
+    time.sleep(index%100)
     try:
         args = sys.argv[1:]
         opt, arg = getopt.getopt(
@@ -43,16 +43,17 @@ if __name__ == "__main__":
     for n in npzlist:
         try:
             if not os.path.exists(corioutpath + '/' + n.split('.')[0] + '.smp'):
-                #if not os.path.exists(corioutpath + '/' + n.split('.')[0] + '.mcmcout'):
-                numepochs.append(np.load(npzfolder+'/'+n)['Nimage'])
-                newnpzlist.append(n)
+                if not os.path.exists(corioutpath + '/' + n.split('.')[0] + '.running'):
+                    numepochs.append(np.load(npzfolder+'/'+n)['Nimage'])
+                    newnpzlist.append(n)
         except:
             pass
     numepochs = np.asarray(numepochs)
     npzlist = np.asarray(newnpzlist,dtype='str')
 
     npzlist = npzlist[np.argsort(numepochs)]
-    npzfile = npzlist[int(index)]
+    #npzfile = npzlist[int(index)]
+    npzfile = npzlist[0]
     #npzfile = os.listdir(npzfolder)[int(index)]
     inp = np.load(npzfolder+'/'+npzfile)
     print inp.keys()
@@ -63,6 +64,8 @@ if __name__ == "__main__":
     chainsnpz = outpath+'/'+npzfile.split('.')[0] + '_chains.npz'
     stdoutfile = outpath+'/'+npzfile.split('.')[0] + '.log'
     smpfile = outpath+'/'+npzfile.split('.')[0] + '.smp'
+    smprunningfile = outpath+'/'+npzfile.split('.')[0] + '.running'
+    os.system('touch '+smprunningfile)
     if os.path.exists(corioutpath+'/'+npzfile.split('.')[0] + '.smp'):
         print 'already ran'
     else:
