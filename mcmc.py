@@ -652,7 +652,7 @@ class metropolis_hastings():
                 print 'REACHED MAX TIME' * 100
 
             if self.counter % self.gewekenum == 0:
-                if self.counter > 19000:
+                if self.counter > 199000:
                     self.z_scores_say_keep_going = self.check_geweke()
 
             if (self.counter % 1000) == 0:
