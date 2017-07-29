@@ -86,7 +86,7 @@ if __name__ == "__main__":
             , weights=inp['weights']
             , substamp=inp['substamp']
             , Nimage=inp['Nimage']
-            , maxiter = 45000 #, maxiter=inp['maxiter']
+            , maxiter = 95000 #, maxiter=inp['maxiter']
             , mask=inp['mask']
             , sky=inp['sky']
             , mjd=inp['mjd']
