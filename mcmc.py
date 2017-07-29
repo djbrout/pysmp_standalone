@@ -1756,7 +1756,7 @@ class metropolis_hastings():
         self.get_params(dontreturn=True, dosave=False)
         # modelvec, modelvec_uncertainty, galmodel_params, galmodel_uncertainty, modelvec_nphistory, galmodel_nphistory, sims, xhistory,yhistory,accepted_history,pix_stamp,chisqhist,redchisqhist  = self.get_params()
         # print self.chainsnpz
-        self.get_galshot()
+        galshot = self.get_galshot()
         # print self.xhistory
         # try:
         #     a = self.tps
@@ -1775,21 +1775,20 @@ class metropolis_hastings():
                              sims=self.sims, data=self.data, accepted_history=self.accepted_history,
                              chisqhist=self.chisq,counter=self.counter,
                              redchisqhist=self.redchisq, xhistory=np.array(self.xhistory),
-                             yhistory=np.array(self.yhistory),moved_psfs=self.kicked_psfs,
+                             yhistory=np.array(self.yhistory),moved_psfs=self.kicked_psfs,galshot=galshot,
                              chisqvec=self.csv, raoff=raoff, decoff=decoff, mjd=self.mjd, fakemag=self.fakemag,
                              fitzpt=self.fitzpt,
                              fakezpt=self.fakezpt, datafilenames=self.datafilenames, sky=self.sky, skyerr=self.skyerr,
                              x=self.x, y=self.y, xoff=self.nightlyoffx, yoff=self.nightlyoffy)
 
     def get_galshot(self):
-        galshot = copy(self.modelvec_uncertainty)
+        galshot = copy(self.modelvec_uncertainty)*0.
         for i in range(self.Nimage):
             galaxy_conv = np.fft.ifft2(self.fpsfs[i] * self.fgal).real
             if self.modelvec[i] != 0.:
-
-                print self.modelvec_uncertainty[i],np.sqrt(np.sum(np.dot(galaxy_conv,self.kicked_psfs[i]))),np.sqrt(self.modelvec_uncertainty[i]**2+np.sum(np.dot(galaxy_conv,self.kicked_psfs[i])))
-            #galshot[i] = np.sum(gala)
-        raw_input('galshot')
+                #print self.modelvec_uncertainty[i],np.sqrt(np.sum(np.dot(galaxy_conv,self.kicked_psfs[i]))),np.sqrt(self.modelvec_uncertainty[i]**2+np.sum(np.dot(galaxy_conv,self.kicked_psfs[i])))
+                galshot[i] = np.sum(np.dot(galaxy_conv,self.kicked_psfs[i]))
+        return galshot
 
     def savefig(self, fname):
         if self.isfermigrid and self.isworker:

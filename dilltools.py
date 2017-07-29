@@ -317,7 +317,7 @@ def fwhm(arr):
 
     return fwhm
 
-def geweke(chain,firstpart=.25,lastpart=.5,burnin=.2):
+def geweke(chain,firstpart=.5,lastpart=.5,burnin=.2):
     first = int(round(len(chain)*firstpart))
     last = int(round(len(chain)*lastpart))
     burn = int(round(len(chain)*burnin))
