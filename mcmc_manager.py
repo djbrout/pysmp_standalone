@@ -45,7 +45,7 @@ if __name__ == "__main__":
         try:
             if not os.path.exists(outpath + '/' + n.split('.')[0] + '.smp'):
                 #if not os.path.exists(outpath + '/' + n.split('.')[0] + '.running'):
-                if True
+                if True:
                     numepochs.append(np.load(npzfolder+'/'+n)['Nimage'])
                     newnpzlist.append(n)
         except:
