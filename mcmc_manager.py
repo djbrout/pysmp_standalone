@@ -44,8 +44,8 @@ if __name__ == "__main__":
     for n in npzlist:
         try:
             if not os.path.exists(outpath + '/' + n.split('.')[0] + '.smp'):
-                #if not os.path.exists(outpath + '/' + n.split('.')[0] + '.running'):
-                if True:
+                if not os.path.exists(outpath + '/' + n.split('.')[0] + '.running'):
+                #if True:
                     numepochs.append(np.load(npzfolder+'/'+n)['Nimage'])
                     newnpzlist.append(n)
         except:
@@ -58,7 +58,7 @@ if __name__ == "__main__":
     npzfile = npzlist[0]
 
     smprunningfile = outpath+'/'+npzfile.split('.')[0] + '.running'
-    #os.system('touch '+smprunningfile)
+    os.system('touch '+smprunningfile)
 
     #npzfile = os.listdir(npzfolder)[int(index)]
     inp = np.load(npzfolder+'/'+npzfile)
