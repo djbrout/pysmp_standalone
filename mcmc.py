@@ -1214,7 +1214,9 @@ class metropolis_hastings():
 
             gew = g.geweke(self.modelvec_nphistory[:,param],intervals=2,first=.2,last=.5)
             #gew = np.array(gw)
-            print gew.shape
+            for gg in gew:
+                print gg
+            #print gew.shape
             raw_input('gews')
             #gew = dt.geweke(self.modelvec_nphistory[:, param])
 
