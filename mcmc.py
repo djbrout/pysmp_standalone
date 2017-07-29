@@ -1199,9 +1199,9 @@ class metropolis_hastings():
         for i in np.arange(num_iter):
             self.modelvec_nphistory[i, :] = self.modelvechistory[int(i + start_iter)]
 
-        print num_iter
-        print start_iter
-        print len(self.modelvec_nphistory[0, :])
+        #print num_iter
+        #print start_iter
+        #print len(self.modelvec_nphistory[0, :])
         for param in range(len(self.modelvec_nphistory[0, :])):
             # print self.modelvec_nphistory.shape
             # print self.modelvec_nphistory[param,:].shape
@@ -1212,7 +1212,7 @@ class metropolis_hastings():
             #     self.gewekediag[param] = -999.
             #     continue
             if self.modelstd[param] == 0:
-                print 'stdzero'
+                #print 'stdzero'
                 self.gewekediag[param] = -999.
                 continue
 
