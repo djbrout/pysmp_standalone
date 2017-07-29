@@ -1212,12 +1212,13 @@ class metropolis_hastings():
                 #print 'stdzero'
                 continue
 
-            gew = g.geweke(self.modelvec_nphistory[:,param],intervals=2,first=.2,last=.5)
-            #gew = np.array(gw)
+            gw = g.geweke(self.modelvec_nphistory[:,param],intervals=2,first=.2,last=.5)
+            gew = []
             for gg in gew:
-                print gg
+                gew.append(gg)
+            gew = np.array(gew)
             #print gew.shape
-            raw_input('gews')
+            #raw_input('gews')
             #gew = dt.geweke(self.modelvec_nphistory[:, param])
 
             self.gewekediag[param] = np.mean(gew)
