@@ -1188,7 +1188,7 @@ class metropolis_hastings():
         # Test for convergence using geweke method
         num_iter = int(round(len(self.modelvechistory) * (1. - self.burnin)))
         start_iter = int(round(len(self.modelvechistory) * (self.burnin)))
-        if num_iter < 100:
+        if num_iter < 200000:
             return True
         hasnotconv = False
 
