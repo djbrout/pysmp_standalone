@@ -63,6 +63,7 @@ import matplotlib.mlab as mlab
 import math
 import build_psfex
 import scipy.stats
+import geweke as g
 # import pymc
 # import rdpsf
 import sys
@@ -1191,28 +1192,6 @@ class metropolis_hastings():
             return True
         hasnotconv = False
 
-        # gw = pymc.geweke(np.array(self.chisq)[start_iter:], intervals=1, first=.1, last=.5)
-        # geweke = np.array(gw)
-        # if np.any(np.abs(geweke[:, 1]) > 2.):
-        #     msg = "Chisq Vec has not properly converged"
-        #     print(msg)
-        #     hasnotconv = True
-        #
-        #
-        # if len(np.unique(self.xhistory)) > 1:
-        #     gw = pymc.geweke(np.array(self.xhistory)[start_iter:], intervals=1, first=.1, last=.5)
-        #     geweke = np.array(gw)
-        #     if np.any(np.abs(geweke[:, 1]) > 2.):
-        #         msg = "X Position has not properly converged"
-        #         print(msg)
-        #         hasnotconv =True
-        #     gw = pymc.geweke(np.array(self.yhistory)[start_iter:], intervals=1, first=.1, last=.5)
-        #     geweke = np.array(gw)
-        #     if np.any(np.abs(geweke[:, 1]) > 2.):
-        #         msg = "Y Position has not properly converged"
-        #         print(msg)
-        #         hasnotconv = True
-
         self.gewekediag = np.zeros_like(self.modelstd)
 
         self.modelvec_nphistory = np.zeros((num_iter, len(self.modelvec)))
@@ -1227,11 +1206,12 @@ class metropolis_hastings():
             if len(np.unique(self.modelvec_nphistory[:, param])) == 1:
                 self.gewekediag[param] = -999.
                 continue
+            if self.modelstd[param] == 0: continue
 
-            # gw = pymc3.geweke(self.modelvec_nphistory[:,param],intervals=2,first=.1,last=.5)
-            # geweke = np.array(gw)
+            gw = g.geweke(self.modelvec_nphistory[:,param],intervals=2,first=.2,last=.5)
+            gew = np.array(gw)
 
-            gew = dt.geweke(self.modelvec_nphistory[:, param])
+            #gew = dt.geweke(self.modelvec_nphistory[:, param])
 
             self.gewekediag[param] = gew
 
@@ -1239,7 +1219,7 @@ class metropolis_hastings():
 
             print param, gew
 
-            if np.abs(gew) > 2.:
+            if np.any(np.abs(gew) > 2.):
                 msg = "Epoch %s has not properly converged" % param
                 # if assert_:
                 #     raise AssertionError(msg)
