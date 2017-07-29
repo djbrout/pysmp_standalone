@@ -1736,7 +1736,7 @@ class metropolis_hastings():
         self.get_params(dontreturn=True, dosave=False)
         # modelvec, modelvec_uncertainty, galmodel_params, galmodel_uncertainty, modelvec_nphistory, galmodel_nphistory, sims, xhistory,yhistory,accepted_history,pix_stamp,chisqhist,redchisqhist  = self.get_params()
         # print self.chainsnpz
-        galshot = self.get_galshot()
+        self.galshot = self.get_galshot()
         # print self.xhistory
         # try:
         #     a = self.tps
@@ -2463,18 +2463,18 @@ class metropolis_hastings():
 
 
         fout = open(self.smpfile, 'w')
-        print >> fout, '# MJD DPMJD ID_OBS ID_COADD BAND ZPT ZPTERR FLUX FLUXERR FAKEMAG FAKEZPT DIFFIM_FLUX DIFFIM_FLUXERR ' \
+        print >> fout, '# MJD DPMJD ID_OBS ID_COADD BAND ZPT ZPTERR FLUX FLUXERR GALSHOT FAKEMAG FAKEZPT DIFFIM_FLUX DIFFIM_FLUXERR ' \
                        'XPOS YPOS XOFF YOFF RA DEC CHI2 NDOF ' \
                        'SMP_FLAG MJD_FLAG DESCRIPTIVE_FLAG SKY SKYERR SKYERRINFLATION RMSADDIN GEWKEDIAG ' \
                        'IMAGE_FILE PSF_FILE WEIGHT_FILE ZPTFILE FITGALMODEL_STAMP ' \
                        'IMAGE_STAMP PSF_STAMP WEIGHT_STAMP SIM_STAMP CHISQ_STAMP'
         for i in range(len(modelvec)):
-            print >> fout, '%.5f %.5f %i %i %s %.5f %.5f %.5f %.5f %.5f %.5f %.5f %.5f %.5f %.5f %.5f %.5f %.5f %.5f %.5f %.5f %s %i %i %.5f ' \
+            print >> fout, '%.5f %.5f %i %i %s %.5f %.5f %.5f %.5f %.5f %.5f %.5f %.5f %.5f %.5f %.5f %.5f %.5f %.5f %.5f %.5f %.5f %s %i %i %.5f ' \
                            '%.5f %.5f %.5f %.5f %s %s %s %s %s %s %s %s %s %s' % (
                 self.mjd[i], float(self.mjd[i]) - self.peakmjd, self.idobs[i],
                 self.idcoadd[i], self.filt,
                 self.fitzpt[i], self.rmsaddin[i],
-                modelvec[i], modelvec_uncertainty[i], self.fakemag[i], self.fakezpt[i],
+                modelvec[i], modelvec_uncertainty[i], self.galshot[i], self.fakemag[i], self.fakezpt[i],
                 self.diffim_flux[i], self.diffim_fluxerr[i],
                 self.x[i], self.y[i], 0, 0,
                 self.ra[i], self.dec[i],
