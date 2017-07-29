@@ -45,9 +45,9 @@ if __name__ == "__main__":
         try:
             if not os.path.exists(outpath + '/' + n.split('.')[0] + '.smp'):
                 if not os.path.exists(outpath + '/' + n.split('.')[0] + '.running'):
-                #if True:
-                    numepochs.append(np.load(npzfolder+'/'+n)['Nimage'])
-                    newnpzlist.append(n)
+                    if np.load(npzfolder+'/'+n)['peakmjd'] > 0:
+                        numepochs.append(np.load(npzfolder+'/'+n)['Nimage'])
+                        newnpzlist.append(n)
         except:
             pass
     numepochs = np.asarray(numepochs)
