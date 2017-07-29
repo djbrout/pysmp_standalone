@@ -1741,6 +1741,7 @@ class metropolis_hastings():
         plt.close(1)
 
     def savechains(self):
+        self.check_geweke()
         self.get_params(dontreturn=True, dosave=False)
         # modelvec, modelvec_uncertainty, galmodel_params, galmodel_uncertainty, modelvec_nphistory, galmodel_nphistory, sims, xhistory,yhistory,accepted_history,pix_stamp,chisqhist,redchisqhist  = self.get_params()
         # print self.chainsnpz
