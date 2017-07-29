@@ -1208,7 +1208,7 @@ class metropolis_hastings():
                 continue
             if self.modelstd[param] == 0: continue
 
-            gw = g.geweke(self.modelvec_nphistory[:,param],intervals=2,first=.2,last=.5)
+            gw = g.geweke(self.modelvec_nphistory[:,param],intervals=1,first=.2,last=.5)
             gew = np.array(gw)
 
             #gew = dt.geweke(self.modelvec_nphistory[:, param])
