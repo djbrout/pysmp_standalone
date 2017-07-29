@@ -1755,7 +1755,7 @@ class metropolis_hastings():
                              sims=self.sims, data=self.data, accepted_history=self.accepted_history,
                              chisqhist=self.chisq,counter=self.counter,
                              redchisqhist=self.redchisq, xhistory=np.array(self.xhistory),
-                             yhistory=np.array(self.yhistory),moved_psfs=self.kicked_psfs,galshot=galshot,
+                             yhistory=np.array(self.yhistory),moved_psfs=self.kicked_psfs,galshot=self.galshot,
                              chisqvec=self.csv, raoff=raoff, decoff=decoff, mjd=self.mjd, fakemag=self.fakemag,
                              fitzpt=self.fitzpt,
                              fakezpt=self.fakezpt, datafilenames=self.datafilenames, sky=self.sky, skyerr=self.skyerr,
