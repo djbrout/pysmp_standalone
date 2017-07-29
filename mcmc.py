@@ -1189,6 +1189,7 @@ class metropolis_hastings():
         num_iter = int(round(len(self.modelvechistory) * (1. - self.burnin)))
         start_iter = int(round(len(self.modelvechistory) * (self.burnin)))
         if num_iter < 200:
+            print 'num iter too small'
             return True
         hasnotconv = False
 
@@ -1204,9 +1205,12 @@ class metropolis_hastings():
             # print len(np.unique(self.modelvec_nphistory[param,:]))
             # print len(np.unique(self.modelvec_nphistory[:,param]))
             if len(np.unique(self.modelvec_nphistory[:, param])) == 1:
+                print 'asdf'
                 self.gewekediag[param] = -999.
                 continue
-            if self.modelstd[param] == 0: continue
+            if self.modelstd[param] == 0:
+                print 'stdzero'
+                continue
 
             gw = g.geweke(self.modelvec_nphistory[:,param],intervals=1,first=.2,last=.5)
             gew = np.array(gw)
