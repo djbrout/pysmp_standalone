@@ -652,7 +652,7 @@ class metropolis_hastings():
                 print 'REACHED MAX TIME' * 100
 
             if self.counter % self.gewekenum == 0:
-                if self.counter > 49000:
+                if self.counter > 199000:
                     self.z_scores_say_keep_going = self.check_geweke()
 
             if (self.counter % 1000) == 0:
@@ -1188,7 +1188,7 @@ class metropolis_hastings():
         # Test for convergence using geweke method
         num_iter = int(round(len(self.modelvechistory) * (1. - self.burnin)))
         start_iter = int(round(len(self.modelvechistory) * (self.burnin)))
-        if num_iter < 200000:
+        if num_iter < 200:
             return True
         hasnotconv = False
 
