@@ -44,21 +44,21 @@ if __name__ == "__main__":
     for n in npzlist:
         try:
             if not os.path.exists(outpath + '/' + n.split('.')[0] + '.smp'):
-                if not os.path.exists(outpath + '/' + n.split('.')[0] + '.running'):
-                    if np.load(npzfolder+'/'+n)['peakmjd'] > 0:
-                        numepochs.append(np.load(npzfolder+'/'+n)['Nimage'])
-                        newnpzlist.append(n)
+                #if not os.path.exists(outpath + '/' + n.split('.')[0] + '.running'):
+                if np.load(npzfolder+'/'+n)['peakmjd'] > 0:
+                    numepochs.append(np.load(npzfolder+'/'+n)['Nimage'])
+                    newnpzlist.append(n)
         except:
             pass
     numepochs = np.asarray(numepochs)
     npzlist = np.asarray(newnpzlist,dtype='str')
 
-    npzlist = npzlist[np.argsort(numepochs)]
+    #npzlist = npzlist[np.argsort(numepochs)]
     #npzfile = npzlist[int(index)]
-    npzfile = npzlist[0]
+    npzfile = npzlist[index]
 
-    smprunningfile = outpath+'/'+npzfile.split('.')[0] + '.running'
-    os.system('touch '+smprunningfile)
+    #smprunningfile = outpath+'/'+npzfile.split('.')[0] + '.running'
+    #os.system('touch '+smprunningfile)
 
     #npzfile = os.listdir(npzfolder)[int(index)]
     inp = np.load(npzfolder+'/'+npzfile)
