@@ -2489,7 +2489,7 @@ class metropolis_hastings():
                 self.sky[i], self.saveskyerr[i], 0,
                 self.rmsaddin[i], 0,
                 self.imfilename[i], self.psffile[i],
-                self.weightfilename, self.zptfilename,  # NEED TO CORRECT THESE MISSING INDICES!
+                self.weightfilename[i], self.zptfilename[i],  # NEED TO CORRECT THESE MISSING INDICES!
                                'na',
                                'na', 'na', 'na', 'na', 'na')
         fout.close()
