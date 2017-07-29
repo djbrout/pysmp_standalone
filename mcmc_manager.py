@@ -58,7 +58,7 @@ if __name__ == "__main__":
     npzfile = npzlist[0]
 
     smprunningfile = outpath+'/'+npzfile.split('.')[0] + '.running'
-    os.system('touch '+smprunningfile)
+    #os.system('touch '+smprunningfile)
 
     #npzfile = os.listdir(npzfolder)[int(index)]
     inp = np.load(npzfolder+'/'+npzfile)
