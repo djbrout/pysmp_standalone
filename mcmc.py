@@ -1207,12 +1207,13 @@ class metropolis_hastings():
             # print self.modelvec_nphistory[param,:].shape
             # print len(np.unique(self.modelvec_nphistory[param,:]))
             # print len(np.unique(self.modelvec_nphistory[:,param]))
-            if len(np.unique(self.modelvec_nphistory[:, param])) == 1:
-                print 'asdf'
-                self.gewekediag[param] = -999.
-                continue
+            # if len(np.unique(self.modelvec_nphistory[:, param])) == 1:
+            #     print 'asdf'
+            #     self.gewekediag[param] = -999.
+            #     continue
             if self.modelstd[param] == 0:
                 print 'stdzero'
+                self.gewekediag[param] = -999.
                 continue
 
             gw = g.geweke(self.modelvec_nphistory[:,param],intervals=2,first=.2,last=.5)
