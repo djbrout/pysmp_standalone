@@ -135,7 +135,7 @@ if __name__ == "__main__":
             , nightlyoffx=inp['nightlyoffx']
             , nightlyoffy=inp['nightlyoffy']
             , sstime=inp['sstime']
-            , stdoutfile = None
+            , stdoutfile = stdoutfile
             , smpfile = smpfile
             , peakmjd=inp['peakmjd']
             , idobs=inp['idobs']
