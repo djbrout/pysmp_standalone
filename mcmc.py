@@ -1213,7 +1213,7 @@ class metropolis_hastings():
 
             #gew = dt.geweke(self.modelvec_nphistory[:, param])
 
-            self.gewekediag[param] = gew
+            self.gewekediag[param] = np.mean(gew)
 
             # self.gewekediag[param] = np.mean(np.abs(geweke[:, 1]))
 
