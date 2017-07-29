@@ -1785,6 +1785,8 @@ class metropolis_hastings():
         # save_fits_image(self.data[ 0, :,:],'./data.fits')
         # if self.didtimeout:
 
+        self.plotcovar()
+
         datastamps = []
         simstamps = []
         galmodelstamps = []
