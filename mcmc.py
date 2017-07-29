@@ -1668,8 +1668,11 @@ class metropolis_hastings():
         # cmap = plt.cm
         # cmap.set_bad(color='black')
 
-        pcolor(self.corr, vmin=-.4, vmax=.4)
-        colorbar()
+        try:
+            pcolor(self.corr, vmin=-.4, vmax=.4)
+            colorbar()
+        except:
+            print "COULD NOT PLOT COVAR "*10
         yticks(arange(0.5, float(nonzerodata.shape[1]) + .5), nonzeromjd)
         xticks(arange(0.5, float(nonzerodata.shape[1]) + .5), nonzeromjd, rotation='vertical')
 
