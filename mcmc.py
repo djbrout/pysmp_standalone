@@ -1199,17 +1199,20 @@ class metropolis_hastings():
         for i in np.arange(num_iter):
             self.modelvec_nphistory[i, :] = self.modelvechistory[int(i + start_iter)]
 
+        print num_iter
+        print start_iter
+        print len(self.modelvec_nphistory[0, :])
         for param in range(len(self.modelvec_nphistory[0, :])):
             # print self.modelvec_nphistory.shape
             # print self.modelvec_nphistory[param,:].shape
             # print len(np.unique(self.modelvec_nphistory[param,:]))
             # print len(np.unique(self.modelvec_nphistory[:,param]))
             if len(np.unique(self.modelvec_nphistory[:, param])) == 1:
-                #print 'asdf'
+                print 'asdf'
                 self.gewekediag[param] = -999.
                 continue
             if self.modelstd[param] == 0:
-                #print 'stdzero'
+                print 'stdzero'
                 continue
 
             gw = g.geweke(self.modelvec_nphistory[:,param],intervals=2,first=.2,last=.5)
