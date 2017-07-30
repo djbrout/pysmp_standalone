@@ -749,10 +749,10 @@ class metropolis_hastings():
         print 'Final Reduced ChiSq: ' + str(np.nanmean(chsqs[chsqs != 0.]))
         # print 'Chisq For Each Epoch: ',chsqs
         self.plotchains()
-        try:
-            self.plotcovar()
-        except:
-            print 'WARNIng: could not plot covariance matrix'
+        #try:
+        #    self.plotcovar()
+        #except:
+        #    print 'WARNIng: could not plot covariance matrix'
         self.savechains()
         print 'plotting stamps... this may take a minute...'
         self.dontplotstamps = doplot
@@ -1801,7 +1801,8 @@ class metropolis_hastings():
         # save_fits_image(self.data[ 0, :,:],'./data.fits')
         # if self.didtimeout:
 
-        self.plotcovar()
+        #self.plotcovar()
+        self.covar = 0.
 
         datastamps = []
         simstamps = []
