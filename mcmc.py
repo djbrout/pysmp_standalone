@@ -1934,7 +1934,8 @@ class metropolis_hastings():
 
     def make_history(self):
         num_iter = len(self.modelvechistory)
-
+        print 'num_iter'*100
+        print num_iter
         # if self.shiftgalstd > 0.:
         #     self.xgalnphistory = np.zeros( (num_iter , len(self.modelvec)))
         #     self.ygalnphistory = np.zeros( (num_iter , len(self.modelvec)))
