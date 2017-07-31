@@ -1216,7 +1216,7 @@ class metropolis_hastings():
         self.gewekediag = np.zeros_like(self.modelstd)
 
         self.modelvec_nphistory = np.zeros((num_iter, len(self.modelvec)))
-        print num_iter
+        print num_iter, start_iter
         print len(self.modelvechistory)
         for i in np.arange(num_iter):
             self.modelvec_nphistory[i, :] = self.modelvechistory[int(i + start_iter)]
