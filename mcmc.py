@@ -410,8 +410,8 @@ class metropolis_hastings():
         else:
             self.tmpwriter = dt.tmpwriter(tmp_subscript=self.chainsnpz.split('/')[-1].split('.')[0], tempdir='tmp/')
 
-        collected = gc.collect()
-        print "Garbage collector: collected %d objects." % (collected)
+        #collected = gc.collect()
+        #print "Garbage collector: collected %d objects." % (collected)
         if not self.log is None:
             self.tmpwriter.appendfile("Garbage collector: collected %d objects." % (collected), self.log)
 
@@ -697,8 +697,8 @@ class metropolis_hastings():
                 # sys.exit()
                 # self.plotstamps()
                 import gc
-                collected = gc.collect()
-                print "Garbage collector: collected %d objects." % (collected)
+                #collected = gc.collect()
+                #print "Garbage collector: collected %d objects." % (collected)
                 if not self.log is None:
                     self.tmpwriter.appendfile('Acceptance Rate: ' + str(self.accepted_history), self.log)
                     self.tmpwriter.appendfile('Counter: ' + str(self.counter), self.log)
@@ -1631,7 +1631,7 @@ class metropolis_hastings():
             pdf_pages.savefig(fig)
         pdf_pages.close()
         plt.close()
-        gc.collect()
+        #gc.collect()
         if self.isfermigrid and self.isworker:
             print os.popen('ifdh rm ' + self.lcout + '_stamps.pdf').read()
             print os.popen('ifdh cp --force=xrootd stamps.pdf ' + self.lcout + '_stamps.pdf').read()
