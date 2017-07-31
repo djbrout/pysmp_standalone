@@ -201,12 +201,29 @@ class metropolis_hastings():
         self.galmodel = galmodel
         # self.modelvec = modelvec
         self.modelvec = np.asarray(10 ** (.4 * (31. - 27.5)) * diffim_flux)
-
+        self.chainsnpz = chainsnpz
         # print 'before',self.modelvec
         if os.path.exists(chainsnpz):
             # raw_input()
+            self.modelvechistory = []
+            self.galhistory = []
             self.modelvec = np.load(chainsnpz)['modelvec']
             self.galmodel = np.load(chainsnpz)['galmodel_params']
+            self.modelvec_nphistory = np.load(chainsnpz)['modelvec_nphistory']
+            self.galmodel_nphistory = np.load(chainsnpz)['galmodel_nphistory']
+            self.xhistory = np.load(chainsnpz)['xhistory']
+            self.yhistory = np.load(chainsnpz)['yhistory']
+
+            self.counter = self.modelvec_nphistory.shape[0]
+
+            print 'counter'*10
+            print self.counter
+            print 'counter'*10
+
+            for i in range(self.currentiter):
+                self.modelvechistory.append(self.modelvec_nphistory[i,:])
+                self.galhistory.append(self.galmodel_nphistory[:,:])
+
             # print 'after',self.modelvec
         self.modelvec[self.modelvec>900000] = 10000
         # raw_input()
@@ -619,25 +636,28 @@ class metropolis_hastings():
         # self.gal_conv =copy(self.kicked_modelvec)
 
 
-        self.galhistory = []
-        self.modelvechistory = []
-        self.xhistory = []
-        self.yhistory = []
-        self.xgalhistory = []
-        self.ygalhistory = []
+        if not os.path.exists(self.chainsnpz):
+            self.galhistory = []
+            self.modelvechistory = []
+            self.xhistory = []
+            self.yhistory = []
+            self.counter = 0
+
+
+        #self.xgalhistory = []
+        #self.ygalhistory = []
         self.accepted_history = 0
         self.accepted_int = 0
         self.t1 = time.time()
-        self.counter = 0
         # plt.imshow(self.data)
         # plt.show()
         # self.t2 = time.time()
-        self.completediters = 0
+        #self.completediters = 0
 
         while self.z_scores_say_keep_going:
             # self.t2 = time.time()
             self.counter += 1
-            self.completediters += 1
+            #self.completediters += 1
             # print self.counter
             self.accepted_int += 1
             self.mcmc_func()
