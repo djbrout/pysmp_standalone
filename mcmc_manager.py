@@ -73,7 +73,7 @@ if __name__ == "__main__":
         print 'already ran'
     else:
         import mcmc
-
+        print npzfile
         #print inp.keys()
 
         #raw_input('asdf')
