@@ -214,7 +214,7 @@ class metropolis_hastings():
             self.xhistory = np.load(chainsnpz)['xhistory']
             self.yhistory = np.load(chainsnpz)['yhistory']
 
-            self.counter = self.modelvec_nphistory.shape[0]
+            self.counter = self.modelvec_nphistory.shape[0]*compressionfactor
 
             print 'counter'*10
             print self.counter

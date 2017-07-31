@@ -75,7 +75,7 @@ if __name__ == "__main__":
         import mcmc
         print npzfile
         print inp['compressionfactor']
-        raw_input()
+        #raw_input()
 
         #raw_input('asdf')
         a = mcmc.metropolis_hastings(
