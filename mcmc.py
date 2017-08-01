@@ -696,10 +696,10 @@ class metropolis_hastings():
                 print 'Time per step:', tps
                 print 'PSF Position:', self.current_x_offset, self.current_y_offset
                 print self.filt
-                open('output/log.log', 'a').write(str(self.filt) + ' ' + str(self.counter) + ' TPS: ' + str(tps) + '\n')
+                #open('output/log.log', 'a').write(str(self.filt) + ' ' + str(self.counter) + ' TPS: ' + str(tps) + '\n')
                 # print 'mjdoff: ',self.mjdoff
                 # sys.exit()
-                if (self.counter % 1000) == 0:
+                if (self.counter % 100) == 0:
 
                     self.gal_conv = []
                     for i in np.arange(
@@ -719,8 +719,8 @@ class metropolis_hastings():
                 # sys.exit()
                 # self.plotstamps()
                 import gc
-                #collected = gc.collect()
-                #print "Garbage collector: collected %d objects." % (collected)
+                    collected = gc.collect()
+                    print "Garbage collector: collected %d objects." % (collected)
                 if not self.log is None:
                     self.tmpwriter.appendfile('Acceptance Rate: ' + str(self.accepted_history), self.log)
                     self.tmpwriter.appendfile('Counter: ' + str(self.counter), self.log)
@@ -1512,6 +1512,7 @@ class metropolis_hastings():
             pdf_pages = PdfPages(self.lcout + '_stamps.pdf')
         fig = plt.figure(figsize=(25, 10))
         for i in range(self.Nimage):
+            if self.modelvec[i] == 0: continue
             # self.x_pix_offset = -0.49250885143
             # self.y_pix_offset = .627071191203
 
