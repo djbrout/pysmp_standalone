@@ -38,7 +38,7 @@ if __name__ == "__main__":
 
     #time.sleep(float(index))
 
-    npzlist = np.asarray(os.listdir(npzfolder),dtype='str')
+    npzlist = np.asarray(sorted(os.listdir(npzfolder)),dtype='str')
     newnpzlist = []
     numepochs = []
     for n in npzlist:
