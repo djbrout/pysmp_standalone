@@ -1242,11 +1242,15 @@ class metropolis_hastings():
                 self.gewekediag[param] = -999.
                 continue
 
-            gw = g.geweke(self.modelvec_nphistory[:,param],intervals=2,first=.4,last=.5)
-            gew = []
-            for gg in gw:
-                gew.append(gg[1])
-            gew = np.array(gew)
+            try:
+                gw = g.geweke(self.modelvec_nphistory[:,param],intervals=2,first=.4,last=.5)
+                gew = []
+                for gg in gw:
+                    gew.append(gg[1])
+                gew = np.array(gew)
+            except:
+                gew = np.array([999., 999.])
+
             #print gew.shape
             #raw_input('gews')
             #gew = dt.geweke(self.modelvec_nphistory[:, param])
@@ -1900,7 +1904,7 @@ class metropolis_hastings():
             ndof = len(self.mask[self.mask > 0.].ravel())
             return self.modelvec_params, self.modelvec_uncertainty, self.galmodel_params, self.galmodel_uncertainty, self.modelvec_nphistory, self.galmodel_nphistory, self.sims, np.asarray(
                 self.xhistory), np.asarray(
-                self.yhistory), self.accepted_history, self.pix_stamp, self.chisq, self.redchisq, stamps, chsqs, ndof, self.gewekediag, self.covar, self.corr  # size: self.history[num_iter,len(self.model_params)]
+                self.yhistory), self.accepted_history, self.pix_stamp, self.chisq, self.redchisq, stamps, chsqs, ndof, self.gewekediag  # size: self.history[num_iter,len(self.model_params)]
         else:
             return
 
@@ -2502,8 +2506,7 @@ class metropolis_hastings():
         modelvec, modelvec_uncertainty, galmodel_params, \
         galmodel_uncertainty, modelvec_nphistory, galmodel_nphistory, \
         sims, xhistory, yhistory, accepted_history, pix_stamp, \
-        chisqhist, redchisqhist, stamps, chisqs, ndof, gewekediag, \
-        covar, corr = self.get_params()
+        chisqhist, redchisqhist, stamps, chisqs, ndof, gewekediag = self.get_params()
 
         image_stampf, sim_stampf, galmodel_stampf, weight_stampf, psf_stampf, chisq_stampf = stamps[0], stamps[1], \
                                                                                              stamps[2], stamps[3], \
