@@ -720,7 +720,7 @@ class metropolis_hastings():
                     #self.plotstamps()
                 # sys.exit()
                 # self.plotstamps()
-                import gc
+                    import gc
                     collected = gc.collect()
                     print "Garbage collector: collected %d objects." % (collected)
                 if not self.log is None:
