@@ -198,6 +198,8 @@ class metropolis_hastings():
                     raise AttributeError('Model length is zero')
         '''
         # useskyerr = True
+        if os.path.exists(smpfile):
+            sys.exit()
         self.galmodel = galmodel
         # self.modelvec = modelvec
         self.modelvec = np.asarray(10 ** (.4 * (31. - 27.5)) * diffim_flux)
