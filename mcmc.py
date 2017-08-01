@@ -1240,7 +1240,7 @@ class metropolis_hastings():
                 self.gewekediag[param] = -999.
                 continue
 
-            gw = g.geweke(self.modelvec_nphistory[:,param],intervals=2,first=.2,last=.5)
+            gw = g.geweke(self.modelvec_nphistory[:,param],intervals=2,first=.4,last=.5)
             gew = []
             for gg in gw:
                 gew.append(gg[1])
