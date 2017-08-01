@@ -699,13 +699,15 @@ class metropolis_hastings():
                 #open('output/log.log', 'a').write(str(self.filt) + ' ' + str(self.counter) + ' TPS: ' + str(tps) + '\n')
                 # print 'mjdoff: ',self.mjdoff
                 # sys.exit()
-                if (self.counter % 100) == 0:
+                #if (self.counter % 100) == 0:
 
-                    self.gal_conv = []
-                    for i in np.arange(
-                            len(self.psfs)):  # NEED TO MAKE THE GALAXY MODEL AN AVERAGE AND NOT JUST LAST MCMC STEP
-                        self.gal_conv.append(scipy.signal.convolve2d(self.galaxy_model, self.psfs[i], mode='same'))
-
+                # self.gal_conv = []
+                # for i in np.arange(
+                #         len(self.psfs)):  # NEED TO MAKE THE GALAXY MODEL AN AVERAGE AND NOT JUST LAST MCMC STEP
+                #     if self.flags[i] == 0:
+                #         self.gal_conv.append(scipy.signal.convolve2d(self.galaxy_model, self.psfs[i], mode='same'))
+                #     else:
+                #
                         # self.simsnosnnosky = map(self.mapkernel, self.modelvec * 0., self.kicked_psfs, self.centered_psfs,
                         #                          self.sky, self.flags, self.fitflags, self.sims, self.gal_conv)
 
@@ -871,7 +873,7 @@ class metropolis_hastings():
         # if self.survey == 'PS1':
         # print np.sum(self.sims)
         self.sims = map(self.mapkernel, self.kicked_modelvec, self.kicked_psfs, self.centered_psfs, self.sky,
-                        self.flags, self.fitflags, self.sims, self.gal_conv, self.fpsfs,
+                        self.flags, self.fitflags, self.sims, self.fpsfs,
                         self.xgal_pix_offset, self.ygal_pix_offset)
         # print np.sum(self.sims)
         # raw_input('stop')
@@ -1080,7 +1082,7 @@ class metropolis_hastings():
         q.put((sims, index))
 
     def mapkernel(self, kicked_modelvec, kicked_psfs, centered_psfs, sky,
-                  flags, fitflags, sims, galconv, fpsf, galoffx, galoffy):
+                  flags, fitflags, sims, fpsf, galoffx, galoffy):
 
         # if self.shiftpsf:
         #     if flags == 0:
@@ -1496,7 +1498,7 @@ class metropolis_hastings():
         #     self.kicked_galaxy_model = self.galmodel_params
 
         self.sims = map(self.mapkernel, self.modelvec_params, self.kicked_psfs, self.centered_psfs, self.sky,
-                        self.flags, self.fitflags, self.sims, self.gal_conv, self.fpsfs,
+                        self.flags, self.fitflags, self.sims, self.fpsfs,
                         self.xgal_pix_offset, self.ygal_pix_offset)
 
     def autocorr(self, x):
@@ -1523,7 +1525,7 @@ class metropolis_hastings():
                 # map(self.mapshiftPSF, np.arange(self.Nimage))
                 self.float_sn_pos()
             self.sims = map(self.mapkernel, self.modelvec_params, self.kicked_psfs, self.centered_psfs, self.sky,
-                            self.flags, self.fitflags, self.sims, self.gal_conv, self.fpsfs,
+                            self.flags, self.fitflags, self.sims, self.fpsfs,
                             self.xgal_pix_offset, self.ygal_pix_offset)
             wmask = copy(self.weights[i, :, :])
             wmask[wmask > 0] = 1
