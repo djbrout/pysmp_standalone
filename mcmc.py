@@ -343,6 +343,8 @@ class metropolis_hastings():
 
         # try:
         #    self.walltime = float(os.environ['WALLTIME'])
+
+
         # except:
         self.walltime = 90.
         self.maxtime = 3600. * (self.walltime)
