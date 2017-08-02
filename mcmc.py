@@ -198,8 +198,8 @@ class metropolis_hastings():
                     raise AttributeError('Model length is zero')
         '''
         # useskyerr = True
-        print flags
-        raw_input('fff')
+        #print flags
+        #raw_input('fff')
         if os.path.exists(smpfile):
             sys.exit()
         self.galmodel = galmodel
@@ -213,7 +213,7 @@ class metropolis_hastings():
                 a = np.load(chainsnpz)['modelvec']
                 self.modelvechistory = []
                 self.galhistory = []
-                self.modelvec = np.load(chainsnpz)['modelvec']
+                self.modelvec = np.load(chainsnpz)['modelvec'].tolist()
                 self.galmodel = np.load(chainsnpz)['galmodel_params']
                 self.modelvec_nphistory = np.load(chainsnpz)['modelvec_nphistory']
                 self.galmodel_nphistory = np.load(chainsnpz)['galmodel_nphistory']
@@ -373,6 +373,7 @@ class metropolis_hastings():
         self.fwhms = np.asarray(fwhms)
 
         numfluxepochs = max([len(self.modelvec[self.modelstd > 0]),50])
+        print numfluxepochs
         if len(self.flags[self.modelstd == 0]) > len(self.flags[self.modelstd > 0]):
 
             argsrt = np.argsort(self.fwhms)
