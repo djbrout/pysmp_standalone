@@ -198,6 +198,8 @@ class metropolis_hastings():
                     raise AttributeError('Model length is zero')
         '''
         # useskyerr = True
+        print flags
+        raw_input('fff')
         if os.path.exists(smpfile):
             sys.exit()
         self.galmodel = galmodel
@@ -566,8 +568,8 @@ class metropolis_hastings():
                 self.flags[i] = 1
                 self.descriptiveflag[i] = 4096
                 self.modelstd[i] = 0.
-                print 'here',i
-                raw_input()
+                #print 'here',i
+                #raw_input()
         if not self.pixelate_model is None:
             if not self.pixelate_model == 1.:
                 self.galaxy_model = self.pixelate(self.galaxy_model, self.pixelate_model)
