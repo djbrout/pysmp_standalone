@@ -8,11 +8,13 @@ if __name__ == "__main__":
     npzfolder='/home/dbrout/pysmp_standalone/specnpzfiles'
     outpath = '/home/dbrout/pysmp_standalone/specfitout'
     corioutpath = '/home/dbrout/pysmp_standalone/corispec/'
+    npzfile = None
+
     try:
         args = sys.argv[1:]
         opt, arg = getopt.getopt(
             args, "i",
-            longopts=["index=",'npzfolder=','outpath=','filter='])
+            longopts=["index=",'npzfolder=','outpath=','filter=','sn='])
 
     except getopt.GetoptError as err:
         print "No command line arguments"
@@ -29,6 +31,8 @@ if __name__ == "__main__":
             outpath = a
         elif o in ["--filter"]:
             filter = a
+        elif o in ['--sn']:
+            npzfile = a
 
     import scipy.signal
     import numpy as np
@@ -55,7 +59,8 @@ if __name__ == "__main__":
 
     #npzlist = npzlist[np.argsort(numepochs)]
     #npzfile = npzlist[int(index)]
-    npzfile = npzlist[::-1][int(index)]
+    if npzfile is None:
+        npzfile = npzlist[::-1][int(index)]
 
     #smprunningfile = outpath+'/'+npzfile.split('.')[0] + '.running'
     #os.system('touch '+smprunningfile)
