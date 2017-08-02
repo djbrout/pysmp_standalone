@@ -221,8 +221,8 @@ class metropolis_hastings():
                 os.remove(chainsnpz)
                 pass
 
-            print self.modelvec - diffim_flux
-            raw_input()
+            #print self.modelvec - diffim_flux
+            #raw_input()
             self.counter = self.modelvec_nphistory.shape[0]*compressionfactor
 
             print 'counter'*10
@@ -697,6 +697,7 @@ class metropolis_hastings():
                         chsqs.append(0.)
                     else:
                         chsqs.append(self.csv[i] / len(self.mask[self.mask * self.immask[i, :, :] > 0.].ravel()))
+                chsqs = np.array(chsqs)
                 print 'Reduced Chisq: ', np.nanmean(chsqs[chsqs != 0.])
                 print 'redchi', self.redchisq[-1]
                 print 'Chisq For Each Epoch: ', chsqs
