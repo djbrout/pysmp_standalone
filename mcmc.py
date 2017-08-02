@@ -565,7 +565,8 @@ class metropolis_hastings():
                 self.modelvec[i] = 0.
                 self.flags[i] = 1
                 self.modelstd[i] = 0.
-
+                print 'here'
+                raw_input()
         if not self.pixelate_model is None:
             if not self.pixelate_model == 1.:
                 self.galaxy_model = self.pixelate(self.galaxy_model, self.pixelate_model)
