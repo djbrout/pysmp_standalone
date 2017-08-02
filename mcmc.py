@@ -387,6 +387,7 @@ class metropolis_hastings():
             for jj, arg in enumerate(argsrt):
                 if self.modelstd[arg] == 0:
                     cntr += 1
+
                     if cntr > numfluxepochs:
                         #pass
                         self.flags[arg] = 1
