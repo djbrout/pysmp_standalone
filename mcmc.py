@@ -233,6 +233,7 @@ class metropolis_hastings():
                 self.modelvechistory.append(self.modelvec_nphistory[i,:])
                 self.galhistory.append(self.galmodel_nphistory[:,:])
 
+
             # print 'after',self.modelvec
         self.modelvec[self.modelvec>900000] = 10000
         # raw_input()
@@ -882,9 +883,15 @@ class metropolis_hastings():
 
         # if self.survey == 'PS1':
         # print np.sum(self.sims)
-        self.sims = map(self.mapkernel, self.kicked_modelvec, self.kicked_psfs, self.centered_psfs, self.sky,
+
+
+        #self.sims = map(self.mapkernel, self.kicked_modelvec, self.kicked_psfs, self.centered_psfs, self.sky,
+        #                self.flags, self.fitflags, self.sims, self.fpsfs,
+        #                self.xgal_pix_offset, self.ygal_pix_offset)
+        self.sims = map(self.mapkernel, self.diffim_flux, self.kicked_psfs, self.centered_psfs, self.sky,
                         self.flags, self.fitflags, self.sims, self.fpsfs,
                         self.xgal_pix_offset, self.ygal_pix_offset)
+
         # print np.sum(self.sims)
         # raw_input('stop')
         # else:
@@ -924,9 +931,10 @@ class metropolis_hastings():
         self.csv = np.array(
             map(self.mapchis, self.sims, self.data, self.immask, self.flags, self.fitflags, self.skyerr, self.simsnosn,
                 self.simsnosnnosky, self.sky, self.weights, self.gain, self.wmask, self.sigmazpt))
-        # print self.csv
+
+        print self.csv
         # print csv
-        # raw_input()
+        raw_input()
         self.thischisq = np.sum(self.csv)
         # print self.thischisq
 
