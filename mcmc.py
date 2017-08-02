@@ -933,6 +933,7 @@ class metropolis_hastings():
                 self.simsnosnnosky, self.sky, self.weights, self.gain, self.wmask, self.sigmazpt))
 
         print self.csv
+        print self.flags
         # print csv
         raw_input()
         self.thischisq = np.sum(self.csv)
