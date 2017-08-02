@@ -29,7 +29,7 @@ myvar="/home/dbrout/pysmp_standalone/simnpzfiles"
 outpath="/home/dbrout/pysmp_standalone/simfitout"
 
 # python mcmc_manager.py --index=$SGE_TASK_ID --npzfolder=$myvar --outpath=$outpath
-python mcmc_manager.py --index=$(expr $SGE_TASK_ID \* 2 - 2) --npzfolder=$myvar --outpath=$outpath &
+python mcmc_manager.py --index=$(expr $SGE_TASK_ID \* 2 - 2) --npzfolder=$myvar --outpath=$outpath >> /home/dbrout/pysmp_standalone/output/log.log &
 python mcmc_manager.py --index=$(expr $SGE_TASK_ID \* 2 - 1) --npzfolder=$myvar --outpath=$outpath &
 # python mcmc_manager.py --index=$(expr $SGE_TASK_ID \* 4 - 1) --npzfolder=$myvar --outpath=$outpath >> /home/dbrout/pysmp_standalone/output/log.log &
 
