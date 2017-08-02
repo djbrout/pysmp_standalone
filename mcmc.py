@@ -208,6 +208,7 @@ class metropolis_hastings():
         if os.path.exists(chainsnpz):
             # raw_input()
             try:
+                a = np.load(chainsnpz)['modelvec']
                 self.modelvechistory = []
                 self.galhistory = []
                 self.modelvec = np.load(chainsnpz)['modelvec']
