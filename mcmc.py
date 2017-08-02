@@ -221,6 +221,8 @@ class metropolis_hastings():
                 os.remove(chainsnpz)
                 pass
 
+            print self.modelvec - self.diffim_flux
+            raw_input()
             self.counter = self.modelvec_nphistory.shape[0]*compressionfactor
 
             print 'counter'*10
@@ -401,8 +403,8 @@ class metropolis_hastings():
                 print 'nan'
         # raw_input()
 
-        if not stdoutfile is None:
-            sys.stdout = open(stdoutfile, 'w',buffering=1)
+        #if not stdoutfile is None:
+        #    sys.stdout = open(stdoutfile, 'w',buffering=1)
 
         print 'sigmazpt', self.sigmazpt.shape
 
