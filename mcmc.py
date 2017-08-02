@@ -564,8 +564,9 @@ class metropolis_hastings():
             if len(self.mask[self.mask * self.immask[i, :, :] > 0.].ravel()) == 0:
                 self.modelvec[i] = 0.
                 self.flags[i] = 1
+                self.descriptiveflag[i] = 4096
                 self.modelstd[i] = 0.
-                print 'here'
+                print 'here',i
                 raw_input()
         if not self.pixelate_model is None:
             if not self.pixelate_model == 1.:
