@@ -213,7 +213,7 @@ class metropolis_hastings():
                 a = np.load(chainsnpz)['modelvec']
                 self.modelvechistory = []
                 self.galhistory = []
-                self.modelvec = np.load(chainsnpz)['modelvec'].tolist()
+                self.modelvec = np.load(chainsnpz)['modelvec']
                 self.galmodel = np.load(chainsnpz)['galmodel_params']
                 self.modelvec_nphistory = np.load(chainsnpz)['modelvec_nphistory']
                 self.galmodel_nphistory = np.load(chainsnpz)['galmodel_nphistory']
