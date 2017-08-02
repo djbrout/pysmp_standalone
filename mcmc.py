@@ -221,7 +221,7 @@ class metropolis_hastings():
                 os.remove(chainsnpz)
                 pass
 
-            print self.modelvec - self.diffim_flux
+            print self.modelvec - diffim_flux
             raw_input()
             self.counter = self.modelvec_nphistory.shape[0]*compressionfactor
 
