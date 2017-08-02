@@ -207,14 +207,18 @@ class metropolis_hastings():
         # print 'before',self.modelvec
         if os.path.exists(chainsnpz):
             # raw_input()
-            self.modelvechistory = []
-            self.galhistory = []
-            self.modelvec = np.load(chainsnpz)['modelvec']
-            self.galmodel = np.load(chainsnpz)['galmodel_params']
-            self.modelvec_nphistory = np.load(chainsnpz)['modelvec_nphistory']
-            self.galmodel_nphistory = np.load(chainsnpz)['galmodel_nphistory']
-            self.xhistory = np.load(chainsnpz)['xhistory']
-            self.yhistory = np.load(chainsnpz)['yhistory']
+            try:
+                self.modelvechistory = []
+                self.galhistory = []
+                self.modelvec = np.load(chainsnpz)['modelvec']
+                self.galmodel = np.load(chainsnpz)['galmodel_params']
+                self.modelvec_nphistory = np.load(chainsnpz)['modelvec_nphistory']
+                self.galmodel_nphistory = np.load(chainsnpz)['galmodel_nphistory']
+                self.xhistory = np.load(chainsnpz)['xhistory']
+                self.yhistory = np.load(chainsnpz)['yhistory']
+            except:
+                os.remove(chainsnpz)
+                pass
 
             self.counter = self.modelvec_nphistory.shape[0]*compressionfactor
 

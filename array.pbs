@@ -24,9 +24,9 @@ cd /home/dbrout/pysmp_standalone
 
 date
 
-myvar="/home/dbrout/pysmp_standalone/specnpzfiles"
+myvar="/home/dbrout/pysmp_standalone/simnpzfiles"
 
-outpath="/home/dbrout/pysmp_standalone/specfitout"
+outpath="/home/dbrout/pysmp_standalone/simfitout"
 
 # python mcmc_manager.py --index=$SGE_TASK_ID --npzfolder=$myvar --outpath=$outpath
 python mcmc_manager.py --index=$(expr $SGE_TASK_ID \* 2 - 2) --npzfolder=$myvar --outpath=$outpath &
