@@ -215,8 +215,8 @@ class metropolis_hastings():
                 self.galmodel = np.load(chainsnpz)['galmodel_params']
                 self.modelvec_nphistory = np.load(chainsnpz)['modelvec_nphistory']
                 self.galmodel_nphistory = np.load(chainsnpz)['galmodel_nphistory']
-                self.xhistory = np.load(chainsnpz)['xhistory']
-                self.yhistory = np.load(chainsnpz)['yhistory']
+                self.xhistory = np.load(chainsnpz)['xhistory'].tolist()
+                self.yhistory = np.load(chainsnpz)['yhistory'].tolist()
             except:
                 os.remove(chainsnpz)
                 pass
@@ -699,7 +699,7 @@ class metropolis_hastings():
                         chsqs.append(self.csv[i] / len(self.mask[self.mask * self.immask[i, :, :] > 0.].ravel()))
                 chsqs = np.array(chsqs)
                 print 'Reduced Chisq: ', np.nanmean(chsqs[chsqs != 0.])
-                print 'redchi', self.redchisq[-1]
+                #print 'redchi', self.redchisq[-1]
                 print 'Chisq For Each Epoch: ', chsqs
                 tps = (time.time() - self.t1) / self.counter
                 # self.tps = tps

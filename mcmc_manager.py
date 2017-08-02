@@ -103,10 +103,10 @@ if __name__ == "__main__":
             , usesimerr=inp['usesimerr']
             , flags=inp['smpdictflag']
             , fitflags=inp['fitflags']*0.
-            , psf_shift_std=inp['psf_shift_std']
+            , psf_shift_std=0.00025
             , xoff=0.
             , yoff=0.  # .06
-            , shiftpsf=inp['shiftpsf']
+            , shiftpsf=True
             , fileappend=inp['fileappend']
             , stop=False
             , skyerr_radius=inp['skyerr_radius']
