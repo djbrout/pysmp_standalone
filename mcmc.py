@@ -399,7 +399,7 @@ class metropolis_hastings():
                     if cntr > numfluxepochs:
                         #pass
                         self.flags[arg] = 1
-                        print 'flagging',arg
+                        #print 'flagging',arg
                         # self.flags[argsrt][fixedepochs] = 1
 
                         # print self.flags[argsrt][fixedepochs][numfluxepochs:]
