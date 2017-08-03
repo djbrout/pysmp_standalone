@@ -374,36 +374,36 @@ class metropolis_hastings():
 
         numfluxepochs = max([len(self.modelvec[self.modelstd > 0]),50])
         #print numfluxepochs
-        # if len(self.flags[self.modelstd == 0]) > len(self.flags[self.modelstd > 0]):
-        #     #raw_input('asdf')
-        #     #print self.fwhms
-        #     #raw_input()
-        #     argsrt = np.argsort(np.array(self.fwhms,dtype='float'))
-        #     #print argsrt
-        #     #print argsrt.shape
-        #     #raw_input('argsrt')
-        #     # print argsrt
-        #     fixedepochs = self.modelstd[argsrt] == 0
-        #     # print self.flags[argsrt][fixedepochs]
-        #     # raw_input()
-        #
-        #     # print self.flags[argsrt][fixedepochs][numfluxepochs:]
-        #     cntr = 0
-        #     for jj, arg in enumerate(argsrt):
-        #         if self.flags[arg] == 1: continue
-        #         if self.modelstd[arg] == 0:
-        #             cntr += 1
-        #             #print cntr
-        #
-        #             #raw_input()
-        #             if cntr > numfluxepochs:
-        #                 #pass
-        #                 self.flags[arg] = 1
-        #                 #print 'flagging',arg
-        #                 # self.flags[argsrt][fixedepochs] = 1
-        #
-        #                 # print self.flags[argsrt][fixedepochs][numfluxepochs:]
-        #                 # raw_input()
+        if len(self.flags[self.modelstd == 0]) > len(self.flags[self.modelstd > 0]):
+            #raw_input('asdf')
+            #print self.fwhms
+            #raw_input()
+            argsrt = np.argsort(np.array(self.fwhms,dtype='float'))
+            #print argsrt
+            #print argsrt.shape
+            #raw_input('argsrt')
+            # print argsrt
+            fixedepochs = self.modelstd[argsrt] == 0
+            # print self.flags[argsrt][fixedepochs]
+            # raw_input()
+
+            # print self.flags[argsrt][fixedepochs][numfluxepochs:]
+            cntr = 0
+            for jj, arg in enumerate(argsrt):
+                if self.flags[arg] == 1: continue
+                if self.modelstd[arg] == 0:
+                    cntr += 1
+                    #print cntr
+
+                    #raw_input()
+                    if cntr > numfluxepochs:
+                        #pass
+                        self.flags[arg] = 1
+                        #print 'flagging',arg
+                        # self.flags[argsrt][fixedepochs] = 1
+
+                        # print self.flags[argsrt][fixedepochs][numfluxepochs:]
+                        # raw_input()
 
                         # self.descriptiveflag[argsrt][fixedepochs][:numfluxepochs] = 2048
         # print len(self.modelvec[self.modelstd == 0]), len(self.modelvec[self.modelstd > 0.])
