@@ -709,7 +709,7 @@ class metropolis_hastings():
                 print 'Acceptance Rate:', self.accepted_history
                 if not self.alreadyadjusted:
                     if self.counter > 50000:
-                        if self.accepted_history < .02:
+                        if float(self.accepted_history) < .02:
                             self.modelstd = self.modelstd/2.
                             self.galstd = self.galstd/2.
                             self.alreadyadjusted = True
