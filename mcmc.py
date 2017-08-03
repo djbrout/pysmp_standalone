@@ -375,13 +375,13 @@ class metropolis_hastings():
         numfluxepochs = max([len(self.modelvec[self.modelstd > 0]),50])
         #print numfluxepochs
         if len(self.flags[self.modelstd == 0]) > len(self.flags[self.modelstd > 0]):
-            raw_input('asdf')
-            print self.fwhms
-            raw_input()
+            #raw_input('asdf')
+            #print self.fwhms
+            #raw_input()
             argsrt = np.argsort(np.array(self.fwhms,dtype='float'))
-            print argsrt
-            print argsrt.shape
-            raw_input('argsrt')
+            #print argsrt
+            #print argsrt.shape
+            #raw_input('argsrt')
             # print argsrt
             fixedepochs = self.modelstd[argsrt] == 0
             # print self.flags[argsrt][fixedepochs]
@@ -393,8 +393,9 @@ class metropolis_hastings():
                 if self.flags[arg] == 1: continue
                 if self.modelstd[arg] == 0:
                     cntr += 1
-                    print cntr
-                    raw_input()
+                    #print cntr
+
+                    #raw_input()
                     if cntr > numfluxepochs:
                         #pass
                         self.flags[arg] = 1
@@ -898,12 +899,12 @@ class metropolis_hastings():
         # print np.sum(self.sims)
 
 
-        #self.sims = map(self.mapkernel, self.kicked_modelvec, self.kicked_psfs, self.centered_psfs, self.sky,
-        #                self.flags, self.fitflags, self.sims, self.fpsfs,
-        #                self.xgal_pix_offset, self.ygal_pix_offset)
-        self.sims = map(self.mapkernel, self.diffim_flux, self.kicked_psfs, self.centered_psfs, self.sky,
-                        self.flags, self.fitflags, self.sims, self.fpsfs,
-                        self.xgal_pix_offset, self.ygal_pix_offset)
+        self.sims = map(self.mapkernel, self.kicked_modelvec, self.kicked_psfs, self.centered_psfs, self.sky,
+                       self.flags, self.fitflags, self.sims, self.fpsfs,
+                       self.xgal_pix_offset, self.ygal_pix_offset)
+        # self.sims = map(self.mapkernel, self.diffim_flux, self.kicked_psfs, self.centered_psfs, self.sky,
+        #                 self.flags, self.fitflags, self.sims, self.fpsfs,
+        #                 self.xgal_pix_offset, self.ygal_pix_offset)
 
         # print np.sum(self.sims)
         # raw_input('stop')
@@ -945,10 +946,10 @@ class metropolis_hastings():
             map(self.mapchis, self.sims, self.data, self.immask, self.flags, self.fitflags, self.skyerr, self.simsnosn,
                 self.simsnosnnosky, self.sky, self.weights, self.gain, self.wmask, self.sigmazpt))
 
-        print self.csv
-        print self.flags
-        # print csv
-        raw_input()
+        # print self.csv
+        # print self.flags
+        # # print csv
+        # raw_input()
         self.thischisq = np.sum(self.csv)
         # print self.thischisq
 
