@@ -379,6 +379,9 @@ class metropolis_hastings():
             print self.fwhms
             raw_input()
             argsrt = np.argsort(self.fwhms)
+            print argsrt
+            print argsrt.shape
+            raw_input('argsrt')
             # print argsrt
             fixedepochs = self.modelstd[argsrt] == 0
             # print self.flags[argsrt][fixedepochs]
