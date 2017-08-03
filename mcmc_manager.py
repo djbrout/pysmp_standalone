@@ -86,8 +86,8 @@ if __name__ == "__main__":
         a = mcmc.metropolis_hastings(
             galmodel=inp['galmodel']
             , modelvec=inp['modelvec']
-            , galstd=inp['galstd']
-            , modelstd=inp['modelstd']
+            , galstd=inp['galstd']/1.1
+            , modelstd=inp['modelstd']/1.1
             , data=inp['data']
             , psfs=inp['psfs']
             , weights=inp['weights']
@@ -103,7 +103,7 @@ if __name__ == "__main__":
             , usesimerr=inp['usesimerr']
             , flags=inp['smpdictflag']
             , fitflags=inp['fitflags']*0.
-            , psf_shift_std=0.00025
+            , psf_shift_std=0.0002
             , xoff=0.
             , yoff=0.  # .06
             , shiftpsf=True
