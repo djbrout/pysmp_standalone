@@ -344,6 +344,8 @@ class metropolis_hastings():
         self.nightlyoffx = nightlyoffx
         self.nightlyoffy = nightlyoffy
 
+
+        self.alreadyadjusted = False
         # for i in range(Nimage):
         #    self.immask.append(mask[i,:,:])
         self.immask = mask
@@ -701,8 +703,16 @@ class metropolis_hastings():
                 if self.counter > 199000:
                     self.z_scores_say_keep_going = self.check_geweke()
 
+
+
             if (self.counter % 1000) == 0:
                 print 'Acceptance Rate:', self.accepted_history
+                if not self.alreadyadjusted:
+                    if self.counter > 50000:
+                        if self.accepted_history < .02:
+                            self.modelstd = self.modelstd/2.
+                            self.galstd = self.galstd/2.
+                            self.alreadyadjusted = True
                 print 'Counter:', self.counter
                 # chsqs = self.csv/len(self.mask[self.mask>0.].ravel())
                 chsqs = []
