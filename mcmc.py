@@ -742,7 +742,7 @@ class metropolis_hastings():
                 if (self.counter % 20000) == 0:
                     self.plotchains()
                     self.savechains()
-                    self.plotstamps()
+                    #self.plotstamps()
                 # sys.exit()
                 # self.plotstamps()
                     import gc
