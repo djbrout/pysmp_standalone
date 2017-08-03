@@ -60,7 +60,7 @@ if __name__ == "__main__":
     #npzlist = npzlist[np.argsort(numepochs)]
     #npzfile = npzlist[int(index)]
     if npzfile is None:
-        npzfile = npzlist[::-1][int(index)]
+        npzfile = npzlist[int(index)]
 
     #smprunningfile = outpath+'/'+npzfile.split('.')[0] + '.running'
     #os.system('touch '+smprunningfile)
