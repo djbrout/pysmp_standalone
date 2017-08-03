@@ -390,6 +390,7 @@ class metropolis_hastings():
             # print self.flags[argsrt][fixedepochs][numfluxepochs:]
             cntr = 0
             for jj, arg in enumerate(argsrt):
+                if self.flags[arg] == 1: continue
                 if self.modelstd[arg] == 0:
                     cntr += 1
                     print cntr
