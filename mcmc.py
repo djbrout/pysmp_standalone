@@ -378,7 +378,7 @@ class metropolis_hastings():
             raw_input('asdf')
             print self.fwhms
             raw_input()
-            argsrt = np.argsort(self.fwhms)
+            argsrt = np.argsort(np.array(self.fwhms,dtype='float'))
             print argsrt
             print argsrt.shape
             raw_input('argsrt')
