@@ -55,11 +55,11 @@ if __name__ == "__main__":
             if not os.path.exists(outpath + '/' + n.split('.')[0] + '.smp'):
                 #if not os.path.exists(outpath + '/' + n.split('.')[0] + '.running'):
                 if np.load(npzfolder+'/'+n)['peakmjd'] > 0:
-                    print n
-                    if '_g_' in n: glist.append(n)
-                    if '_r_' in n: rlist.append(n)
-                    if '_i_' in n: ilist.append(n)
-                    if '_z_' in n: zlist.append(n)
+
+                    if '_g.' in n: glist.append(n)
+                    if '_r.' in n: rlist.append(n)
+                    if '_i.' in n: ilist.append(n)
+                    if '_z.' in n: zlist.append(n)
 
                     numepochs.append(np.load(npzfolder+'/'+n)['Nimage'])
                     #newnpzlist.append(n)
