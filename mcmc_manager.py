@@ -45,15 +45,32 @@ if __name__ == "__main__":
     npzlist = np.asarray(sorted(os.listdir(npzfolder)),dtype='str')
     newnpzlist = []
     numepochs = []
+    glist = []
+    rlist = []
+    ilist = []
+    zlist = []
+
     for n in npzlist:
         try:
             if not os.path.exists(outpath + '/' + n.split('.')[0] + '.smp'):
                 #if not os.path.exists(outpath + '/' + n.split('.')[0] + '.running'):
                 if np.load(npzfolder+'/'+n)['peakmjd'] > 0:
+
+                    if '_g_' in n: glist.append(n)
+                    if '_r_' in n: rlist.append(n)
+                    if '_i_' in n: ilist.append(n)
+                    if '_z_' in n: zlist.append(n)
+
                     numepochs.append(np.load(npzfolder+'/'+n)['Nimage'])
-                    newnpzlist.append(n)
+                    #newnpzlist.append(n)
         except:
             pass
+
+    newnpzlist.extend(glist)
+    newnpzlist.extend(rlist)
+    newnpzlist.extend(ilist)
+    newnpzlist.extend(zlist)
+
     print 'Number of SN remaining to fit',len(newnpzlist)
     numepochs = np.asarray(numepochs)
     npzlist = np.asarray(newnpzlist,dtype='str')
