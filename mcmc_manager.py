@@ -54,6 +54,7 @@ if __name__ == "__main__":
                     newnpzlist.append(n)
         except:
             pass
+    print 'Number of SN remaining to fit',len(newnpzlist)
     numepochs = np.asarray(numepochs)
     npzlist = np.asarray(newnpzlist,dtype='str')
 
