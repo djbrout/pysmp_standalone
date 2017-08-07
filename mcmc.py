@@ -706,13 +706,23 @@ class metropolis_hastings():
 
 
             if (self.counter % 1000) == 0:
+                self.accepted_int = 0
+
                 print 'Acceptance Rate:', self.accepted_history
-                if not self.alreadyadjusted:
-                    if self.counter > 50000:
-                        if float(self.accepted_history) < .02:
-                            self.modelstd = self.modelstd/2.
-                            self.galstd = self.galstd/2.
-                            self.alreadyadjusted = True
+                if self.counter > 50000:
+                    if float(self.accepted_history) < .25:
+                        self.modelstd = self.modelstd / 1.25
+                        self.galstd = self.galstd / 1.25
+                        self.alreadyadjusted = True
+                        self.accepted_history = 0.
+                        self.accepted_int = 0
+                    if float(self.accepted_history) > .75:
+                        self.modelstd = self.modelstd * 1.25
+                        self.galstd = self.galstd * 1.25
+                        self.alreadyadjusted = True
+                        self.accepted_history = 0.
+                        self.accepted_int = 0
+
                 print 'Counter:', self.counter
                 # chsqs = self.csv/len(self.mask[self.mask>0.].ravel())
                 chsqs = []
