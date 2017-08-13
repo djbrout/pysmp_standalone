@@ -344,6 +344,8 @@ class metropolis_hastings():
         self.nightlyoffx = nightlyoffx
         self.nightlyoffy = nightlyoffy
 
+        self.checkforpreexplosionepochs()
+        self.modeldeltas = copy(self.modelstd)
 
         self.alreadyadjusted = False
         # for i in range(Nimage):
@@ -1503,6 +1505,28 @@ class metropolis_hastings():
                 #     self.xgalhistory.append(self.current_xgal_offset)
                 #     self.ygalhistory.append(self.current_ygal_offset)
         return
+
+    def checkforpreexplosionepochs(self):
+        ww = (self.mjd < self.peakmjd) & (self.mjd != 0) & (self.mjdflag == 0)
+        numpre = len(self.mjd[ww])
+
+        try:
+            if numpre < 1:
+                aww = np.argwhere((self.mjd < self.peakmjd) & (self.mjdflag != 0) & (self.mjd != 0))
+                print aww
+                self.mjdflag[aww[-1]] = 0
+                self.mjdflag[aww[-2]] = 0
+                self.modelstd[aww[-1]] = 10.
+                self.modelstd[aww[-2]] = 10.
+
+            elif numpre < 2:
+                aww = np.argwhere((self.mjd < self.peakmjd) & (self.mjdflag != 0) & (self.mjd != 0))
+                print aww
+                self.mjdflag[aww[-1]] = 0
+                self.modelstd[aww[-1]] = 10.
+
+        except:
+            print 'something went wrong adding extra pre explosion epochs'
 
     def update_unaccepted_history(self):
         self.compressioncounter += 1
