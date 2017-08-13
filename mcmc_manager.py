@@ -79,7 +79,9 @@ if __name__ == "__main__":
     #npzfile = npzlist[int(index)]
     if npzfile is None:
         npzfile = npzlist[int(index)]
-
+    else:
+        bl = open('badlist.txt','r').readlines()
+        npzfile = bl[int(npzfile)].strip().replace('"','').replace(',','')
     #smprunningfile = outpath+'/'+npzfile.split('.')[0] + '.running'
     #os.system('touch '+smprunningfile)
 
