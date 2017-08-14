@@ -32,6 +32,7 @@ python mcmc_manager.py --index=0 --npzfolder=$myvar --outpath=$outpath --sn=$SGE
 # python mcmc_manager.py --index=$(expr $SGE_TASK_ID \* 4 - 1) --npzfolder=$myvar --outpath=$outpath >> /home/dbrout/pysmp_standalone/output/log.log &
 
 
+
 wait
 
 
