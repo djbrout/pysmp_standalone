@@ -93,14 +93,16 @@ if __name__ == "__main__":
     chainsnpz = outpath+'/'+npzfile.split('.')[0] + '_chains.npz'
     stdoutfile = outpath+'/'+npzfile.split('.')[0] + '.log'
 
+    currentlyrunning = False
     try:
         st = os.stat(stdoutfile)
         print st.st_mtime - time.time()
         if st.st_mtime - time.time() > -10.*60.:
             print 'currently running'
-            sys.exit()
+            currentlyrunning = True
     except:
         pass
+    if currentlyrunning: sys.exit()
     smpfile = outpath+'/'+npzfile.split('.')[0] + '.smp'
 
     if os.path.exists(outpath+'/'+npzfile.split('.')[0] + '.smp'):
