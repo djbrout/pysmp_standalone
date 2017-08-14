@@ -93,6 +93,7 @@ if __name__ == "__main__":
     chainsnpz = outpath+'/'+npzfile.split('.')[0] + '_chains.npz'
     stdoutfile = outpath+'/'+npzfile.split('.')[0] + '.log'
     st = os.stat(stdoutfile)
+    print st.st_mtime - time.time()
     if st.st_mtime - time.time() < -20.*60.:
         print 'currently running'
         sys.exit()
