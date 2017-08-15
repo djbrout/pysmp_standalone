@@ -38,7 +38,9 @@ if __name__ == "__main__":
     import numpy as np
     import time
 
+    index = index - 1
     print 'index',index,
+
 
     #time.sleep(float(index))
 
