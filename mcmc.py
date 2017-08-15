@@ -225,17 +225,19 @@ class metropolis_hastings():
 
             #print self.modelvec - diffim_flux
             #raw_input()
-            print 'compressionfactor'*100
-            print compressionfactor
-            self.counter = self.modelvec_nphistory.shape[0]*compressionfactor
+            #print 'compressionfactor'*100
+            #print compressionfactor
+            oldcompressionfactor = 10
+            self.counter = self.modelvec_nphistory.shape[0]*oldcompressionfactor
 
             print 'counter'*10
             print self.counter
             print 'counter'*10
 
-            for i in range(self.counter/compressionfactor):
-                self.modelvechistory.append(self.modelvec_nphistory[i,:])
-                self.galhistory.append(self.galmodel_nphistory[:,:])
+            for i in range(self.counter/oldcompressionfactor):
+                if i%compressionfactor == 0:
+                    self.modelvechistory.append(self.modelvec_nphistory[i,:])
+                    self.galhistory.append(self.galmodel_nphistory[:,:])
 
 
             # print 'after',self.modelvec
