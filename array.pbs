@@ -22,9 +22,9 @@ source activate condasmp2
 
 cd /home/dbrout/pysmp_standalone
 
-myvar="/home/dbrout/pysmp_standalone/s1npzfiles"
+myvar="/home/dbrout/pysmp_standalone/specnpzfiles"
 
-outpath="/home/dbrout/pysmp_standalone/s1fitout"
+outpath="/home/dbrout/pysmp_standalone/specbadfitout"
 
 python mcmc_manager.py --index=0 --npzfolder=$myvar --outpath=$outpath --sn=$SGE_TASK_ID
 # python mcmc_manager.py --index=$(expr $SGE_TASK_ID \* 2 - 2) --npzfolder=$myvar --outpath=$outpath &
