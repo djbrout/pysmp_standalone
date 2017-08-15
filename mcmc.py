@@ -225,6 +225,8 @@ class metropolis_hastings():
 
             #print self.modelvec - diffim_flux
             #raw_input()
+            print 'compressionfactor'*100
+            print compressionfactor
             self.counter = self.modelvec_nphistory.shape[0]*compressionfactor
 
             print 'counter'*10
