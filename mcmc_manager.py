@@ -102,7 +102,7 @@ if __name__ == "__main__":
             currentlyrunning = True
     except:
         pass
-    #if currentlyrunning: sys.exit()
+    if currentlyrunning: sys.exit()
     smpfile = outpath+'/'+npzfile.split('.')[0] + '.smp'
 
     if os.path.exists(outpath+'/'+npzfile.split('.')[0] + '.smp'):
