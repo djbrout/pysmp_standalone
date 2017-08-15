@@ -99,7 +99,7 @@ if __name__ == "__main__":
     try:
         st = os.stat(stdoutfile)
         print st.st_mtime - time.time()
-        if st.st_mtime - time.time() > -10.*60.:
+        if st.st_mtime - time.time() > -30.*60.:
             print 'currently running'
             currentlyrunning = True
     except:
