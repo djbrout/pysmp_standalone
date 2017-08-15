@@ -142,7 +142,7 @@ if __name__ == "__main__":
             , stop=False
             , skyerr_radius=inp['skyerr_radius']
             , outpath=outpath
-            , compressionfactor=100
+            , compressionfactor=200
             , fix_gal_model=inp['fix_gal_model']
             , pixelate_model=None
             , burnin=inp['burnin']
