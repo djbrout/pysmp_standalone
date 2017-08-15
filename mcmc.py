@@ -1859,9 +1859,9 @@ class metropolis_hastings():
 
 
         self.check_geweke()
-
+        gc.collect()
         self.make_history()
-
+        gc.collect()
         self.get_params(dontreturn=True, dosave=False)
         # modelvec, modelvec_uncertainty, galmodel_params, galmodel_uncertainty, modelvec_nphistory, galmodel_nphistory, sims, xhistory,yhistory,accepted_history,pix_stamp,chisqhist,redchisqhist  = self.get_params()
         # print self.chainsnpz
@@ -1889,6 +1889,7 @@ class metropolis_hastings():
                              fitzpt=self.fitzpt,
                              fakezpt=self.fakezpt, datafilenames=self.datafilenames, sky=self.sky, skyerr=self.skyerr,
                              x=self.x, y=self.y, xoff=self.nightlyoffx, yoff=self.nightlyoffy)
+        gc.collect()
 
     def get_galshot(self):
         galshot = copy(self.modelvec_uncertainty)*0.
