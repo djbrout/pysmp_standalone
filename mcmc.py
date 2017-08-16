@@ -1825,8 +1825,9 @@ class metropolis_hastings():
                      self.modelvec_nphistory[::1, e])
 
         for e in np.arange(numepochs):
-            plt.axhline(self.fakeflux[e],color = 'grey',linestyle='--')
-            print e,self.fakeflux[e]
+            if self.fakeflux[e] < 10.e10.:
+                plt.axhline(self.fakeflux[e],color = 'grey',linestyle='--')
+                print e,self.fakeflux[e]
         plt.xlabel('Step')
         plt.ylabel('SN Flux')
         plt.title(self.lcout.split('/')[-1])
