@@ -326,7 +326,7 @@ class metropolis_hastings():
         self.fakezpt = fakezpt
         self.fitzpt = fitzpt
 
-        self.fakeflux = 10*(.4*(31.-self.fakemag))
+        self.fakeflux = 10**(.4*(31.-self.fakemag))
 
         self.datafilenames = datafilenames
         self.smpfile = smpfile
