@@ -247,6 +247,8 @@ class metropolis_hastings():
         self.modelstd = modelstd
         self.modelvec[self.modelstd == 0] = 0.
 
+
+
         # for i in range(Nimage):
         #    print self.modelstd[i],self.modelvec[i]
         # raw_input()
@@ -323,6 +325,9 @@ class metropolis_hastings():
         self.fakemag = fakemag
         self.fakezpt = fakezpt
         self.fitzpt = fitzpt
+
+        self.fakeflux = 10*(.4*(31.-self.fakemag - self.fitzpt + self.fakezpt))
+
         self.datafilenames = datafilenames
         self.smpfile = smpfile
         # self.immask = []
@@ -1818,6 +1823,9 @@ class metropolis_hastings():
             # if np.max(self.modelvec_nphistory[:,e]) > 0:
             plt.plot(np.arange(0, len(self.modelvec_nphistory[:, e]) * self.compressionfactor, self.compressionfactor),
                      self.modelvec_nphistory[::1, e])
+
+        for e in np.arange(numepochs):
+            plt.axhline(self.fakeflux[e],color = 'black',linestyle='--')
         plt.xlabel('Step')
         plt.ylabel('SN Flux')
         plt.title(self.lcout.split('/')[-1])
