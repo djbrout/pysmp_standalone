@@ -326,7 +326,7 @@ class metropolis_hastings():
         self.fakezpt = fakezpt
         self.fitzpt = fitzpt
 
-        self.fakeflux = 10*(.4*(31.-self.fakemag - self.fitzpt + self.fakezpt))
+        self.fakeflux = 10*(.4*(31.-self.fakemag))
 
         self.datafilenames = datafilenames
         self.smpfile = smpfile
@@ -1825,7 +1825,8 @@ class metropolis_hastings():
                      self.modelvec_nphistory[::1, e])
 
         for e in np.arange(numepochs):
-            plt.axhline(self.fakeflux[e],color = 'black',linestyle='--')
+            plt.axhline(self.fakeflux[e],color = 'grey',linestyle='--')
+            print e,self.fakeflux[e]
         plt.xlabel('Step')
         plt.ylabel('SN Flux')
         plt.title(self.lcout.split('/')[-1])
