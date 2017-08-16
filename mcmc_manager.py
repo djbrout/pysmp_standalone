@@ -54,10 +54,11 @@ if __name__ == "__main__":
 
     for n in npzlist:
         try:
-            if not os.path.exists(outpath + '/' + n.split('.')[0] + '.smp'):
+            #if not os.path.exists(outpath + '/' + n.split('.')[0] + '.smp'):
                 #if not os.path.exists(outpath + '/' + n.split('.')[0] + '.running'):
-                if np.load(npzfolder+'/'+n)['peakmjd'] > 0:
-
+            if True:
+                #if np.load(npzfolder+'/'+n)['peakmjd'] > 0:
+                if True:
                     if '_g.' in n: glist.append(n)
                     if '_r.' in n: rlist.append(n)
                     if '_i.' in n: ilist.append(n)
