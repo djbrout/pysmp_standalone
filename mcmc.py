@@ -240,7 +240,7 @@ class metropolis_hastings():
             #     if True:
             #         self.modelvechistory.append(self.modelvec_nphistory[i,:])
             #         self.galhistory.append(self.galmodel_nphistory[:,:])
-            counter = 0
+            self.counter = 0
 
             # print 'after',self.modelvec
         self.modelvec[self.modelvec>900000] = 10000
