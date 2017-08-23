@@ -234,12 +234,13 @@ class metropolis_hastings():
             print self.counter
             print 'counter'*10
 
-            for i in range(self.counter/oldcompressionfactor):
-                #if i%compressionfactor == 0:
-                if True:
-                    self.modelvechistory.append(self.modelvec_nphistory[i,:])
-                    self.galhistory.append(self.galmodel_nphistory[:,:])
 
+            # for i in range(self.counter/oldcompressionfactor):
+            #     #if i%compressionfactor == 0:
+            #     if True:
+            #         self.modelvechistory.append(self.modelvec_nphistory[i,:])
+            #         self.galhistory.append(self.galmodel_nphistory[:,:])
+            counter = 0
 
             # print 'after',self.modelvec
         self.modelvec[self.modelvec>900000] = 10000
