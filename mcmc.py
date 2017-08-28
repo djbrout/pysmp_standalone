@@ -431,8 +431,8 @@ class metropolis_hastings():
                 print 'nan'
         # raw_input()
 
-        if not stdoutfile is None:
-           sys.stdout = open(stdoutfile, 'w',buffering=1)
+        #if not stdoutfile is None:
+        #   sys.stdout = open(stdoutfile, 'w',buffering=1)
 
         print 'sigmazpt', self.sigmazpt.shape
 
