@@ -85,6 +85,7 @@ if __name__ == "__main__":
     else:
         bl = open('badlist.txt','r').readlines()
         npzfile = bl[int(npzfile)].strip().replace('"','').replace(',','')
+    npzfile = 'des_real_01347120_g.mcmcinput.npz'
     #smprunningfile = outpath+'/'+npzfile.split('.')[0] + '.running'
     #os.system('touch '+smprunningfile)
 
