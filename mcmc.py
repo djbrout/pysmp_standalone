@@ -588,7 +588,6 @@ class metropolis_hastings():
         # self.galstd = np.sqrt(self.galaxy_model)*
 
         for i in range(self.Nimage):
-            print 'youuuuuu'
             if len(self.mask[self.mask * self.immask[i, :, :] > 0.].ravel()) == 0:
                 self.modelvec[i] = 0.
                 self.flags[i] = 1
