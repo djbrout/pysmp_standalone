@@ -595,7 +595,7 @@ class metropolis_hastings():
                 self.descriptiveflag[i] = 4096
                 self.modelstd[i] = 0.
                 #print fileroots[i]
-                print 'bad mask',mjd[i],imfilename[i],self.mask.shape#fileroots[i]
+                print 'bad mask',mjd[i],imfilename[i],skyerr[i]#fileroots[i]
                 raw_input()
         if not self.pixelate_model is None:
             if not self.pixelate_model == 1.:
