@@ -591,11 +591,11 @@ class metropolis_hastings():
             print mjd[i]
             if len(self.mask[self.mask * self.immask[i, :, :] > 0.].ravel()) == 0:
                 self.modelvec[i] = 0.
-                self.flags[i] = 1
+                #self.flags[i] = 1
                 self.descriptiveflag[i] = 4096
                 self.modelstd[i] = 0.
                 #print fileroots[i]
-                print 'bad mask',mjd[i],imfilename[i],skyerr[i]#fileroots[i]
+                print 'bad mask',mjd[i],imfilename[i],self.descriptiveflag[i]#fileroots[i]
                 raw_input()
         if not self.pixelate_model is None:
             if not self.pixelate_model == 1.:
