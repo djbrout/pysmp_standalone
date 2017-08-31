@@ -22,7 +22,7 @@ source activate condasmp2
 
 cd /home/dbrout/pysmp_standalone
 
-myvar="/home/dbrout/pysmp_standalone/specnpzfiles"
+myvar="/home/dbrout/pysmp_standalone/specnpzfilesv1.2"
 
 outpath="/home/dbrout/pysmp_standalone/outliertest"
 
