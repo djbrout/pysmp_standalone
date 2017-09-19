@@ -1086,7 +1086,9 @@ class metropolis_hastings():
         return
 
     def float_sn_pos(self):
+
         self.x_pix_offset = self.current_x_offset + np.random.normal(scale=self.psf_shift_std)
+
         self.y_pix_offset = self.current_y_offset + np.random.normal(scale=self.psf_shift_std)
 
         self.garyshiftpsf(x_off=self.x_pix_offset, y_off=self.y_pix_offset)
@@ -1858,7 +1860,7 @@ class metropolis_hastings():
         #          np.array(self.xgalhistory)[::1],label='Galaxy X offset')
         # plt.plot(np.arange(0, len(self.ygalhistory) * self.compressionfactor, self.compressionfactor),
         #          np.array(self.ygalhistory)[::1],label='Galaxy Y offset')
-        plt.legend()
+        #plt.legend()
         plt.xlabel('Step')
         plt.ylabel('Offset (pixels)')
         if self.shiftpsf:
