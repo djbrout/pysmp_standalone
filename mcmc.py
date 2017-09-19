@@ -219,6 +219,8 @@ class metropolis_hastings():
                 self.galmodel_nphistory = np.load(chainsnpz)['galmodel_nphistory']
                 self.xhistory = np.load(chainsnpz)['xhistory'].tolist()
                 self.yhistory = np.load(chainsnpz)['yhistory'].tolist()
+                xoff = self.xhistory[-1]
+                yoff = self.yhistory[-1]
             except:
                 os.remove(chainsnpz)
                 pass
