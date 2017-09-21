@@ -872,8 +872,21 @@ class metropolis_hastings():
 
         if self.shiftpsf:
             # print 'shifting'
+
             self.x_pix_offset = self.current_x_offset + np.random.normal(scale=self.psf_shift_std)
             self.y_pix_offset = self.current_y_offset + np.random.normal(scale=self.psf_shift_std)
+
+            if abs(self.x_pix_offset) > 1.85:
+                keepgoing = True
+                while keepgoing:
+                    self.x_pix_offset = self.current_x_offset + np.random.normal(scale=self.psf_shift_std)
+                    if abs(self.x_pix_offset) < 1.85: keepgoing = False
+
+            if abs(self.y_pix_offset) > 1.85:
+                keepgoing = True
+                while keepgoing:
+                    self.y_pix_offset = self.current_y_offset + np.random.normal(scale=self.psf_shift_std)
+                    if abs(self.y_pix_offset) < 1.85: keepgoing = False
 
             if self.survey == 'PS1':
                 map(self.mapshiftPSF, np.arange(self.Nimage))
@@ -1514,7 +1527,8 @@ class metropolis_hastings():
         #     self.current_ygal_offset = self.ygal_pix_offset
         if self.compressioncounter % self.compressionfactor == 0:
             # print 'len gal history', len(self.galhistory)
-            if not self.dontsavegalaxy:
+            #if not self.dontsavegalaxy:
+            if self.compressioncounter % 1000 == 0:
                 self.galhistory.append(self.kicked_galmodel)
             self.modelvechistory.append(self.kicked_modelvec)
             if self.shiftpsf:
@@ -1550,7 +1564,8 @@ class metropolis_hastings():
     def update_unaccepted_history(self):
         self.compressioncounter += 1
         if self.compressioncounter % self.compressionfactor == 0:
-            if not self.dontsavegalaxy:
+            #if not self.dontsavegalaxy:
+            if self.compressioncounter % 1000 == 0:
                 self.galhistory.append(self.galaxy_model)
             self.modelvechistory.append(self.modelvec)
             if self.shiftpsf:
@@ -1894,7 +1909,7 @@ class metropolis_hastings():
         # try:
         #     a = self.tps
         # except:
-        #     self.tps = -9.
+        #     self.tps = -9.f
         if len(self.xhistory) > 0:
             raoff = np.median(self.xhistory[int(3 * len(self.xhistory) / 4.):])
             decoff = np.median(self.yhistory[int(3 * len(self.yhistory) / 4.):])
@@ -2058,18 +2073,19 @@ class metropolis_hastings():
         #     for i in np.arange(num_iter):
         #         self.xgalnphistory[i, :] = self.xgalnphistory[i]
         #         self.ygalnphistory[i, :] = self.xgalnphistory[i]
-        if not self.dontsavegalaxy:
+        #if not self.dontsavegalaxy:
+        if True:
             self.galmodel_nphistory = np.zeros((num_iter, self.galaxy_model.shape[0], self.galaxy_model.shape[1]))
             self.modelvec_nphistory = np.zeros((num_iter, len(self.modelvec)))
             for i in np.arange(num_iter):
                 self.galmodel_nphistory[i, :, :] = self.galhistory[i]
                 self.modelvec_nphistory[i, :] = self.modelvechistory[i]
-        else:
-            # self.galmodel_nphistory = np.zeros((self.galaxy_model.shape[0], self.galaxy_model.shape[1]))
-            self.galmodel_nphistory = self.kicked_galmodel
-            self.modelvec_nphistory = np.zeros((num_iter, len(self.modelvec)))
-            for i in np.arange(num_iter):
-                self.modelvec_nphistory[i, :] = self.modelvechistory[i]
+        # else:
+        #     # self.galmodel_nphistory = np.zeros((self.galaxy_model.shape[0], self.galaxy_model.shape[1]))
+        #     self.galmodel_nphistory = self.kicked_galmodel
+        #     self.modelvec_nphistory = np.zeros((num_iter, len(self.modelvec)))
+        #     for i in np.arange(num_iter):
+        #         self.modelvec_nphistory[i, :] = self.modelvechistory[i]
 
     # DIAGNOSTICS
     def check_gewekeaaaa(self, zscore_mean_crit=1, zscore_std_crit=1.0):
