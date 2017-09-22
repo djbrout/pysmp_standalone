@@ -128,7 +128,7 @@ if __name__ == "__main__":
             , weights=inp['weights']
             , substamp=inp['substamp']
             , Nimage=inp['Nimage']
-            , maxiter = 120000 #, maxiter=inp['maxiter']
+            , maxiter = 1000000 #, maxiter=inp['maxiter']
             , mask=inp['mask']
             , sky=inp['sky']
             , mjd=inp['mjd']
@@ -146,7 +146,7 @@ if __name__ == "__main__":
             , stop=False
             , skyerr_radius=inp['skyerr_radius']
             , outpath=outpath
-            , compressionfactor=333
+            , compressionfactor=500
             , fix_gal_model=inp['fix_gal_model']
             , pixelate_model=None
             , burnin=inp['burnin']
