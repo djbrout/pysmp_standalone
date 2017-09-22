@@ -666,6 +666,8 @@ class metropolis_hastings():
         for i in range(self.Nimage):
             self.fpsfs.append(np.fft.fft2(self.centered_psfs[i, :, :]))
 
+        self.checkmask()
+
         self.run_d_mc()
         self.makesmp()
 
@@ -1538,6 +1540,11 @@ class metropolis_hastings():
                 #     self.xgalhistory.append(self.current_xgal_offset)
                 #     self.ygalhistory.append(self.current_ygal_offset)
         return
+
+    def checkmask(self):
+        print self.weights.shape
+        print self.data.shape
+        raw_input()
 
     def checkforpreexplosionepochs(self):
         ww = (self.mjd < self.peakmjd) & (self.mjd != 0) & (self.mjdflag == 0)
