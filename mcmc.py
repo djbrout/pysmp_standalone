@@ -1551,6 +1551,7 @@ class metropolis_hastings():
                 if len(ww[ww==0.]) > 20.:
                     self.flags[i] = 0
                     self.modelstd[i] = 0
+                    self.modelvec[i] = 0
                     self.descriptiveflag[i] = 8192
         print '-'*100
         raw_input()
