@@ -1539,8 +1539,8 @@ class metropolis_hastings():
         if self.compressioncounter % self.compressionfactor == 0:
             # print 'len gal history', len(self.galhistory)
             #if not self.dontsavegalaxy:
-            if self.compressioncounter % 1000 == 0:
-                self.galhistory.append(self.kicked_galmodel)
+            # if self.compressioncounter % 1000 == 0:
+            #     self.galhistory.append(self.kicked_galmodel)
             self.modelvechistory.append(self.kicked_modelvec)
             if self.shiftpsf:
                 self.xhistory.append(self.current_x_offset)
@@ -1595,8 +1595,8 @@ class metropolis_hastings():
         self.compressioncounter += 1
         if self.compressioncounter % self.compressionfactor == 0:
             #if not self.dontsavegalaxy:
-            if self.compressioncounter % 1000 == 0:
-                self.galhistory.append(self.galaxy_model)
+            # if self.compressioncounter % 1000 == 0:
+            #     self.galhistory.append(self.galaxy_model)
             self.modelvechistory.append(self.modelvec)
             if self.shiftpsf:
                 self.xhistory.append(self.current_x_offset)
@@ -2105,10 +2105,10 @@ class metropolis_hastings():
         #         self.ygalnphistory[i, :] = self.xgalnphistory[i]
         #if not self.dontsavegalaxy:
         if True:
-            self.galmodel_nphistory = np.zeros((len(self.galhistory), self.galaxy_model.shape[0], self.galaxy_model.shape[1]))
+            #self.galmodel_nphistory = np.zeros((len(self.galhistory), self.galaxy_model.shape[0], self.galaxy_model.shape[1]))
             self.modelvec_nphistory = np.zeros((num_iter, len(self.modelvec)))
-            for i in np.arange(len( self.galhistory)):
-                self.galmodel_nphistory[i, :, :] = self.galhistory[i]
+            #for i in np.arange(len( self.galhistory)):
+            #    self.galmodel_nphistory[i, :, :] = self.galhistory[i]
 
             for i in np.arange(num_iter):
                 #self.galmodel_nphistory[i, :, :] = self.galhistory[i]
