@@ -1548,7 +1548,10 @@ class metropolis_hastings():
             if self.flags[i] == 0:
                 ww = self.weights[i,10:20,10:20].ravel()
                 print self.mjd[i],len(ww[ww==0.])
-
+                if len(ww[ww==0.]) > 20.:
+                    self.flags[i] = 0
+                    self.descriptiveflag[i] = 8192
+        print '-'*100
         raw_input()
 
     def checkforpreexplosionepochs(self):
