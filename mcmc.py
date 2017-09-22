@@ -371,9 +371,7 @@ class metropolis_hastings():
         # try:
         #    self.walltime = float(os.environ['WALLTIME'])
 
-        print self.descriptiveflag
-        print self.flags
-        raw_input()
+
 
         # except:
         self.walltime = 90.
@@ -671,6 +669,10 @@ class metropolis_hastings():
             self.fpsfs.append(np.fft.fft2(self.centered_psfs[i, :, :]))
 
         self.checkmask()
+
+        print self.descriptiveflag
+        print self.flags
+        raw_input()
 
         self.run_d_mc()
         self.makesmp()
