@@ -856,7 +856,7 @@ class metropolis_hastings():
         print 'plotting stamps... this may take a minute...'
         self.dontplotstamps = doplot
         #if doplot:
-        #    self.plotstamps()
+        self.plotstamps()
             # np.savez(self.results_npz, pixel_history = self.pixel_history
             #                        , simulated_stamps = self.simulated_images
             #                        , data_stamps = self.real_data_stamps_trimmed
