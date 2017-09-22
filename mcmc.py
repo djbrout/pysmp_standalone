@@ -238,10 +238,10 @@ class metropolis_hastings():
             print 'counter'*10
 
 
-            # for i in range(self.counter/oldcompressionfactor):
-            #     #if i%compressionfactor == 0:
-            #     if True:
-            #         self.modelvechistory.append(self.modelvec_nphistory[i,:])
+            for i in range(self.counter/oldcompressionfactor):
+                #if i%compressionfactor == 0:
+                if True:
+                    self.modelvechistory.append(self.modelvec_nphistory[i,:])
             #         self.galhistory.append(self.galmodel_nphistory[:,:])
             #self.counter = 0
 
