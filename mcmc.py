@@ -672,7 +672,7 @@ class metropolis_hastings():
 
         #self.checkmask()
 
-        # print self.descriptiveflag
+        print self.descriptiveflag
         # print self.flags-self.mjdflag
         # raw_input()
 
