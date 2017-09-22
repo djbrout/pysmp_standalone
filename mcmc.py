@@ -371,6 +371,8 @@ class metropolis_hastings():
         # try:
         #    self.walltime = float(os.environ['WALLTIME'])
 
+        print self.descriptiveflag
+        raw_input()
 
         # except:
         self.walltime = 90.
