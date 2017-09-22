@@ -6,7 +6,7 @@
 
 #$ -j y
 
-#$ -N outlier
+#$ -N SIM
 
 #$ -R y
 
@@ -23,10 +23,10 @@ source activate condasmp2
 cd /home/dbrout/pysmp_standalone
 
 
-myvar="/home/dbrout/pysmp_standalone/mybadexamplenpz"
+myvar="/home/dbrout/pysmp_standalone/simnpzfilesv2.0"
 
 
-outpath="/home/dbrout/pysmp_standalone/mybadexampleout"
+outpath="/home/dbrout/pysmp_standalone/simoutv2.0"
 
 python mcmc_manager.py --index=$SGE_TASK_ID --npzfolder=$myvar --outpath=$outpath
 # python mcmc_manager.py --index=$(expr $SGE_TASK_ID \* 2 - 2) --npzfolder=$myvar --outpath=$outpath &
