@@ -671,7 +671,7 @@ class metropolis_hastings():
         self.checkmask()
 
         print self.descriptiveflag
-        print self.flags+self.mjdflag
+        print self.flags-self.mjdflag
         raw_input()
 
         self.run_d_mc()
