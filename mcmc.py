@@ -2670,12 +2670,12 @@ class metropolis_hastings():
         fout = open(self.smpfile, 'w')
         print >> fout, '# MJD DPMJD ID_OBS ID_COADD BAND ZPT ZPTERR FLUX FLUXERR GALSHOT FAKEMAG FAKEZPT DIFFIM_FLUX DIFFIM_FLUXERR ' \
                        'XPOS YPOS XOFF YOFF RA DEC CHI2 NDOF ' \
-                       'SMP_FLAG MJD_FLAG DESCRIPTIVE_FLAG SKY SKYERR SKYERRINFLATION RMSADDIN GEWKEDIAG ' \
+                       'SMP_FLAG MJD_FLAG DESCRIPTIVE_FLAG SKY SKYERR SKYERRINFLATION RMSADDIN GEWKEDIAG GAIN ' \
                        'IMAGE_FILE PSF_FILE WEIGHT_FILE ZPTFILE FITGALMODEL_STAMP ' \
                        'IMAGE_STAMP PSF_STAMP WEIGHT_STAMP SIM_STAMP CHISQ_STAMP'
         for i in range(len(modelvec)):
             print >> fout, '%.5f %.5f %i %i %s %.5f %.5f %.5f %.5f %.5f %.5f %.5f %.5f %.5f %.5f %.5f %.5f %.5f %.5f %.5f %.5f %.5f %s %i %i %.5f ' \
-                           '%.5f %.5f %.5f %.5f %s %s %s %s %s %s %s %s %s %s' % (
+                           '%.5f %.5f %.5f %.5f %.5f %s %s %s %s %s %s %s %s %s %s' % (
                 self.mjd[i], float(self.mjd[i]) - self.peakmjd, self.idobs[i],
                 self.idcoadd[i], self.filt,
                 self.fitzpt[i], self.rmsaddin[i],
@@ -2686,7 +2686,7 @@ class metropolis_hastings():
                 chisqs[i], -999, self.smpdictflag[i], self.mjdflag[i],
                 self.descriptiveflag[i],
                 self.sky[i], self.saveskyerr[i], 0,
-                self.rmsaddin[i], 0,
+                self.rmsaddin[i], 0,self.gain[i],
                 self.imfilename[i], self.psffile[i],
                 self.weightfilename[i], self.zptfilename[i],  # NEED TO CORRECT THESE MISSING INDICES!
                                'na',
