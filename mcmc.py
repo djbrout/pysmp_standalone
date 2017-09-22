@@ -222,7 +222,8 @@ class metropolis_hastings():
                 xoff = self.xhistory[-1]
                 yoff = self.yhistory[-1]
             except:
-                os.remove(chainsnpz)
+                print 'could not find chains'
+                #os.remove(chainsnpz)
                 pass
 
             #print self.modelvec - diffim_flux
