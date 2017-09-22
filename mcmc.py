@@ -371,8 +371,8 @@ class metropolis_hastings():
         # try:
         #    self.walltime = float(os.environ['WALLTIME'])
 
-        print self.descriptiveflag
-        raw_input()
+        #print self.descriptiveflag
+        #raw_input()
 
         # except:
         self.walltime = 90.
@@ -1549,13 +1549,14 @@ class metropolis_hastings():
         print self.data.shape
         for i in range(self.Nimage):
             if self.flags[i] == 0:
-                ww = self.weights[i,10:20,10:20].ravel()
-                print self.mjd[i],len(ww[ww==0.])
-                if len(ww[ww==0.]) > 20.:
-                    self.flags[i] = 1
-                    self.modelstd[i] = 0
-                    self.modelvec[i] = 0
-                    self.descriptiveflag[i] = 8192
+                if self.mjdflag[i] == 0:
+                    ww = self.weights[i,10:20,10:20].ravel()
+                    print self.mjd[i],len(ww[ww==0.])
+                    if len(ww[ww==0.]) > 20.:
+                        self.flags[i] = 1
+                        self.modelstd[i] = 0
+                        self.modelvec[i] = 0
+                        self.descriptiveflag[i] = 8192
         print '-'*100
         #return self.flags,self.modelvec,self.modelstd,self.descriptiveflag
 
