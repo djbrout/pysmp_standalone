@@ -486,8 +486,8 @@ class metropolis_hastings():
             self.psfs = psfs
             self.original_psfs = copy(psfs)
             self.weights = weights
-        self.flags, self.modelvec, self.modelstd, self.descriptiveflag = self.checkmask()
-
+        #self.flags, self.modelvec, self.modelstd, self.descriptiveflag = self.checkmask()
+        self.checkmask()
         self.wmask = copy(self.weights)
         self.wmask[self.wmask > -11.] = 1
 
