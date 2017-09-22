@@ -372,6 +372,7 @@ class metropolis_hastings():
         #    self.walltime = float(os.environ['WALLTIME'])
 
         print self.descriptiveflag
+        print self.flags
         raw_input()
 
         # except:
