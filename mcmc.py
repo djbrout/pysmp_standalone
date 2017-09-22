@@ -2077,7 +2077,7 @@ class metropolis_hastings():
         if True:
             self.galmodel_nphistory = np.zeros((len(self.galhistory), self.galaxy_model.shape[0], self.galaxy_model.shape[1]))
             self.modelvec_nphistory = np.zeros((num_iter, len(self.modelvec)))
-            for i in np.arange(len( self.galhistory[i])):
+            for i in np.arange(len( self.galhistory)):
                 self.galmodel_nphistory[i, :, :] = self.galhistory[i]
 
             for i in np.arange(num_iter):
