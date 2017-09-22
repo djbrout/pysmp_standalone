@@ -486,7 +486,7 @@ class metropolis_hastings():
             self.psfs = psfs
             self.original_psfs = copy(psfs)
             self.weights = weights
-        self.checkmask()
+        self.flags, self.modelvec, self.modelstd, self.descriptiveflag = self.checkmask()
 
         self.wmask = copy(self.weights)
         self.wmask[self.wmask > -11.] = 1
@@ -1550,12 +1550,12 @@ class metropolis_hastings():
                 ww = self.weights[i,10:20,10:20].ravel()
                 print self.mjd[i],len(ww[ww==0.])
                 if len(ww[ww==0.]) > 20.:
-                    self.flags[i] = 0
+                    self.flags[i] = 1
                     self.modelstd[i] = 0
                     self.modelvec[i] = 0
                     self.descriptiveflag[i] = 8192
         print '-'*100
-        raw_input()
+        #return self.flags,self.modelvec,self.modelstd,self.descriptiveflag
 
     def checkforpreexplosionepochs(self):
         ww = (self.mjd < self.peakmjd) & (self.mjd != 0) & (self.mjdflag == 0)
