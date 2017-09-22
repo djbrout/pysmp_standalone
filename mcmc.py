@@ -346,6 +346,8 @@ class metropolis_hastings():
         self.smpdictflag = smpdictflag
         self.mjdflag = mjdflag
         self.descriptiveflag = descriptiveflag
+
+        self.descriptiveflag[self.descriptiveflag == 8192] = 65536
         self.rmsaddin = rmsaddin
         self.gewekediag = gewekediag
         self.imfilename = imfilename
@@ -668,11 +670,11 @@ class metropolis_hastings():
         for i in range(self.Nimage):
             self.fpsfs.append(np.fft.fft2(self.centered_psfs[i, :, :]))
 
-        self.checkmask()
+        #self.checkmask()
 
-        print self.descriptiveflag
-        print self.flags-self.mjdflag
-        raw_input()
+        # print self.descriptiveflag
+        # print self.flags-self.mjdflag
+        # raw_input()
 
         self.run_d_mc()
         self.makesmp()
@@ -1551,15 +1553,15 @@ class metropolis_hastings():
         print self.weights.shape
         print self.data.shape
         for i in range(self.Nimage):
-            if self.flags[i] == 0:
-                if self.mjdflag[i] == 0:
-                    ww = self.weights[i,10:20,10:20].ravel()
-                    print self.mjd[i],len(ww[ww==0.])
-                    if len(ww[ww==0.]) > 20.:
-                        self.flags[i] = 1
-                        self.modelstd[i] = 0
-                        self.modelvec[i] = 0
-                        self.descriptiveflag[i] = 8192
+            if self.flags[i] > -1:
+                #if self.mjdflag[i] == 0:
+                ww = self.weights[i,10:20,10:20].ravel()
+                print self.mjd[i],len(ww[ww==0.])
+                if len(ww[ww==0.]) > 20.:
+                    self.flags[i] = 1
+                    self.modelstd[i] = 0
+                    self.modelvec[i] = 0
+                    self.descriptiveflag[i] = 8192
         print '-'*100
         #return self.flags,self.modelvec,self.modelstd,self.descriptiveflag
 
