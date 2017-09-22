@@ -1544,7 +1544,11 @@ class metropolis_hastings():
     def checkmask(self):
         print self.weights.shape
         print self.data.shape
-        raw_input()
+        for i in range(self.Nimage):
+            if self.flags[i] == 0:
+                print self.weights[i,10:20,10:20].ravel()
+
+                raw_input()
 
     def checkforpreexplosionepochs(self):
         ww = (self.mjd < self.peakmjd) & (self.mjd != 0) & (self.mjdflag == 0)
