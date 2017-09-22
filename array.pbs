@@ -6,7 +6,7 @@
 
 #$ -j y
 
-#$ -N SIM
+#$ -N SPEC
 
 #$ -R y
 
