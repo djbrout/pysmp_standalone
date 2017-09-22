@@ -2114,8 +2114,8 @@ class metropolis_hastings():
                 #self.galmodel_nphistory[i, :, :] = self.galhistory[i]
                 self.modelvec_nphistory[i, :] = self.modelvechistory[i]
         # else:
-        #     # self.galmodel_nphistory = np.zeros((self.galaxy_model.shape[0], self.galaxy_model.shape[1]))
-        #     self.galmodel_nphistory = self.kicked_galmodel
+            self.galmodel_nphistory = np.zeros((self.galaxy_model.shape[0], self.galaxy_model.shape[1]))
+            self.galmodel_nphistory = self.kicked_galmodel
         #     self.modelvec_nphistory = np.zeros((num_iter, len(self.modelvec)))
         #     for i in np.arange(num_iter):
         #         self.modelvec_nphistory[i, :] = self.modelvechistory[i]
