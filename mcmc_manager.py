@@ -92,7 +92,7 @@ if __name__ == "__main__":
         redonpzlist = open(redo,'r').readlines()
         #print redonpzlist
         #print index
-        npzfile = redonpzlist[int(index)].strip()+'.mcmcinput.npz'
+        npzfile = redonpzlist[int(index)].strip().replace('_offset','').replace('_SNchains','')+'.mcmcinput.npz'
         print npzfile
         print outpath+'/'+npzfile.split('.')[0]+'.smp'
         #raw_input('waiting')
