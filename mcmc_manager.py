@@ -9,12 +9,12 @@ if __name__ == "__main__":
     outpath = '/home/dbrout/pysmp_standalone/specfitout'
     corioutpath = '/home/dbrout/pysmp_standalone/corispec/'
     npzfile = None
-
+    redo = None
     try:
         args = sys.argv[1:]
         opt, arg = getopt.getopt(
             args, "i",
-            longopts=["index=",'npzfolder=','outpath=','filter=','sn='])
+            longopts=["index=",'npzfolder=','outpath=','filter=','sn=','redo='])
 
     except getopt.GetoptError as err:
         print "No command line arguments"
@@ -33,6 +33,8 @@ if __name__ == "__main__":
             filter = a
         elif o in ['--sn']:
             npzfile = a
+        elif o in ['--redo']:
+            redo = a
 
     import scipy.signal
     import numpy as np
@@ -85,6 +87,10 @@ if __name__ == "__main__":
     else:
         bl = open('badlist.txt','r').readlines()
         npzfile = bl[int(npzfile)].strip().replace('"','').replace(',','')
+
+    if not redo is None:
+        redonpzlist = open(redo,'r').readlines()
+        npzfile = redonpzlist[int(index)].strip()+'.mcmcinput.npz'
     #npzfile = 'des_real_01347120_g.mcmcinput.npz'
     #smprunningfile = outpath+'/'+npzfile.split('.')[0] + '.running'
     #os.system('touch '+smprunningfile)
