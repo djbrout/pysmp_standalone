@@ -91,6 +91,13 @@ if __name__ == "__main__":
     if not redo is None:
         redonpzlist = open(redo,'r').readlines()
         npzfile = redonpzlist[int(index)].strip()+'.mcmcinput.npz'
+        print npzfile
+        print outpath+'/'+npzfile('.')[0]+'.smp'
+        raw_input('waiting')
+        try:
+            os.remove(outpath+'/'+npzfile('.')[0]+'.smp')
+        except:
+            pass
     #npzfile = 'des_real_01347120_g.mcmcinput.npz'
     #smprunningfile = outpath+'/'+npzfile.split('.')[0] + '.running'
     #os.system('touch '+smprunningfile)
