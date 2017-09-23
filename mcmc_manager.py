@@ -92,10 +92,10 @@ if __name__ == "__main__":
         redonpzlist = open(redo,'r').readlines()
         npzfile = redonpzlist[int(index)].strip()+'.mcmcinput.npz'
         print npzfile
-        print outpath+'/'+npzfile('.')[0]+'.smp'
+        print outpath+'/'+npzfile.split('.')[0]+'.smp'
         raw_input('waiting')
         try:
-            os.remove(outpath+'/'+npzfile('.')[0]+'.smp')
+            os.remove(outpath+'/'+npzfile.split('.')[0]+'.smp')
         except:
             pass
     #npzfile = 'des_real_01347120_g.mcmcinput.npz'
