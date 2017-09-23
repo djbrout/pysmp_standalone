@@ -90,12 +90,12 @@ if __name__ == "__main__":
 
     if not redo is None:
         redonpzlist = open(redo,'r').readlines()
-        print redonpzlist
-        print index
+        #print redonpzlist
+        #print index
         npzfile = redonpzlist[int(index)].strip()+'.mcmcinput.npz'
         print npzfile
         print outpath+'/'+npzfile.split('.')[0]+'.smp'
-        raw_input('waiting')
+        #raw_input('waiting')
         try:
             os.remove(outpath+'/'+npzfile.split('.')[0]+'.smp')
         except:
