@@ -90,6 +90,8 @@ if __name__ == "__main__":
 
     if not redo is None:
         redonpzlist = open(redo,'r').readlines()
+        print redonpzlist
+        print index
         npzfile = redonpzlist[int(index)].strip()+'.mcmcinput.npz'
         print npzfile
         print outpath+'/'+npzfile.split('.')[0]+'.smp'
