@@ -6,7 +6,7 @@
 
 #$ -j y
 
-#$ -N SPEC
+#$ -N SIM
 
 #$ -R y
 
@@ -16,17 +16,17 @@
 
 #$ -pe ompi 1
 
-#$ -l h_rt=72:00:00
+#$ -l h_rt=100:00:00
 
 source activate condasmp2
 
 cd /home/dbrout/pysmp_standalone
 
 
-myvar="/home/dbrout/pysmp_standalone/speccrazy"
+myvar="/home/dbrout/pysmp_standalone/simnpzfilesv2.0"
 
 
-outpath="/home/dbrout/pysmp_standalone/speccrazyout"
+outpath="/home/dbrout/pysmp_standalone/simoutv2_0"
 
 python mcmc_manager.py --index=$SGE_TASK_ID --npzfolder=$myvar --outpath=$outpath
 
