@@ -6,7 +6,7 @@
 
 #$ -j y
 
-#$ -N SIM
+#$ -N SPEC
 
 #$ -R y
 
@@ -23,10 +23,10 @@ source activate condasmp2
 cd /home/dbrout/pysmp_standalone
 
 
-myvar="/home/dbrout/pysmp_standalone/simnpzfilesv2.0"
+myvar="/home/dbrout/pysmp_standalone/speccrazy"
 
 
-outpath="/home/dbrout/pysmp_standalone/simoutv2_0"
+outpath="/home/dbrout/pysmp_standalone/speccrazyout"
 
 python mcmc_manager.py --index=$SGE_TASK_ID --npzfolder=$myvar --outpath=$outpath
 
