@@ -23,10 +23,10 @@ source activate condasmp2
 cd /home/dbrout/pysmp_standalone
 
 
-myvar="/home/dbrout/pysmp_standalone/speccrazy"
+myvar="/home/dbrout/pysmp_standalone/speccrazyv2"
 
 
-outpath="/home/dbrout/pysmp_standalone/speccrazyout"
+outpath="/home/dbrout/pysmp_standalone/speccrazyoutv2"
 
 python mcmc_manager.py --index=$SGE_TASK_ID --npzfolder=$myvar --outpath=$outpath
 
