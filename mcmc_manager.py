@@ -132,6 +132,11 @@ if __name__ == "__main__":
         print inp['compressionfactor']
         #raw_input()
 
+        if npzfile.split('.')[0] == 'des_real_01314897_z':
+            psf_shift_std = 0.
+        else:
+            psf_shift_std = .0002
+
         #raw_input('asdf')
         a = mcmc.metropolis_hastings(
             galmodel=inp['galmodel']
@@ -153,7 +158,7 @@ if __name__ == "__main__":
             , usesimerr=inp['usesimerr']
             , flags=inp['smpdictflag']
             , fitflags=inp['fitflags']*0.
-            , psf_shift_std=0.0#0.0002
+            , psf_shift_std=psf_shift_std
             , xoff=0.
             , yoff=0.  # .06
             , shiftpsf=True
