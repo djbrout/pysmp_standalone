@@ -134,6 +134,7 @@ if __name__ == "__main__":
 
         if npzfile.split('.')[0] == 'des_real_01314897_z':
             psf_shift_std = 0.
+            print 'FIXING PSF SHIFT STD '*100
         else:
             psf_shift_std = .0002
 
