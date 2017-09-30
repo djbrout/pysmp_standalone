@@ -123,7 +123,7 @@ if __name__ == "__main__":
         pass
     #if currentlyrunning: sys.exit()
     smpfile = outpath+'/'+npzfile.split('.')[0] + '.smp'
-
+    print npzfile
     if os.path.exists(outpath+'/'+npzfile.split('.')[0] + '.smp'):
         print 'already ran'
     else:
