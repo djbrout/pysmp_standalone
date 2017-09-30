@@ -153,7 +153,7 @@ if __name__ == "__main__":
             , usesimerr=inp['usesimerr']
             , flags=inp['smpdictflag']
             , fitflags=inp['fitflags']*0.
-            , psf_shift_std=0.0002
+            , psf_shift_std=0.0#0.0002
             , xoff=0.
             , yoff=0.  # .06
             , shiftpsf=True
