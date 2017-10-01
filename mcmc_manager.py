@@ -45,7 +45,7 @@ if __name__ == "__main__":
     #import time
 
     index = int(index) - 1
-    print 'index',index,
+    print 'index',index
 
 
     #time.sleep(float(index))
