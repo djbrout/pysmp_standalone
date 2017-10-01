@@ -41,8 +41,8 @@ if __name__ == "__main__":
     #import scipy.signal
     print 'import numpy'
     import numpy as np
-    print 'import time'
-    import time
+    #print 'import time'
+    #import time
 
     index = int(index) - 1
     print 'index',index,
@@ -116,15 +116,15 @@ if __name__ == "__main__":
     chainsnpz = outpath+'/'+npzfile.split('.')[0] + '_chains.npz'
     stdoutfile = outpath+'/'+npzfile.split('.')[0] + '.log'
 
-    currentlyrunning = False
-    try:
-        st = os.stat(stdoutfile)
-        print st.st_mtime - time.time()
-        if st.st_mtime - time.time() > -30.*60.:
-            print 'currently running'
-            currentlyrunning = True
-    except:
-        pass
+    # currentlyrunning = False
+    # try:
+    #     st = os.stat(stdoutfile)
+    #     print st.st_mtime - time.time()
+    #     if st.st_mtime - time.time() > -30.*60.:
+    #         print 'currently running'
+    #         currentlyrunning = True
+    # except:
+    #     pass
     #if currentlyrunning: sys.exit()
     smpfile = outpath+'/'+npzfile.split('.')[0] + '.smp'
     print npzfile
