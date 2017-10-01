@@ -1,3 +1,4 @@
+print 'importing 1'
 import os
 import sys, getopt
 import time
@@ -10,6 +11,7 @@ if __name__ == "__main__":
     corioutpath = '/home/dbrout/pysmp_standalone/corispec/'
     npzfile = None
     redo = None
+    print 'importing2'
     try:
         args = sys.argv[1:]
         opt, arg = getopt.getopt(
