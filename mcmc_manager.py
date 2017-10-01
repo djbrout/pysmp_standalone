@@ -38,8 +38,10 @@ if __name__ == "__main__":
         elif o in ['--redo']:
             redo = a
 
-    import scipy.signal
+    #import scipy.signal
+    print 'import numpy'
     import numpy as np
+    print 'import time'
     import time
 
     index = int(index) - 1
