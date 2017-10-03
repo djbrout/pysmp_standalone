@@ -23,7 +23,7 @@ source activate condasmp2
 cd /home/dbrout/pysmp_standalone
 
 
-myvar="/home/dbrout/pysmp_standalone/simnpzfilesv2.0"
+myvar="/home/dbrout/pysmp_standalone/simnpzfilesv2.0_withoutzband"
 
 
 outpath="/home/dbrout/pysmp_standalone/simoutv2_0"
