@@ -9,6 +9,7 @@ if __name__ == "__main__":
     npzfolder='/home/dbrout/pysmp_standalone/specnpzfiles'
     outpath = '/home/dbrout/pysmp_standalone/specfitout'
     corioutpath = '/home/dbrout/pysmp_standalone/corispec/'
+    asdf
     npzfile = None
     redo = None
     print 'importing2'
