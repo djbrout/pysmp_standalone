@@ -132,8 +132,7 @@ if __name__ == "__main__":
     print npzfile
     if os.path.exists(outpath+'/'+npzfile.split('.')[0] + '.smp'):
         print 'already ran'
-    elif:
-        os.path.exists(outpath + '/lightcurves/' + npzfile.split('.')[0] + '.smp'):
+    elif os.path.exists(outpath + '/lightcurves/' + npzfile.split('.')[0] + '.smp'):
         print 'already ran'
     else:
         import mcmc
