@@ -9,7 +9,7 @@ if __name__ == "__main__":
     npzfolder='/home/dbrout/pysmp_standalone/specnpzfiles'
     outpath = '/home/dbrout/pysmp_standalone/specfitout'
     corioutpath = '/home/dbrout/pysmp_standalone/corispec/'
-    asdf
+    
     npzfile = None
     redo = None
     print 'importing2'
@@ -132,6 +132,9 @@ if __name__ == "__main__":
     print npzfile
     if os.path.exists(outpath+'/'+npzfile.split('.')[0] + '.smp'):
         print 'already ran'
+    elif:
+        os.path.exists(outpath + '/lightcurves/' + npzfile.split('.')[0] + '.smp'):
+        print 'already ran'
     else:
         import mcmc
         print npzfile
@@ -155,7 +158,7 @@ if __name__ == "__main__":
             , weights=inp['weights']
             , substamp=inp['substamp']
             , Nimage=inp['Nimage']
-            , maxiter = 600000 #, maxiter=inp['maxiter']
+            , maxiter = 300000 #, maxiter=inp['maxiter']
             , mask=inp['mask']
             , sky=inp['sky']
             , mjd=inp['mjd']
