@@ -144,7 +144,7 @@ if __name__ == "__main__":
             psf_shift_std = 0.
             print 'FIXING PSF SHIFT STD '*100
         else:
-            psf_shift_std = .0002
+            psf_shift_std = .00025
 
         #raw_input('asdf')
         a = mcmc.metropolis_hastings(
