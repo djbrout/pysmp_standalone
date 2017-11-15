@@ -884,9 +884,12 @@ class metropolis_hastings():
 
         if self.shiftpsf:
             # print 'shifting'
-
-            self.x_pix_offset = self.current_x_offset + np.random.normal(scale=self.psf_shift_std)
-            self.y_pix_offset = self.current_y_offset + np.random.normal(scale=self.psf_shift_std)
+            if self.psf_shift_std >0:
+                self.x_pix_offset = self.current_x_offset + np.random.normal(scale=self.psf_shift_std)
+                self.y_pix_offset = self.current_y_offset + np.random.normal(scale=self.psf_shift_std)
+            else:
+                self.x_pix_offset = 0.
+                self.y_pix_offset - 0.
 
             if abs(self.x_pix_offset) > 1.85:
                 keepgoing = True
