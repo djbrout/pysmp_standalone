@@ -1,0 +1,43 @@
+#$ -S /bin/bash
+
+#$ -V
+
+#$ -cwd
+
+#$ -j y
+
+#$ -N SPEC
+
+#$ -R y
+
+#$ -l des
+
+#$ -o /home/dbrout/pysmp_standalone/output/
+
+#$ -pe ompi 1
+
+#$ -l h_rt=100:00:00
+
+source activate condasmp2
+
+cd /home/dbrout/pysmp_standalone
+
+
+myvar="/data3/scratch/dessn_djbrout/specv3npzfiles/"
+
+
+outpath="/data3/scratch/dessn_djbrout/specv3output/"
+
+python mcmc_manager.py --index=$SGE_TASK_ID --npzfolder=$myvar --outpath=$outpath --redo=redospecv3.txt
+
+# python mcmc_manager.py --index=$(expr $SGE_TASK_ID \* 2 - 2) --npzfolder=$myvar --outpath=$outpath &
+# python mcmc_manager.py --index=$(expr $SGE_TASK_ID \* 2 - 1) --npzfolder=$myvar --outpath=$outpath &
+# python mcmc_manager.py --index=$(expr $SGE_TASK_ID \* 4 - 1) --npzfolder=$myvar --outpath=$outpath >> /home/dbrout/pysmp_standalone/output/log.log &
+
+
+
+wait
+
+
+
+

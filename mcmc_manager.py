@@ -140,7 +140,7 @@ if __name__ == "__main__":
         print inp['compressionfactor']
         #raw_input()
 
-        if npzfile.split('.')[0] == 'des_real_01314897_z':
+        if (npzfile.split('.')[0] == 'des_real_01314897_z') | (npzfile.split('.')[0] == 'des_real_01262715_z'):
             psf_shift_std = 0.
             print 'FIXING PSF SHIFT STD '*100
         else:
@@ -157,11 +157,11 @@ if __name__ == "__main__":
             , weights=inp['weights']
             , substamp=inp['substamp']
             , Nimage=inp['Nimage']
-            , maxiter = 500000 #, maxiter=inp['maxiter']
+            , maxiter = 2000000 #, maxiter=inp['maxiter']
             , mask=inp['mask']
             , sky=inp['sky']
             , mjd=inp['mjd']
-            , gewekenum= 5000 #, gewekenum=inp['gewekenum']
+            , gewekenum= 50000000 #, gewekenum=inp['gewekenum']
             , skyerr=inp['aperskyerr']
             , useskyerr=inp['useskyerr']
             , usesimerr=inp['usesimerr']
