@@ -1115,11 +1115,12 @@ class metropolis_hastings():
 
     def float_sn_pos(self):
 
-        self.x_pix_offset = self.current_x_offset + np.random.normal(scale=self.psf_shift_std)
+        if self.psf_shift_std >0.:
+            self.x_pix_offset = self.current_x_offset + np.random.normal(scale=self.psf_shift_std)
 
-        self.y_pix_offset = self.current_y_offset + np.random.normal(scale=self.psf_shift_std)
+            self.y_pix_offset = self.current_y_offset + np.random.normal(scale=self.psf_shift_std)
 
-        self.garyshiftpsf(x_off=self.x_pix_offset, y_off=self.y_pix_offset)
+            self.garyshiftpsf(x_off=self.x_pix_offset, y_off=self.y_pix_offset)
 
         # self.shiftPSF(x_off=self.x_pix_offset,y_off=self.y_pix_offset)
 
