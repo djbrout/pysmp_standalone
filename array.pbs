@@ -23,7 +23,7 @@ source activate condasmp2
 cd /home/dbrout/pysmp_standalone
 
 
-myvar="/data3/scratch/dessn_djbrout"
+myvar="/data3/scratch/dessn_djbrout/fakev2npzfiles"
 
 
 outpath="/home/dbrout/pysmp_standalone/simoutv2_0"
