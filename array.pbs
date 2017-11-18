@@ -26,9 +26,9 @@ cd /home/dbrout/pysmp_standalone
 myvar="/data3/scratch/dessn_djbrout/fakev2npzfiles"
 
 
-outpath="/home/dbrout/pysmp_standalone/simoutv2_0"
+outpath="/data3/scratch/dessn_djbrout/fakev2out/"
 
-python mcmc_manager.py --index=$SGE_TASK_ID --npzfolder=$myvar --outpath=$outpath
+python mcmc_manager.py --index=$SGE_TASK_ID --npzfolder=$myvar --outpath=$outpath --redo=missingsimv2.1.txt
 
 # python mcmc_manager.py --index=$(expr $SGE_TASK_ID \* 2 - 2) --npzfolder=$myvar --outpath=$outpath &
 # python mcmc_manager.py --index=$(expr $SGE_TASK_ID \* 2 - 1) --npzfolder=$myvar --outpath=$outpath &
