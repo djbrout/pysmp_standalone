@@ -206,6 +206,8 @@ class metropolis_hastings():
         # self.modelvec = modelvec
         self.modelvec = np.asarray(10 ** (.4 * (31. - 27.5)) * diffim_flux)
         self.chainsnpz = chainsnpz
+        self.local_galchain = []
+
         # print 'before',self.modelvec
         if os.path.exists(chainsnpz):
             # raw_input()
@@ -221,6 +223,7 @@ class metropolis_hastings():
                 self.yhistory = np.load(chainsnpz)['yhistory'].tolist()
                 xoff = self.xhistory[-1]
                 yoff = self.yhistory[-1]
+                #self.local_galchain =
             except:
                 print 'could not find chains'
                 #os.remove(chainsnpz)
@@ -738,7 +741,8 @@ class metropolis_hastings():
 
             if (self.counter % 1000) == 0:
                 self.accepted_int = 0
-
+                print 'LOCAL GALAXY MEAN', np.mean(self.galmodel[14:17,14:17])
+                self.local_galchain.append(np.mean(self.galmodel[14:17,14:17]))
                 print 'Acceptance Rate:', self.accepted_history
                 if self.counter > 5000:
                     if float(self.accepted_history) < .25:
@@ -1960,7 +1964,7 @@ class metropolis_hastings():
                              redchisqhist=self.redchisq, xhistory=np.array(self.xhistory),
                              yhistory=np.array(self.yhistory),moved_psfs=self.kicked_psfs,galshot=self.galshot,
                              chisqvec=self.csv, raoff=raoff, decoff=decoff, mjd=self.mjd, fakemag=self.fakemag,
-                             fitzpt=self.fitzpt,
+                             fitzpt=self.fitzpt,local_galchain=self.local_galchain,
                              fakezpt=self.fakezpt, datafilenames=self.datafilenames, sky=self.sky, skyerr=self.skyerr,
                              x=self.x, y=self.y, xoff=self.nightlyoffx, yoff=self.nightlyoffy)
         gc.collect()
