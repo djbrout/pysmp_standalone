@@ -440,9 +440,9 @@ class metropolis_hastings():
                 print 'nan'
         # raw_input()
 
-        stdoutfile = self.chainsnpz.split('.')[0]+'.log'
-        if not stdoutfile is None:
-          sys.stdout = open(stdoutfile, 'w',buffering=1)
+        # stdoutfile = self.chainsnpz.split('.')[0]+'.log'
+        # if not stdoutfile is None:
+        #   sys.stdout = open(stdoutfile, 'w',buffering=1)
 
         print 'sigmazpt', self.sigmazpt.shape
 
