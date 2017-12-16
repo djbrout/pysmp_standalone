@@ -738,10 +738,13 @@ class metropolis_hastings():
                     self.z_scores_say_keep_going = self.check_geweke()
 
 
+            if (self.counter % 100) == 0:
+                self.local_galchain.append(np.mean(self.galaxy_model[14:17,14:17]))
+
 
             if (self.counter % 1000) == 0:
                 self.accepted_int = 0
-                self.local_galchain.append(np.mean(self.galaxy_model[14:17,14:17]))
+                #self.local_galchain.append(np.mean(self.galaxy_model[14:17,14:17]))
                 print 'Acceptance Rate:', self.accepted_history
                 if self.counter > 5000:
                     if float(self.accepted_history) < .25:
