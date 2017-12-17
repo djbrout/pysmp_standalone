@@ -127,7 +127,7 @@ def getgeweke(chain,burnin=.3):
         # gew = float(gew)
     except:
         gw = np.nan
-    return gw
+    return gw[1]
 
 
 
