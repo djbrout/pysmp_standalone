@@ -143,7 +143,8 @@ plt.figure(figsize=(12,9))
 for j,chain in enumerate(allchains):
     gvec = []
     for i in range(len(chain)):
-        print i,
+        print i,getgeweke(chain[:i])
+        raw_input()
         gvec.append(getgeweke(chain[:i]))
 
     print j,'of',len(allchains)
