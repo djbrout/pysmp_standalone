@@ -149,7 +149,7 @@ for j,chain in enumerate(allchains):
         gvec.append(getgeweke(chain[:i]))
 
     print j,'of',len(allchains)
-    plt.plot(np.arange(len(chain))*100.,gvec
+    plt.plot(np.arange(len(chain))*100.,gvec)
 
 plt.savefig('convergence.png')
 
