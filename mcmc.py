@@ -207,6 +207,8 @@ class metropolis_hastings():
         self.modelvec = np.asarray(10 ** (.4 * (31. - 27.5)) * diffim_flux)
         self.chainsnpz = chainsnpz
         self.local_galchain = []
+        self.local_smoothgalchain = []
+        self.snpix_smoothgalchain = []
 
         # print 'before',self.modelvec
         if os.path.exists(chainsnpz):
@@ -395,7 +397,7 @@ class metropolis_hastings():
                 fwhms.append(999)
                 # print 'nan'
         self.fwhms = np.asarray(fwhms)
-
+        self.bestfwhm = np.argmin(self.fwhms)
         numfluxepochs = max([len(self.modelvec[self.modelstd > 0]),50])
         #print numfluxepochs
         if len(self.flags[self.modelstd == 0]) > len(self.flags[self.modelstd > 0]):
@@ -739,7 +741,9 @@ class metropolis_hastings():
 
 
             if (self.counter % 100) == 0:
-                self.local_galchain.append(np.mean(self.galaxy_model[14:17,14:17]))
+                galaxy_conv = scipy.signal.fftconvolve(self.galaxy_model, self.psfs[self.bestfwhm], mode='same')
+                self.local_smoothgalchain.append(np.mean(galaxy_conv[14:17,14:17]))
+                self.snpix_smoothgalchain.append(np.mean(galaxy_conv[15:16,15:16]))
 
 
             if (self.counter % 1000) == 0:
@@ -1967,7 +1971,8 @@ class metropolis_hastings():
                              redchisqhist=self.redchisq, xhistory=np.array(self.xhistory),
                              yhistory=np.array(self.yhistory),moved_psfs=self.kicked_psfs,galshot=self.galshot,
                              chisqvec=self.csv, raoff=raoff, decoff=decoff, mjd=self.mjd, fakemag=self.fakemag,
-                             fitzpt=self.fitzpt,local_galchain=self.local_galchain,
+                             fitzpt=self.fitzpt,local_smoothgalchain=self.local_smoothgalchain,
+                             snpix_smoothgalchain=self.snpix_smoothgalchain,
                              fakezpt=self.fakezpt, datafilenames=self.datafilenames, sky=self.sky, skyerr=self.skyerr,
                              x=self.x, y=self.y, xoff=self.nightlyoffx, yoff=self.nightlyoffy)
         gc.collect()
