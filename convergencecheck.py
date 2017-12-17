@@ -125,7 +125,7 @@ def getgeweke(chain,burnin=.4):
         for gg in gw:
             gew.append(gg[1])
         gew = np.array(gew)
-        gew = np.mean(gew)
+        gew = np.median(gew)
     except:
         gew = np.nan
     return gew
