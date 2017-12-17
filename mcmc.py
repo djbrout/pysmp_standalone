@@ -781,7 +781,7 @@ class metropolis_hastings():
                 # self.tps = tps
                 print 'Time per step:', tps
                 print 'PSF Position:', self.current_x_offset, self.current_y_offset
-                print 'LOCAL GALAXY MEAN', np.mean(self.galaxy_model[14:17,14:17])
+                print 'LOCAL GALAXY MEAN',np.mean(galaxy_conv[14:17,14:17])
                 print self.filt
                 #open('output/log.log', 'a').write(str(self.filt) + ' ' + str(self.counter) + ' TPS: ' + str(tps) + '\n')
                 # print 'mjdoff: ',self.mjdoff
