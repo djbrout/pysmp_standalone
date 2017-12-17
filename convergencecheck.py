@@ -119,12 +119,15 @@ def check_geweke(chain,burnin=.3):
 
 def getgeweke(chain,burnin=.3):
     start_iter = int(round(len(chain) * (burnin)))
-    gw = g.geweke(chain[start_iter:], intervals=1, first=.4, last=.5)
-    gew = []
-    for gg in gw:
-        gew.append(gg[1])
-    gew = np.array(gew)
-    return gew
+    try:
+        gw = g.geweke(chain[start_iter:], intervals=1, first=.4, last=.5)
+        # gew = []
+        # for gg in gw:
+        #     gew.append(gg[1])
+        # gew = float(gew)
+    except:
+        gw = np.nan
+    return gw
 
 
 
@@ -140,7 +143,8 @@ plt.figure(figsize=(12,9))
 for j,chain in enumerate(allchains):
     gvec = []
     for i in range(len(chain)):
-        gvec.append(getgeweke(chain))
+
+        gvec.append(getgeweke(chain[:i]))
     print j,'of',len(allchains)
     plt.plot(np.arange(len(chain))*100.,gvec)
 plt.savefig('convergence.png')
