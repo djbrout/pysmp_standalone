@@ -144,8 +144,8 @@ for j,chain in enumerate(allchains):
     gvec = []
 
     for i in range(len(chain)):
-        print i,getgeweke(chain[:i])
-        raw_input()
+        #print i,getgeweke(chain[:i])
+        #raw_input()
         gvec.append(getgeweke(chain[:i]))
 
     print j,'of',len(allchains)
@@ -153,7 +153,7 @@ for j,chain in enumerate(allchains):
 
 plt.savefig('convergence.png')
 
-
+os.system('source ~/.bash_profile; upload convergence.png')
 
 
 
