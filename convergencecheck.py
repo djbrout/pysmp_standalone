@@ -137,11 +137,13 @@ for f in os.listdir(outdir)[:40]:
         allchains.append(np.load(outdir+f)['local_galchain'])
 
 plt.figure(figsize=(12,9))
-for chain in allchains:
-    print getgeweke(chain)
-    raw_input()
-    #plt.plot(np.arange(len(chain))*100.,chain)
-
+for j,chain in enumerate(allchains):
+    gvec = []
+    for i in len(chain):
+        gvec.append(getgeweke(chain))
+    print j,'of',len(allchains)
+    plt.plot(np.arange(len(chain))*100.,gvec)
+plt.savefig('convergence.png')
 
 
 
