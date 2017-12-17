@@ -139,7 +139,7 @@ for f in os.listdir(outdir)[:40]:
 plt.figure(figsize=(12,9))
 for j,chain in enumerate(allchains):
     gvec = []
-    for i in len(chain):
+    for i in range(len(chain)):
         gvec.append(getgeweke(chain))
     print j,'of',len(allchains)
     plt.plot(np.arange(len(chain))*100.,gvec)
