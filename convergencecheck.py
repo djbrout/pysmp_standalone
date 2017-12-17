@@ -119,12 +119,21 @@ def check_geweke(chain,burnin=.3):
 
 def getgeweke(chain,burnin=.5):
     start_iter = int(round(len(chain) * (burnin)))
+    stop_iter= int(round(len(chain[start_iter:])*.1))
+    start_last = int(round(len(chain[start_iter:])*.5))
     try:
-        gw = g.geweke(chain[start_iter:], intervals=1, first=.1, last=.5)
-        gew = []
-        for gg in gw:
-            gew.append(gg[1])
-        gew = np.array(gew)
+        #gw = g.geweke(chain[start_iter:], intervals=1, first=.1, last=.5)
+        s1 = np.nanstd(chain[start_iter:][:stop_iter])
+        m1 = np.nanmean(chain[start_iter:][:stop_iter])
+        s2 =  np.nanstd(chain[start_iter:][start_last:])
+        m2 = np.nanmean(chain[start_iter:][start_last:])
+
+        gew = m2-m1/(s1**2+s2**2)**.5
+
+        # gew = []
+        # for gg in gw:
+        #     gew.append(gg[1])
+        # gew = np.array(gew)
         gew = np.mean(gew)
     except:
         gew = np.nan
