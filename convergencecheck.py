@@ -149,6 +149,15 @@ for f in os.listdir(outdir)[:40]:
         print f
         allchains.append(np.array(np.load(outdir+f)['local_galchain']))
 
+
+plt.clf()
+plt.figure(figsize=(12,9))
+for j,chain in enumerate(allchains):
+    plt.plot(np.arange(len(chain))*100,chain)
+plt.savefig('chains.png')
+
+
+plt.clf()
 plt.figure(figsize=(12,9))
 for j,chain in enumerate(allchains):
     gvec = []
