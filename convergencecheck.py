@@ -120,14 +120,14 @@ def check_geweke(chain,burnin=.3):
 def getgeweke(chain,burnin=.3):
     start_iter = int(round(len(chain) * (burnin)))
     try:
-        gw = g.geweke(chain[start_iter:], intervals=1, first=.4, last=.5)
+        gw = g.geweke(chain[start_iter:], intervals=1, first=.4, last=.5)[1]
         # gew = []
         # for gg in gw:
         #     gew.append(gg[1])
         # gew = float(gew)
     except:
         gw = np.nan
-    return gw[1]
+    return gw
 
 
 
