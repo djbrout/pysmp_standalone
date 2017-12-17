@@ -128,7 +128,7 @@ outdir = '/project/projectdirs/dessn/dbrout/simv3.0/convergencetest/'
 
 allchains = []
 for f in os.listdir(outdir)[:40]:
-    if '_chains.npz':
+    if '_chains.npz' in f:
         print f
         allchains.append(np.load(outdir+f)['local_galchain'])
 
