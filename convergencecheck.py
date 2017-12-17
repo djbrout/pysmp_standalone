@@ -119,8 +119,12 @@ def check_geweke(chain,burnin=.3):
 
 def getgeweke(chain,burnin=.3):
     start_iter = int(round(len(chain) * (burnin)))
-    gw = g.geweke(chain[start_iter:], intervals=2, first=.4, last=.5)
-    return gw
+    gw = g.geweke(chain[start_iter:], intervals=1, first=.4, last=.5)
+    gew = []
+    for gg in gw:
+        gew.append(gg[1])
+    gew = np.array(gew)
+    return gew
 
 
 
