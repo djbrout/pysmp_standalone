@@ -146,6 +146,8 @@ if __name__ == "__main__":
         else:
             psf_shift_std = .00025
 
+        #CONVERT this to a list file
+
         #raw_input('asdf')
         a = mcmc.metropolis_hastings(
             galmodel=inp['galmodel']

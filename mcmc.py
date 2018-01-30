@@ -225,6 +225,8 @@ class metropolis_hastings():
                 self.yhistory = np.load(chainsnpz)['yhistory'].tolist()
                 xoff = self.xhistory[-1]
                 yoff = self.yhistory[-1]
+                nightlyoffx = xoff
+                nightlyoffy = yoff
                 #self.local_galchain =
             except:
                 print 'could not find chains'
