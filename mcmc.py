@@ -747,7 +747,7 @@ class metropolis_hastings():
                 self.local_smoothgalchain.append(np.mean(galaxy_conv[14:17,14:17]))
                 self.snpix_smoothgalchain.append(np.mean(galaxy_conv[15:16,15:16]))
 
-            if (self.counter % 250) == 0:
+            if (self.counter % 500) == 0:
                 self.savechains()
 
 
