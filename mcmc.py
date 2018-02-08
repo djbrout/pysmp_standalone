@@ -805,7 +805,7 @@ class metropolis_hastings():
 
                 if (self.counter % 5000) == 0:
                     self.plotchains()
-                if (self.counter % 1000) == 0:
+                if (self.counter % 500) == 0:
                     self.savechains()
                     #self.plotstamps()
                 # sys.exit()
