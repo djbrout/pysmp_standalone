@@ -1946,7 +1946,7 @@ class metropolis_hastings():
         plt.close(1)
 
     def savechains(self):
-
+        self.model_params()
 
         self.check_geweke()
         gc.collect()
