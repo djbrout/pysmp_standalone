@@ -1983,7 +1983,7 @@ class metropolis_hastings():
         gc.collect()
 
     def get_galshot(self):
-        galshot = copy(self.modelvec_uncertainty)*0.
+        galshot = copy(self.modelvec)*0.
         for i in range(self.Nimage):
             galaxy_conv = np.fft.ifft2(self.fpsfs[i] * self.fgal).real
             if self.modelvec[i] != 0.:
