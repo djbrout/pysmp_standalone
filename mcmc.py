@@ -671,8 +671,8 @@ class metropolis_hastings():
         self.current_xgal_offset = np.zeros(self.Nimage)
         self.current_ygal_offset = np.zeros(self.Nimage)
 
-        self.xgal_pix_offset = self.nightlyoffx
-        self.ygal_pix_offset = self.nightlyoffy
+        self.xgal_pix_offset = np.zeros(self.Nimage) + self.nightlyoffx
+        self.ygal_pix_offset = np.zeros(self.Nimage) + self.nightlyoffy
 
         self.fpsfs = []
 
