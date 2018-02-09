@@ -63,7 +63,7 @@ import matplotlib.mlab as mlab
 import math
 import build_psfex
 import scipy.stats
-import geweke as g
+#import geweke as g
 # import pymc
 # import rdpsf
 import sys
