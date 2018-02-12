@@ -806,7 +806,7 @@ class metropolis_hastings():
                         # print 'fit galaxy registration', self.xgal_pix_offset[10:20]
                         # print 'fitting position:', self.x_pix_offset, self.y_pix_offset
 
-                if (self.counter % 5000) == 0:
+                if (self.counter % 50000) == 0:
                     self.plotchains()
                     self.savechains()
                     #self.plotstamps()
