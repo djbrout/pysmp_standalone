@@ -103,10 +103,10 @@ if __name__ == "__main__":
         print npzfile
         print outpath+'/'+npzfile.split('.')[0]+'.smp'
         #raw_input('waiting')
-        try:
-            os.remove(outpath+'/'+npzfile.split('.')[0]+'.smp')
-        except:
-            pass
+        #try:
+        #    os.remove(outpath+'/'+npzfile.split('.')[0]+'.smp')
+        #except:
+        #    pass
     #npzfile = 'des_real_01347120_g.mcmcinput.npz'
     #smprunningfile = outpath+'/'+npzfile.split('.')[0] + '.running'
     #os.system('touch '+smprunningfile)
