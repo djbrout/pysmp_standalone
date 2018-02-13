@@ -242,6 +242,10 @@ class metropolis_hastings():
                 print 'could not find chains'
                 #os.remove(chainsnpz)
                 self.counter = 0
+                self.modelvechistory = []
+                self.galhistory = []
+                nightlyoffx = xoff
+                nightlyoffy = yoff
                 pass
 
 
