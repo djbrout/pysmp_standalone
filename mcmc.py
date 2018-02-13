@@ -477,7 +477,7 @@ class metropolis_hastings():
                     self.impsfs.append(0)
                     self.hpsfs.append(0)
 
-        if self.isfermigrid and self.isworker:
+        if self.isfermigrid:
             # print 'we have correct tempwriter'
             # raw_input()
             self.tmpwriter = dt.tmpwriter(tmp_subscript='snfit_', useifdh=True)
@@ -1683,7 +1683,7 @@ class metropolis_hastings():
     def plotstamps(self):
         from scipy.stats import chi2
 
-        if self.isfermigrid and self.isworker:
+        if self.isfermigrid:
             pdf_pages = PdfPages('stamps.pdf')
         else:
             pdf_pages = PdfPages(self.lcout + '_stamps.pdf')
@@ -1834,7 +1834,7 @@ class metropolis_hastings():
         pdf_pages.close()
         plt.close()
         #gc.collect()
-        if self.isfermigrid and self.isworker:
+        if self.isfermigrid:
             print os.popen('ifdh rm ' + self.lcout + '_stamps.pdf').read()
             print os.popen('ifdh cp --force=xrootd stamps.pdf ' + self.lcout + '_stamps.pdf').read()
         print 'Saved', self.lcout + '_stamps.pdf'
@@ -2001,7 +2001,7 @@ class metropolis_hastings():
         return galshot
 
     def savefig(self, fname):
-        if self.isfermigrid and self.isworker:
+        if self.isfermigrid:
             plt.savefig('tmp.png')
             os.popen('ifdh rm ' + fname).read()
             print os.popen('ifdh cp --force=xrootd tmp.png ' + fname).read()
