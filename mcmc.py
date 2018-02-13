@@ -212,8 +212,7 @@ class metropolis_hastings():
         # print 'before',self.modelvec
         if os.path.exists(chainsnpz):
             # raw_input()
-            #try:
-            if True:
+            try:
                 a = np.load(chainsnpz)['modelvec']
                 self.modelvechistory = []
                 self.galhistory = []
@@ -239,10 +238,11 @@ class metropolis_hastings():
                     # if i%compressionfactor == 0:
                     if True:
                         self.modelvechistory.append(self.modelvec_nphistory[i, :])
-            #except:
-            #    print 'could not find chains'
-            #    #os.remove(chainsnpz)
-            #    pass
+            except:
+                print 'could not find chains'
+                #os.remove(chainsnpz)
+                self.counter = 0
+                pass
 
 
 
