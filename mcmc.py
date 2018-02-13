@@ -228,27 +228,24 @@ class metropolis_hastings():
                 nightlyoffx = xoff
                 nightlyoffy = yoff
                 #self.local_galchain =
+                oldcompressionfactor = compressionfactor
+                self.counter = self.modelvec_nphistory.shape[0] * oldcompressionfactor
+
+                print 'counter' * 10
+                print self.counter
+                print 'counter' * 10
+
+                for i in range(self.counter / oldcompressionfactor):
+                    # if i%compressionfactor == 0:
+                    if True:
+                        self.modelvechistory.append(self.modelvec_nphistory[i, :])
             except:
                 print 'could not find chains'
                 #os.remove(chainsnpz)
                 pass
 
-            #print self.modelvec - diffim_flux
-            #raw_input()
-            #print 'compressionfactor'*100
-            #print compressionfactor
-            oldcompressionfactor = compressionfactor
-            self.counter = self.modelvec_nphistory.shape[0]*oldcompressionfactor
-
-            print 'counter'*10
-            print self.counter
-            print 'counter'*10
 
 
-            for i in range(self.counter/oldcompressionfactor):
-                #if i%compressionfactor == 0:
-                if True:
-                    self.modelvechistory.append(self.modelvec_nphistory[i,:])
             #         self.galhistory.append(self.galmodel_nphistory[:,:])
             #self.counter = 0
 
