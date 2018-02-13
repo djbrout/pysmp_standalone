@@ -9,7 +9,7 @@ if __name__ == "__main__":
     npzfolder='/home/dbrout/pysmp_standalone/specnpzfiles'
     outpath = '/home/dbrout/pysmp_standalone/specfitout'
     corioutpath = '/home/dbrout/pysmp_standalone/corispec/'
-    
+    isfermigrid = False
     npzfile = None
     redo = None
     print 'importing2'
@@ -17,7 +17,7 @@ if __name__ == "__main__":
         args = sys.argv[1:]
         opt, arg = getopt.getopt(
             args, "i",
-            longopts=["index=",'npzfolder=','outpath=','filter=','sn=','redo='])
+            longopts=["index=",'npzfolder=','outpath=','filter=','sn=','redo=','fermigrid'])
 
     except getopt.GetoptError as err:
         print "No command line arguments"
@@ -38,6 +38,8 @@ if __name__ == "__main__":
             npzfile = a
         elif o in ['--redo']:
             redo = a
+        elif o in ['--fermigrid']:
+            isfermigrid = True
 
     #import scipy.signal
     print 'import numpy'
@@ -187,7 +189,7 @@ if __name__ == "__main__":
             #, mjdoff=inp['mjdoff']
             , dontsavegalaxy=True
             , log=None
-            , isfermigrid=False
+            , isfermigrid=isfermigrid
             , isworker=False
             , x=inp['x']
             , y=inp['y']
