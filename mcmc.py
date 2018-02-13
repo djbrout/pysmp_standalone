@@ -478,8 +478,9 @@ class metropolis_hastings():
                     self.hpsfs.append(0)
 
         if self.isfermigrid:
-            # print 'we have correct tempwriter'
-            # raw_input()
+            print 'we have correct tempwriter'
+            raw_input()
+
             self.tmpwriter = dt.tmpwriter(tmp_subscript='snfit_', useifdh=True)
         else:
             self.tmpwriter = dt.tmpwriter(tmp_subscript=self.chainsnpz.split('/')[-1].split('.')[0], tempdir='tmp/')
