@@ -376,6 +376,9 @@ class tmpwriter():
             else:
                 os.system('mv ' + tempfile + ' ' + filename)
 
+            self.useifdh = True
+            self.usedccp = False
+
         print 'saved', filename
 
     def appendfile(self,texts,filename):
@@ -418,6 +421,8 @@ class tmpwriter():
         if not self.useifdh:
             np.savez(filename,**kwargs)
         else:
+            self.usedccp = False
+            self.useifdh = True
             tempfile  = os.path.join(self.tmpdir, 'tmp_' + self.tmp_index + '.npz')
             if os.path.isfile(tempfile):
                 os.remove(tempfile)
