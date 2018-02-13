@@ -91,9 +91,9 @@ if __name__ == "__main__":
     if npzfile is None:
         npzfile = npzlist[int(index)]
     else:
-        bl = open('badlist.txt','r').readlines()
-        npzfile = bl[int(npzfile)].strip().replace('"','').replace(',','')
-
+        #bl = open('badlist.txt','r').readlines()
+        #npzfile = bl[int(npzfile)].strip().replace('"','').replace(',','')
+        pass
     if not redo is None:
         redonpzlist = open(redo,'r').readlines()
         #print redonpzlist
