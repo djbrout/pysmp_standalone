@@ -479,7 +479,7 @@ class metropolis_hastings():
 
         if self.isfermigrid:
             print 'we have correct tempwriter'
-            raw_input()
+            #raw_input()
 
             self.tmpwriter = dt.tmpwriter(tmp_subscript='snfit_', useifdh=True)
         else:
