@@ -244,6 +244,8 @@ class metropolis_hastings():
                 self.counter = 0
                 self.modelvechistory = []
                 self.galhistory = []
+                self.xhistory = []
+                self.yhistory = []
                 nightlyoffx = xoff
                 nightlyoffy = yoff
                 pass
