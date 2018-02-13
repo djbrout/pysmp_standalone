@@ -755,8 +755,9 @@ class metropolis_hastings():
             if (self.counter % 1000) == 0:
                 if self.isfermigrid:
                     #if (self.counter % 50000):
-                    pass
-                    #    self.savechains()
+                    #pass
+                    self.savechains()
+                    self.plotchains()
                 else:
                     self.savechains()
 
