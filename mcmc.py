@@ -209,7 +209,7 @@ class metropolis_hastings():
         self.local_galchain = []
         self.local_smoothgalchain = []
         self.snpix_smoothgalchain = []
-
+        self.counter=0
         # print 'before',self.modelvec
         if os.path.exists(chainsnpz):
             # raw_input()
