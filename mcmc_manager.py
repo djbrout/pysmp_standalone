@@ -130,11 +130,25 @@ if __name__ == "__main__":
 
     inpf = npzfolder+'/'+npzfile
 
+    if not isfermigrid:
+        if not os.path.exists(outpath+'/smpfiles/'):
+            os.mkdir(outpath+'/smpfiles/')
+        if not os.path.exists(outpath + '/npz/'):
+            os.mkdir(outpath + '/npz/')
+        if not os.path.exists(outpath + '/logs/'):
+            os.mkdir(outpath + '/logs/')
+        if not os.path.exists(outpath + '/offsetchains/'):
+            os.mkdir(outpath + '/offsetchains/')
+        if not os.path.exists(outpath + '/snchains/'):
+            os.mkdir(outpath + '/snchains/')
 
-    #outpath = 'fitout/'
-    lcout = outpath+'/'+npzfile.split('.')[0]
-    chainsnpz = outpath+'/'+npzfile.split('.')[0] + '_chains.npz'
-    stdoutfile = outpath+'/'+npzfile.split('.')[0] + '.log'
+    lcout = outpath+'/smpfiles/'+npzfile.split('.')[0]+'.smp'
+    chainsnpz = outpath+'/npz/'+npzfile.split('.')[0] + '_chains.npz'
+    chainsnpzout = outpath+'/npz/'+npzfile.split('.')[0] + '_chains.npz'
+
+    stdoutfile = outpath+'/logs/'+npzfile.split('.')[0] + '.log'
+    offsetfile = outpath+'/offsetchains/'+npzfile.split('.')[0]+'_offset.png'
+    snchains = outpath+'/snchains/'+npzfile.split('.')[0]+'_SNchains.png'
 
 
 
@@ -216,6 +230,9 @@ if __name__ == "__main__":
             , burnin=inp['burnin']
             , lcout=lcout
             , chainsnpz=chainsnpz
+            , chainsnpzout = chainsnpzout
+            , snchains=snchains
+            , offsetfile=offsetfile
             #, mjdoff=inp['mjdoff']
             , dontsavegalaxy=True
             , log=None

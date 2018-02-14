@@ -121,6 +121,10 @@ class metropolis_hastings():
                  , dosave=True
                  , lcout=None
                  , chainsnpz=None
+                 , chainsnpzout=None
+                 , offsetfile=None
+                 , snchains=None
+                 , stampsfile=None
                  , convolvegal=True
                  , platescale=.27
                  , mjdoff=None
@@ -307,6 +311,10 @@ class metropolis_hastings():
         self.dosave = dosave
         self.lcout = lcout
         self.chainsnpz = chainsnpz
+        self.chainsnpzout = chainsnpzout
+        self.snchains = snchains
+        self.offsetfile = offsetfile
+        self.stampsfile = stampsfile
         print 'maxiter', maxiter
         self.acceptance_vec = np.zeros(int(maxiter + 1), dtype='int')
         self.convolvegal = convolvegal
@@ -1689,7 +1697,7 @@ class metropolis_hastings():
         if self.isfermigrid:
             pdf_pages = PdfPages('stamps.pdf')
         else:
-            pdf_pages = PdfPages(self.lcout + '_stamps.pdf')
+            pdf_pages = PdfPages(self.stampsfile)
         fig = plt.figure(figsize=(25, 10))
         for i in range(self.Nimage):
             if self.modelvec[i] == 0: continue
@@ -1839,8 +1847,8 @@ class metropolis_hastings():
         #gc.collect()
         if self.isfermigrid:
             print os.popen('ifdh rm ' + self.lcout + '_stamps.pdf').read()
-            print os.popen('ifdh cp --force=xrootd stamps.pdf ' + self.lcout + '_stamps.pdf').read()
-        print 'Saved', self.lcout + '_stamps.pdf'
+            print os.popen('ifdh cp --force=xrootd stamps.pdf ' + self.stampsfile).read()
+        #print 'Saved', self.lcout + '_stamps.pdf'
         # else:
         #    print os.popen('mv stamps.pdf ' + self.lcout + '_stamps.pdf').read()
         #    #print 'copied using ifdh'
@@ -1919,7 +1927,7 @@ class metropolis_hastings():
         plt.xlabel('Step')
         plt.ylabel('SN Flux')
         plt.title(self.lcout.split('/')[-1])
-        self.savefig(str(self.lcout) + '_SNchains.png')
+        self.savefig(self.snchains)
         # self.tmpwriter.cp('SNchains.png',str(self.lcout)+'_SNchains.png')
         # os.popen('rm SNchains.png').read()
 
@@ -1947,7 +1955,7 @@ class metropolis_hastings():
                 self.tmpwriter.cp('offset.png', str(self.lcout) + '_offset.png')
                 #os.popen('rm offset.png').read()
             else:
-                self.savefig(str(self.lcout) + '_offset.png')
+                self.savefig(self.offsetfile)
                 # print str(self.lcout)+'_SNoffset1.png'
         # else:
         #    self.savefig('SNoffset2.png')
@@ -1980,9 +1988,9 @@ class metropolis_hastings():
         else:
             raoff = np.nan
             decoff = np.nan
-        if self.isfermigrid:
-            self.chainsnpz = str(self.lcout)+'_chains.npz'
-        self.tmpwriter.savez(self.chainsnpz, modelvec=self.modelvec, modelvec_uncertainty=self.modelvec_uncertainty,
+        #if self.isfermigrid:
+        #    self.chainsnpz = str(self.lcout)+'_chains.npz'
+        self.tmpwriter.savez(self.chainsnpzout, modelvec=self.modelvec, modelvec_uncertainty=self.modelvec_uncertainty,
                              galmodel_params=self.galmodel_params, galmodel_uncertainty=self.galmodel_uncertainty,
                              modelvec_nphistory=self.modelvec_nphistory, galmodel_nphistory=self.galmodel_nphistory,
                              sims=self.sims, data=self.data, accepted_history=self.accepted_history,
