@@ -755,9 +755,9 @@ class metropolis_hastings():
             if (self.counter % 1000) == 0:
                 if self.isfermigrid:
                     #if (self.counter % 50000):
-                    #pass
-                    self.savechains()
-                    self.plotchains()
+                    pass
+                    #self.savechains()
+                    #self.plotchains()
                 else:
                     self.savechains()
 
@@ -765,7 +765,7 @@ class metropolis_hastings():
             if (self.counter % 1000) == 0:
                 self.accepted_int = 0
                 #self.local_galchain.append(np.mean(self.galaxy_model[14:17,14:17]))
-                print 'Acceptance Rate:', self.accepted_history
+                print 'Acceptance Rate:', self.accepted_historymkd
                 if self.counter > 5000:
                     if float(self.accepted_history) < .25:
                         self.modelstd = self.modelstd / 1.25
@@ -817,7 +817,7 @@ class metropolis_hastings():
                         # print 'fit galaxy registration', self.xgal_pix_offset[10:20]
                         # print 'fitting position:', self.x_pix_offset, self.y_pix_offset
 
-                if (self.counter % 1000) == 0:
+                if (self.counter % 50000) == 0:
                     self.plotchains()
                     self.savechains()
                     #self.plotstamps()
