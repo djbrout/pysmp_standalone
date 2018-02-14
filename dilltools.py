@@ -1,5 +1,8 @@
 import numpy as np
-import pyfits as pf
+try:
+    import pyfits as pf
+except:
+    pass
 import os
 import scipy.signal
 import scipy.ndimage as nd
