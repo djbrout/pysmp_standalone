@@ -139,9 +139,9 @@ if __name__ == "__main__":
 
 
     if isfermigrid:
-        os.system('ifdh cp '+inpf+' .')#copy over input file
+        os.system('ifdh cp --force=xrootd -D  '+inpf+' .')#copy over input file
         inpf = npzfile
-        os.system('ifdh cp '+chainsnpz+' .')#copy over checkpoint
+        os.system('ifdh cp --force=xrootd -D  '+chainsnpz+' .')#copy over checkpoint
         chainsnpz = npzfile.split('.')[0] + '_chains.npz'
         stdoutfile = npzfile.split('.')[0] + '.log'
 
