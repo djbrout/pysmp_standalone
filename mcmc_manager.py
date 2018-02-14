@@ -141,6 +141,8 @@ if __name__ == "__main__":
             os.mkdir(outpath + '/offsetchains/')
         if not os.path.exists(outpath + '/snchains/'):
             os.mkdir(outpath + '/snchains/')
+        if not os.path.exists(outpath + '/stamps/'):
+            os.mkdir(outpath + '/stamps/')
 
     lcout = outpath+'/smpfiles/'+npzfile.split('.')[0]+'.smp'
     chainsnpz = outpath+'/npz/'+npzfile.split('.')[0] + '_chains.npz'
@@ -149,6 +151,7 @@ if __name__ == "__main__":
     stdoutfile = outpath+'/logs/'+npzfile.split('.')[0] + '.log'
     offsetfile = outpath+'/offsetchains/'+npzfile.split('.')[0]+'_offset.png'
     snchains = outpath+'/snchains/'+npzfile.split('.')[0]+'_SNchains.png'
+    stampsfile = outpath+'/stamps/'+npzfile.split('.')[0]+'_stamps.pdf'
 
 
 
@@ -234,6 +237,7 @@ if __name__ == "__main__":
             , chainsnpzout = chainsnpzout
             , snchains=snchains
             , offsetfile=offsetfile
+            , stampsfile=stampsfile
             #, mjdoff=inp['mjdoff']
             , dontsavegalaxy=True
             , log=None
