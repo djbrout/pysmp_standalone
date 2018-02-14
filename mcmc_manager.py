@@ -11,13 +11,14 @@ if __name__ == "__main__":
     corioutpath = '/home/dbrout/pysmp_standalone/corispec/'
     isfermigrid = False
     npzfile = None
+    npzlist = None
     redo = None
     print 'importing2'
     try:
         args = sys.argv[1:]
         opt, arg = getopt.getopt(
             args, "i",
-            longopts=["index=",'npzfolder=','outpath=','filter=','sn=','redo=','fermigrid'])
+            longopts=["index=",'npzfolder=','outpath=','filter=','sn=','redo=','fermigrid','npzlist='])
 
     except getopt.GetoptError as err:
         print "No command line arguments"
@@ -40,6 +41,8 @@ if __name__ == "__main__":
             redo = a
         elif o in ['--fermigrid']:
             isfermigrid = True
+        elif o in ['--npzlist']:
+            npzlist = a
 
     #import scipy.signal
     print 'import numpy'
@@ -54,7 +57,13 @@ if __name__ == "__main__":
     #time.sleep(float(index))
 
     #npzlist = np.asarray(sorted(os.listdir(npzfolder)),dtype='str')
-    npzlist = np.asarray(os.listdir(npzfolder), dtype='str')
+
+
+    if npzlist is None:
+        npzlist = np.asarray(os.listdir(npzfolder), dtype='str')
+    else:
+        npzlist = open(npzlist).readlines()
+
     # newnpzlist = []
     # numepochs = []
     # glist = []
