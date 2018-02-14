@@ -1952,7 +1952,7 @@ class metropolis_hastings():
         if self.shiftpsf:
             if self.isfermigrid:
                 self.savefig('offset.png')
-                self.tmpwriter.cp('offset.png', str(self.lcout) + '_offset.png')
+                self.tmpwriter.cp('offset.png', self.offsetfile)
                 #os.popen('rm offset.png').read()
             else:
                 self.savefig(self.offsetfile)
@@ -2017,7 +2017,7 @@ class metropolis_hastings():
         if self.isfermigrid:
             plt.savefig('tmp.png')
             os.popen('ifdh rm ' + fname).read()
-            print os.popen('ifdh cp --force=xrootd tmp.png ' + fname).read()
+            print os.popen('ifdh cp --force=xrootd -D tmp.png ' + fname).read()
             os.popen('rm tmp.png')
         else:
             plt.savefig(fname)
