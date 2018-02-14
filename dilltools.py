@@ -434,7 +434,7 @@ class tmpwriter():
             elif self.useifdh:
                 print 'ifdh cp ' + tempfile + ' ' + filename
                 os.system('ifdh rm '+filename)
-                os.system('ifdh cp ' + tempfile + ' ' + filename)
+                os.system('ifdh cp --force=xrootd ' + tempfile + ' ' + filename)
                 os.popen('rm '+tempfile)
             else:
                 os.system('mv ' + tempfile + ' ' + filename)

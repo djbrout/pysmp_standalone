@@ -1945,7 +1945,7 @@ class metropolis_hastings():
             if self.isfermigrid:
                 self.savefig('offset.png')
                 self.tmpwriter.cp('offset.png', str(self.lcout) + '_offset.png')
-                os.popen('rm offset.png').read()
+                #os.popen('rm offset.png').read()
             else:
                 self.savefig(str(self.lcout) + '_offset.png')
                 # print str(self.lcout)+'_SNoffset1.png'
@@ -1980,6 +1980,8 @@ class metropolis_hastings():
         else:
             raoff = np.nan
             decoff = np.nan
+        if self.isfermigrid:
+            self.chainsnpz = str(self.lcout)+'/'+self.chainsnpz.split('/')[-1]
         self.tmpwriter.savez(self.chainsnpz, modelvec=self.modelvec, modelvec_uncertainty=self.modelvec_uncertainty,
                              galmodel_params=self.galmodel_params, galmodel_uncertainty=self.galmodel_uncertainty,
                              modelvec_nphistory=self.modelvec_nphistory, galmodel_nphistory=self.galmodel_nphistory,
