@@ -2017,7 +2017,8 @@ class metropolis_hastings():
         if self.isfermigrid:
             plt.savefig('tmp.png')
             os.popen('ifdh rm ' + fname).read()
-            print os.popen('ifdh cp --force=xrootd -D tmp.png ' + fname).read()
+            print 'ifdh cp --force=xrootd tmp.png ' + fname
+            print os.popen('ifdh cp --force=xrootd tmp.png ' + fname).read()
             os.popen('rm tmp.png')
         else:
             plt.savefig(fname)
