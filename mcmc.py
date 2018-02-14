@@ -755,9 +755,10 @@ class metropolis_hastings():
             if (self.counter % 1000) == 0:
                 if self.isfermigrid:
                     #if (self.counter % 50000):
-                    pass
-                    #self.savechains()
-                    #self.plotchains()
+
+                    #pass
+                    self.savechains()
+                    self.plotchains()
                 else:
                     self.savechains()
 
@@ -765,7 +766,7 @@ class metropolis_hastings():
             if (self.counter % 1000) == 0:
                 self.accepted_int = 0
                 #self.local_galchain.append(np.mean(self.galaxy_model[14:17,14:17]))
-                print 'Acceptance Rate:', self.accepted_historymkd
+                print 'Acceptance Rate:', self.accepted_history
                 if self.counter > 5000:
                     if float(self.accepted_history) < .25:
                         self.modelstd = self.modelstd / 1.25
