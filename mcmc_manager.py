@@ -157,7 +157,12 @@ if __name__ == "__main__":
 
     if isfermigrid:
         #os.system('ifdh cp --force=xrootd -D  '+inpf+' .')#copy over input file
+        rr =  os.system('ifdh ls '+lcout)
+        if not 'No match' in rr:
+            print 'SMP FILE ALREADY EXISTS... EXITING'
+            sys.exit()
         inpf = npzfile
+
         print 'copying checkpoint chains'
         os.system('ifdh cp --force=xrootd -D  '+chainsnpzout+' .')#copy over checkpoint
         chainsnpz = npzfile.split('.')[0] + '_chains.npz'

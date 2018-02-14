@@ -2712,8 +2712,11 @@ class metropolis_hastings():
         # print self.mjd[i], float(self.mjd[i]) - self.peakmjd, self.idobs[i], self.idcoadd[i], self.filt, self.fitzpt[i], self.rmsaddin[i],modelvec[i], modelvec_uncertainty[i], self.fakemag[i], self.fakezpt[i],self.diffim_flux[i], self.diffim_fluxerr[i],self.x[i], self.y[i], 0, 0,self.ra[i], self.dec[i],chisqs[i], -999, self.smpdictflag[i], self.mjdflag[i],self.descriptiveflag[i],self.sky[i], self.skyerr[i], 0,self.rmsaddin[i], 0,self.imfilename[i], self.psffile[i],self.weightfilename, self.zptfilename
 
 
-
-        fout = open(self.smpfile, 'w')
+        if self.isfermigrid:
+            file = 'tmp.txt'
+        else:
+            file = self.smpfile
+        fout = open(file, 'w')
         print >> fout, '# MJD DPMJD ID_OBS ID_COADD BAND ZPT ZPTERR FLUX FLUXERR GALSHOT FAKEMAG FAKEZPT DIFFIM_FLUX DIFFIM_FLUXERR ' \
                        'XPOS YPOS XOFF YOFF RA DEC CHI2 NDOF ' \
                        'SMP_FLAG MJD_FLAG DESCRIPTIVE_FLAG SKY SKYERR SKYERRINFLATION RMSADDIN GEWKEDIAG GAIN ' \
@@ -2737,8 +2740,10 @@ class metropolis_hastings():
                 self.weightfilename[i], self.zptfilename[i],  # NEED TO CORRECT THESE MISSING INDICES!
                                'na',
                                'na', 'na', 'na', 'na', 'na')
-        fout.close()
 
+        fout.close()
+        if self.isfermigrid:
+            print os.popen('ifdh cp --force=xrootd tmp.txt ' + self.smpfile).read()
 
 class CustomFFTConvolution(object):
     def __init__(self, A, B, threads=1):
