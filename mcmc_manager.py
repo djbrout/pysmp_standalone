@@ -157,8 +157,9 @@ if __name__ == "__main__":
 
     if isfermigrid:
         #os.system('ifdh cp --force=xrootd -D  '+inpf+' .')#copy over input file
-        rr =  os.popen('ifdh ls '+lcout).readlines()
-        if not 'No match' in rr:
+        rr =  os.system('ifdh ls '+lcout)
+        print rr
+        if rr == 0:
             print 'SMP FILE ALREADY EXISTS... EXITING'
             sys.exit()
         inpf = npzfile
