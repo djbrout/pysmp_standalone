@@ -316,7 +316,7 @@ class metropolis_hastings():
         self.offsetfile = offsetfile
         self.stampsfile = stampsfile
         print 'maxiter', maxiter
-        self.acceptance_vec = np.zeros(int(maxiter + 1), dtype='int')
+        self.acceptance_vec = np.zeros(int(maxiter + 5000000), dtype='int')
         self.convolvegal = convolvegal
         self.useskyerr = useskyerr
         self.usesimerr = usesimerr
