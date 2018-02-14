@@ -59,10 +59,8 @@ if __name__ == "__main__":
     #npzlist = np.asarray(sorted(os.listdir(npzfolder)),dtype='str')
 
 
-    if npzlist is None:
+    if npzfile is None:
         npzlist = np.asarray(os.listdir(npzfolder), dtype='str')
-    else:
-        npzlist = open(npzlist).readlines()
 
     # newnpzlist = []
     # numepochs = []
@@ -101,7 +99,7 @@ if __name__ == "__main__":
     #npzfile = npzlist[int(index)]
     if npzfile is None:
         npzfile = npzlist[int(index)]
-    else:
+
         #bl = open('badlist.txt','r').readlines()
         #npzfile = bl[int(npzfile)].strip().replace('"','').replace(',','')
         pass
