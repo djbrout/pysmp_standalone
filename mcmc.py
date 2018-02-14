@@ -1846,7 +1846,7 @@ class metropolis_hastings():
         plt.close()
         #gc.collect()
         if self.isfermigrid:
-            print os.popen('ifdh rm ' + self.lcout + '_stamps.pdf').read()
+            print os.popen('ifdh rm ' + self.stampsfile).read()
             print os.popen('ifdh cp --force=xrootd stamps.pdf ' + self.stampsfile).read()
         #print 'Saved', self.lcout + '_stamps.pdf'
         # else:
@@ -1951,8 +1951,8 @@ class metropolis_hastings():
         plt.ylabel('Offset (pixels)')
         if self.shiftpsf:
             if self.isfermigrid:
-                self.savefig('offset.png')
-                self.tmpwriter.cp('offset.png', self.offsetfile)
+                self.savefig( self.offsetfile)
+                #self.tmpwriter.cp('offset.png', self.offsetfile)
                 #os.popen('rm offset.png').read()
             else:
                 self.savefig(self.offsetfile)
@@ -2715,7 +2715,7 @@ class metropolis_hastings():
         if self.isfermigrid:
             file = 'tmp.txt'
         else:
-            file = self.smpfile
+            file = self.lcout
         fout = open(file, 'w')
         print >> fout, '# MJD DPMJD ID_OBS ID_COADD BAND ZPT ZPTERR FLUX FLUXERR GALSHOT FAKEMAG FAKEZPT DIFFIM_FLUX DIFFIM_FLUXERR ' \
                        'XPOS YPOS XOFF YOFF RA DEC CHI2 NDOF ' \
@@ -2743,7 +2743,7 @@ class metropolis_hastings():
 
         fout.close()
         if self.isfermigrid:
-            print os.popen('ifdh cp --force=xrootd tmp.txt ' + self.smpfile).read()
+            print os.popen('ifdh cp --force=xrootd tmp.txt ' + self.lcout).read()
 
 class CustomFFTConvolution(object):
     def __init__(self, A, B, threads=1):
