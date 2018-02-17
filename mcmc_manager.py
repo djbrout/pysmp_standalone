@@ -165,7 +165,7 @@ if __name__ == "__main__":
         inpf = npzfile
 
         print 'copying checkpoint chains'
-        rr =  os.system('ifdh ls '+lcout)
+        rr =  os.system('ifdh ls '+chainsnpzout)
         if rr == 0:
             os.system('ifdh cp --force=xrootd -D  '+chainsnpzout+' .')#copy over checkpoint
         chainsnpz = npzfile.split('.')[0] + '_chains.npz'
