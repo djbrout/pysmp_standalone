@@ -396,7 +396,7 @@ class metropolis_hastings():
 
 
         # except:
-        self.walltime = 90.
+        self.walltime = 4.5
         self.maxtime = 3600. * (self.walltime)
         self.sstime = time.time()
         self.gewekediag = np.zeros_like(self.modelstd) + 999.
@@ -749,6 +749,9 @@ class metropolis_hastings():
             if time.time() - self.sstime > self.maxtime:
                 self.z_scores_say_keep_going = False
                 print 'REACHED MAX TIME' * 100
+                self.plotchains()
+                self.savechains()
+                sys.exit(1)
 
             if self.counter % self.gewekenum == 0:
                 if self.counter > 199000:
@@ -826,7 +829,7 @@ class metropolis_hastings():
                         # print 'fit galaxy registration', self.xgal_pix_offset[10:20]
                         # print 'fitting position:', self.x_pix_offset, self.y_pix_offset
 
-                if (self.counter % 100000) == 0:
+                if (self.counter % 50000) == 0:
                     self.plotchains()
                     self.savechains()
                     #self.plotstamps()
