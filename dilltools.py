@@ -375,7 +375,7 @@ class tmpwriter():
             if self.usedccp:
                 os.system('dccp ' + tempfile + ' ' + filename)
             elif self.useifdh:
-                os.system('ifdh cp ' + tempfile + ' ' + filename)
+                os.system('timeout 100s  ifdh cp ' + tempfile + ' ' + filename)
             else:
                 os.system('mv ' + tempfile + ' ' + filename)
 
@@ -400,7 +400,7 @@ class tmpwriter():
                 os.system('dccp ' + filename + ' ' + tempfile)
             elif self.useifdh:
                 #print 'ifdh cp ' + filename + ' ' + tempfile
-                os.system('ifdh cp ' + filename + ' ' + tempfile)
+                os.system('timeout 100s ifdh cp ' + filename + ' ' + tempfile)
             else:
                 os.system('mv ' + filename + ' ' + tempfile)
 
@@ -412,8 +412,8 @@ class tmpwriter():
             if self.usedccp:
                 os.system('dccp ' + tempfile + ' ' + filename)
             elif self.useifdh:
-                os.system('ifdh rm ' + filename)
-                os.system('ifdh cp ' + tempfile + ' ' + filename)
+                os.system('timeout 100s ifdh rm ' + filename)
+                os.system('timeout 100s ifdh cp ' + tempfile + ' ' + filename)
             else:
                 if os.path.isfile(filename):
                     os.remove(filename)
@@ -435,9 +435,9 @@ class tmpwriter():
             if self.usedccp:
                 os.system('dccp ' + tempfile + ' ' + filename)
             elif self.useifdh:
-                print 'ifdh cp ' + tempfile + ' ' + filename
-                os.system('ifdh rm '+filename)
-                os.system('ifdh cp --force=xrootd ' + tempfile + ' ' + filename)
+                print 'timeout 100s ifdh cp ' + tempfile + ' ' + filename
+                os.system('timeout 100s ifdh rm '+filename)
+                os.system('timeout 100s ifdh cp --force=xrootd ' + tempfile + ' ' + filename)
                 os.popen('rm '+tempfile)
             else:
                 os.system('mv ' + tempfile + ' ' + filename)
@@ -458,7 +458,7 @@ class tmpwriter():
         if self.usedccp:
             os.system('dccp ' + tempfile + ' ' + filename)
         elif self.useifdh:
-            os.system('ifdh cp ' + tempfile + ' ' + filename)
+            os.system('timeout 100s ifdh cp ' + tempfile + ' ' + filename)
         else:
             os.system('mv ' + tempfile + ' ' + filename)
         print 'saved', filename
@@ -470,10 +470,10 @@ class tmpwriter():
         if self.usedccp:
             os.system('dccp ' + src + ' ' + dst)
         elif self.useifdh:
-            ls = os.popen('ifdh ls '+dst).read()
+            ls = os.popen('timeout 100s ifdh ls '+dst).read()
             if len(ls) > 0:
-                print os.popen('ifdh rm ' + dst).read()
-            print os.popen('ifdh cp ' + src + ' ' + dst).read()
+                print os.popen('timeout 100s ifdh rm ' + dst).read()
+            print os.popen('timeout 100s ifdh cp ' + src + ' ' + dst).read()
         else:
             os.system('mv ' + src + ' ' + dst)
         print 'saved', dst
