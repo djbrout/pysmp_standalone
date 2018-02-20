@@ -396,7 +396,7 @@ class metropolis_hastings():
 
 
         # except:
-        self.walltime = 11.
+        self.walltime = 5.5
         self.maxtime = 3600. * (self.walltime)
         self.sstime = time.time()
         self.gewekediag = np.zeros_like(self.modelstd) + 999.
