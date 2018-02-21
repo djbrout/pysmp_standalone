@@ -437,7 +437,7 @@ class tmpwriter():
             elif self.useifdh:
                 print 'timeout 100s ifdh cp ' + tempfile + ' ' + filename
                 os.system('timeout 100s ifdh rm '+filename)
-                os.system('timeout 100s ifdh cp --force=xrootd ' + tempfile + ' ' + filename)
+                os.system('timeout 100s ifdh cp ' + tempfile + ' ' + filename)
                 os.popen('rm '+tempfile)
             else:
                 os.system('mv ' + tempfile + ' ' + filename)

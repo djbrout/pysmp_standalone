@@ -1850,7 +1850,7 @@ class metropolis_hastings():
         #gc.collect()
         if self.isfermigrid:
             print os.popen('timeout 100s ifdh rm ' + self.stampsfile).read()
-            print os.popen('timeout 100s ifdh cp --force=xrootd stamps.pdf ' + self.stampsfile).read()
+            print os.popen('timeout 100s ifdh cp stamps.pdf ' + self.stampsfile).read()
         #print 'Saved', self.lcout + '_stamps.pdf'
         # else:
         #    print os.popen('mv stamps.pdf ' + self.lcout + '_stamps.pdf').read()
@@ -2020,8 +2020,8 @@ class metropolis_hastings():
         if self.isfermigrid:
             plt.savefig('tmp.png')
             os.popen('timeout 100s  ifdh rm ' + fname).read()
-            print 'timeout 100s ifdh cp --force=xrootd tmp.png ' + fname
-            print os.popen('timeout 100s ifdh cp --force=xrootd tmp.png ' + fname).read()
+            print 'timeout 100s ifdh cp tmp.png ' + fname
+            print os.popen('timeout 100s ifdh cp tmp.png ' + fname).read()
             os.popen('rm tmp.png')
         else:
             plt.savefig(fname)
@@ -2746,7 +2746,7 @@ class metropolis_hastings():
 
         fout.close()
         if self.isfermigrid:
-            print os.popen('timeout 100s ifdh cp --force=xrootd tmp.txt ' + self.lcout).read()
+            print os.popen('timeout 100s ifdh cp tmp.txt ' + self.lcout).read()
 
 class CustomFFTConvolution(object):
     def __init__(self, A, B, threads=1):
