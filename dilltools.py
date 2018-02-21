@@ -72,7 +72,7 @@ def binrms(x, y, bins,rad,returnn=False):
             rms[i] = np.nan
     xvals = (bins[1:] + bins[:-1]) / 2.
     if returnn:
-        xvals,rms,nums
+        return xvals,rms,nums
     return xvals, rms
 
 
