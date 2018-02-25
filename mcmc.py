@@ -827,7 +827,7 @@ class metropolis_hastings():
                         #                          self.sky, self.flags, self.fitflags, self.sims, self.gal_conv)
 
                         # print 'fit galaxy registration', self.xgal_pix_offset[10:20]
-                        # print 'fitting position:', self.x_pix_offset, self.y_pix_offset
+                        # print 'fitting position:', self.x_pix_offset, self.y_pix_offsetasdf
 
                 if (self.counter % 100000) == 0:
                     self.plotchains()
