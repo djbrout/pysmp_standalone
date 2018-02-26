@@ -751,7 +751,7 @@ class metropolis_hastings():
                 print 'REACHED MAX TIME' * 100
                 self.plotchains()
                 self.savechains()
-                sys.exit(1)
+                sys.exit(0)
 
             if self.counter % self.gewekenum == 0:
                 if self.counter > 199000:
